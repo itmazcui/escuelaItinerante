@@ -46,6 +46,7 @@ namespace EscuelaItinerante.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 

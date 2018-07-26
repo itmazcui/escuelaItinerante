@@ -1,0 +1,9 @@
+C:\git\EscuelaItinerante\DES.Logic\bin\Debug\DES.Logic.dll
+C:\git\EscuelaItinerante\DES.Logic\bin\Debug\DES.Logic.pdb
+C:\git\EscuelaItinerante\DES.Logic\bin\Debug\DES.Data.dll
+C:\git\EscuelaItinerante\DES.Logic\bin\Debug\DES.Data.pdb
+C:\git\EscuelaItinerante\DES.Logic\obj\Debug\DES.Logic.csprojAssemblyReference.cache
+C:\git\EscuelaItinerante\DES.Logic\obj\Debug\DES.Logic.csproj.CoreCompileInputs.cache
+C:\git\EscuelaItinerante\DES.Logic\obj\Debug\DES.Logic.csproj.CopyComplete
+C:\git\EscuelaItinerante\DES.Logic\obj\Debug\DES.Logic.dll
+C:\git\EscuelaItinerante\DES.Logic\obj\Debug\DES.Logic.pdb
