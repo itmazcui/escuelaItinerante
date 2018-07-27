@@ -10,7 +10,7 @@ using EscuelaItinerante.Models;
 
 namespace EscuelaItinerante.Controllers
 {
-    [Authorize]
+    
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

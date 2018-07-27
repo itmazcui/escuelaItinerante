@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EscuelaItinerante.Models;
+using DES.Logic;
 
 namespace EscuelaItinerante.Controllers
 {
@@ -70,6 +71,17 @@ namespace EscuelaItinerante.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var usuarioLogic = new UsuarioLogic();
+                var logginCorrecto = usuarioLogic.LoggearUsuario(model.Email, model.Password);
+
+                if (logginCorrecto)
+                {
+                    var myCookie = new HttpCookie("usuario");
+                    myCookie["username"] = model.Email;
+                    myCookie.Expires = DateTime.Now.AddDays(1d);
+                    Response.Cookies.Add(myCookie);
+                }
+
                 return View(model);
             }
 

@@ -12,7 +12,7 @@ using EscuelaItinerante.Models;
 
 namespace EscuelaItinerante.Controllers
 {
-    [Authorize]
+
     public class ReporteController : Controller
     {
         public ReporteController()
@@ -26,7 +26,7 @@ namespace EscuelaItinerante.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [ItinerantesAuthorized]
         public ActionResult AlumnosPorCurso(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;

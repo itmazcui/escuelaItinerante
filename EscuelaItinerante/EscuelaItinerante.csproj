@@ -194,7 +194,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\Connection.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -203,6 +202,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ItinerantesAuthorized.cs" />
     <Compile Include="Models\AltaAlumnoViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -275,10 +275,10 @@
     <Content Include="Views\Alumnos\AltaAlumno.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Reporte\AlumnosPorCurso.cshtml" />
+    <Content Include="Views\Shared\UsuarioNoAutorizado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -294,6 +294,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DES.Data\DES.Data.csproj">
+      <Project>{1fdad797-4398-40ae-a93d-0350f186ac87}</Project>
+      <Name>DES.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DES.Logic\DES.Logic.csproj">
       <Project>{aeba6d44-a84a-4d4d-82f6-2d001e13b7dc}</Project>
       <Name>DES.Logic</Name>

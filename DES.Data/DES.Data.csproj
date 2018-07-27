@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlumnosData.cs" />
+    <Compile Include="Classes\Alumno.cs" />
     <Compile Include="Settings\Connection.cs" />
     <Compile Include="Settings\DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

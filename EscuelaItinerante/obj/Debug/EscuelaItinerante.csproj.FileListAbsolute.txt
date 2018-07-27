@@ -264,3 +264,5 @@ C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.csproj.Co
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.csproj.CopyComplete
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.pdb
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.dll
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.pdb
