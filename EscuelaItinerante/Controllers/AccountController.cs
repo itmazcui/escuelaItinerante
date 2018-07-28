@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EscuelaItinerante.Models;
 using DES.Logic;
+using System.Web.Security;
 
 namespace EscuelaItinerante.Controllers
 {
@@ -69,17 +70,24 @@ namespace EscuelaItinerante.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var usuarioLogic = new UsuarioLogic();
-                var logginCorrecto = usuarioLogic.LoggearUsuario(model.Email, model.Password);
+                var logginCorrecto = usuarioLogic.ExisteUsuario(model.Username, model.Password);
 
                 if (logginCorrecto)
                 {
-                    var myCookie = new HttpCookie("usuario");
-                    myCookie["username"] = model.Email;
-                    myCookie.Expires = DateTime.Now.AddDays(1d);
-                    Response.Cookies.Add(myCookie);
+                    FormsAuthentication.SetAuthCookie(model.Username, false);
+                    
+                    if (returnUrl == string.Empty)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+
                 }
 
                 return View(model);
@@ -102,6 +110,16 @@ namespace EscuelaItinerante.Controllers
             //        return View(model);
             //}
             return View(model);
+        }
+
+        //
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -400,16 +418,6 @@ namespace EscuelaItinerante.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
-        }
-
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
         }
 
         //

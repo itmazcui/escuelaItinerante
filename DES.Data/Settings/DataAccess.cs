@@ -11,11 +11,11 @@ namespace DES.Data
 {
     public class DataAccess
     {
-        private static Connection _connection = new Connection();
-        private static SqlDataReader _reader;
-        private static DataTable _tabla = new DataTable();
+        private Connection _connection = new Connection();
+        private SqlDataReader _reader;
+        private DataTable _tabla = new DataTable();
 
-        public static DataTable ExecuteSP(string procedureName, Dictionary<string, object> parameters, string databaseName)
+        public DataTable ExecuteSP(string procedureName, Dictionary<string, object> parameters)
         {
             var command = new SqlCommand(procedureName);
 
@@ -29,6 +29,7 @@ namespace DES.Data
             command.CommandType = CommandType.StoredProcedure;
             command.Connection = _connection.OpenConnection();
             _reader = command.ExecuteReader();
+            //Esto devuelve un datatable. Esto significa: DataTable firstTable = dataSet.Tables[0];
             _tabla.Load(_reader);
             command.Connection = _connection.OpenConnection();
 

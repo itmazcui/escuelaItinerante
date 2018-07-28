@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DES.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,11 @@ namespace DES.Logic
 {
     public class UsuarioLogic
     {
-        public bool LoggearUsuario(string Username, string Password)
+        private UsuariosData _usuariosData = new UsuariosData();
+
+        public bool ExisteUsuario(string Username, string Password)
         {
-            return true;
+            return _usuariosData.ExisteUsuario(Username, Password);
         }
     }
 }
