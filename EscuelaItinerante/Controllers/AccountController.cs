@@ -124,47 +124,47 @@ namespace EscuelaItinerante.Controllers
 
         //
         // GET: /Account/VerifyCode
-        [AllowAnonymous]
-        public ActionResult VerifyCode(string provider, string returnUrl, bool rememberMe)
-        {
-            // Requerir que el usuario haya iniciado sesión con nombre de usuario y contraseña o inicio de sesión externo
-            //if (!await SignInManager.HasBeenVerifiedAsync())
-            //{
-            //    return View("Error");
-            //}
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
+        //[AllowAnonymous]
+        //public ActionResult VerifyCode(string provider, string returnUrl, bool rememberMe)
+        //{
+        //    // Requerir que el usuario haya iniciado sesión con nombre de usuario y contraseña o inicio de sesión externo
+        //    //if (!await SignInManager.HasBeenVerifiedAsync())
+        //    //{
+        //    //    return View("Error");
+        //    //}
+        //    return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+        //}
 
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult VerifyCode(VerifyCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+        ////
+        //// POST: /Account/VerifyCode
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult VerifyCode(VerifyCodeViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
 
-            // El código siguiente protege de los ataques por fuerza bruta a los códigos de dos factores. 
-            // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario 
-            // se bloqueará durante un período de tiempo especificado. 
-            // Puede configurar el bloqueo de la cuenta en IdentityConfig
-            //var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        return RedirectToLocal(model.ReturnUrl);
-            //    case SignInStatus.LockedOut:
-            //        return View("Lockout");
-            //    case SignInStatus.Failure:
-            //    default:
-            //        ModelState.AddModelError("", "Código no válido.");
-            //        return View(model);
-            //}
-            return View(model);
-        }
+        //    // El código siguiente protege de los ataques por fuerza bruta a los códigos de dos factores. 
+        //    // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario 
+        //    // se bloqueará durante un período de tiempo especificado. 
+        //    // Puede configurar el bloqueo de la cuenta en IdentityConfig
+        //    //var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+        //    //switch (result)
+        //    //{
+        //    //    case SignInStatus.Success:
+        //    //        return RedirectToLocal(model.ReturnUrl);
+        //    //    case SignInStatus.LockedOut:
+        //    //        return View("Lockout");
+        //    //    case SignInStatus.Failure:
+        //    //    default:
+        //    //        ModelState.AddModelError("", "Código no válido.");
+        //    //        return View(model);
+        //    //}
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/Register
@@ -176,33 +176,33 @@ namespace EscuelaItinerante.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                //var result = await UserManager.CreateAsync(user, model.Password);
-                //if (result.Succeeded)
-                //{
-                //    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        //        //var result = await UserManager.CreateAsync(user, model.Password);
+        //        //if (result.Succeeded)
+        //        //{
+        //        //    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                //    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                //    // Enviar correo electrónico con este vínculo
-                //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                //    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+        //        //    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
+        //        //    // Enviar correo electrónico con este vínculo
+        //        //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //        //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //        //    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
 
-                //    return RedirectToAction("Index", "Home");
-                //}
-                //AddErrors(result);
-            }
+        //        //    return RedirectToAction("Index", "Home");
+        //        //}
+        //        //AddErrors(result);
+        //    }
 
-            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
-            return View(model);
-        }
+        //    // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ConfirmEmail
@@ -228,31 +228,31 @@ namespace EscuelaItinerante.Controllers
 
         //
         // POST: /Account/ForgotPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ForgotPassword(ForgotPasswordViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                //var user = await UserManager.FindByNameAsync(model.Email);
-                //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
-                //{
-                //    // No revelar que el usuario no existe o que no está confirmado
-                //    return View("ForgotPasswordConfirmation");
-                //}
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ForgotPassword(ForgotPasswordViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //var user = await UserManager.FindByNameAsync(model.Email);
+        //        //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+        //        //{
+        //        //    // No revelar que el usuario no existe o que no está confirmado
+        //        //    return View("ForgotPasswordConfirmation");
+        //        //}
 
-                // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                // Enviar correo electrónico con este vínculo
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
-            }
+        //        // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
+        //        // Enviar correo electrónico con este vínculo
+        //        // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+        //        // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+        //        // await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+        //        // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+        //    }
 
-            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
-            return View(model);
-        }
+        //    // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ForgotPasswordConfirmation
@@ -272,29 +272,29 @@ namespace EscuelaItinerante.Controllers
 
         //
         // POST: /Account/ResetPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(ResetPasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            //var user = await UserManager.FindByNameAsync(model.Email);
-            //if (user == null)
-            //{
-            //    // No revelar que el usuario no existe
-            //    return RedirectToAction("ResetPasswordConfirmation", "Account");
-            //}
-            //var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            //if (result.Succeeded)
-            //{
-            //    return RedirectToAction("ResetPasswordConfirmation", "Account");
-            //}
-            //AddErrors(result);
-            return View();
-        }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ResetPassword(ResetPasswordViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+        //    //var user = await UserManager.FindByNameAsync(model.Email);
+        //    //if (user == null)
+        //    //{
+        //    //    // No revelar que el usuario no existe
+        //    //    return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    //}
+        //    //var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+        //    //if (result.Succeeded)
+        //    //{
+        //    //    return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    //}
+        //    //AddErrors(result);
+        //    return View();
+        //}
 
         //
         // GET: /Account/ResetPasswordConfirmation
@@ -333,23 +333,23 @@ namespace EscuelaItinerante.Controllers
 
         //
         // POST: /Account/SendCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult SendCode(SendCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult SendCode(SendCodeViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View();
+        //    }
 
-            // Generar el token y enviarlo
-            //if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
-            //{
-            //    return View("Error");
-            //}
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
-        }
+        //    // Generar el token y enviarlo
+        //    //if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
+        //    //{
+        //    //    return View("Error");
+        //    //}
+        //    return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+        //}
 
         //
         // GET: /Account/ExternalLoginCallback
@@ -384,41 +384,41 @@ namespace EscuelaItinerante.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("Index", "Manage");
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                // Obtener datos del usuario del proveedor de inicio de sesión externo
-                //var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                //if (info == null)
-                //{
-                //    return View("ExternalLoginFailure");
-                //}
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                //var result = await UserManager.CreateAsync(user);
-                //if (result.Succeeded)
-                //{
-                //    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                //    if (result.Succeeded)
-                //    {
-                //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                //        return RedirectToLocal(returnUrl);
-                //    }
-                //}
-                //AddErrors(result);
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Obtener datos del usuario del proveedor de inicio de sesión externo
+        //        //var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+        //        //if (info == null)
+        //        //{
+        //        //    return View("ExternalLoginFailure");
+        //        //}
+        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        //        //var result = await UserManager.CreateAsync(user);
+        //        //if (result.Succeeded)
+        //        //{
+        //        //    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+        //        //    if (result.Succeeded)
+        //        //    {
+        //        //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //        //        return RedirectToLocal(returnUrl);
+        //        //    }
+        //        //}
+        //        //AddErrors(result);
+        //    }
 
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
-        }
+        //    ViewBag.ReturnUrl = returnUrl;
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ExternalLoginFailure
