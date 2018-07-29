@@ -42,7 +42,7 @@ namespace EscuelaItinerante.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult AltaAlumno(AltaAlumnoViewModel model)
+        public ActionResult AltaAlumno(AlumnosViewModel model)
         {
             if (!ModelState.IsValid)
             {

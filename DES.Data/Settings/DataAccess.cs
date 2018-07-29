@@ -15,16 +15,17 @@ namespace DES.Data
         private SqlDataReader _reader;
         private DataTable _tabla = new DataTable();
 
-        public DataTable ExecuteSP(string procedureName, Dictionary<string, object> parameters)
+        public DataTable ExecuteSP(string procedureName, Dictionary<string, object> parameters = null)
         {
             var command = new SqlCommand(procedureName);
 
-            foreach (var item in parameters)
-            {
-                DbParameter param = new SqlParameter(item.Key, item.Value);
-                param.Direction = ParameterDirection.Input;
-                command.Parameters.Add(param);
-            }
+            if (parameters != null)
+                foreach (var item in parameters)
+                {
+                    DbParameter param = new SqlParameter(item.Key, item.Value);
+                    param.Direction = ParameterDirection.Input;
+                    command.Parameters.Add(param);
+                }
 
             command.CommandType = CommandType.StoredProcedure;
             command.Connection = _connection.OpenConnection();

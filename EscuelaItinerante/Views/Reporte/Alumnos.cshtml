@@ -1,0 +1,114 @@
+﻿@model EscuelaItinerante.Models.AlumnoReporteViewModel
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.css" />
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Todos los reportes</h4>
+    <hr />
+    <table id="example" class="table table-striped vamiddle fontsize12">
+        <thead>
+            <tr>
+                <th>Fecha Inscripcion</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nro. Documento</th>
+                <th style="display:none">Dirección</th>
+                <th style="display:none">CP</th>
+                <th>Localidad</th>
+                <th style="display:none">Telefono</th>
+                <th style="width:75px">Celular</th>
+                <th style="display:none">Teléfono Laboral</th>
+                <th>Email</th>
+                <th style="display:none">Como Nos Conocio</th>
+                <th style="display:none">Estado Civil</th>
+                <th style="display:none">Hijos</th>
+                <th style="display:none">Estudios Realizados</th>
+                <th style="display:none">Experiencias</th>
+                <th style="display:none">Expectativas</th>
+                <th style="display:none">Conocido En Instituto</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AlumnosInstitutosTodos)
+            {
+            <tr>
+                <td>@item.FechaInscripcion.ToString("d")</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Tipodoc @item.NroDocumento</td>
+                <td style="display:none">@item.Direccion</td>
+                <td style="display:none">@item.CodigoPostal</td>
+                <td>@item.Localidad</td>
+                <td style="display:none">@item.Telefono</td>
+                <td>@item.Celular</td>
+                <td style="display:none">@item.TelLaboral</td>
+                <td>@item.Email</td>
+                <td style="display:none">@item.ComoNosConocio</td>
+                <td style="display:none">@item.EstadoCivil</td>
+                <td style="display:none">@item.Hijos</td>
+                <td style="display:none">@item.EstudiosRealizados</td>
+                <td style="display:none">@item.Experiencias</td>
+                <td style="display:none">@item.Expectativas</td>
+                <td style="display:none">@item.ConocidoEnInstituto</td>
+                <td>@item.Observaciones</td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Fecha Inscripcion</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nro. Documento</th>
+                <th style="display:none">Dirección</th>
+                <th style="display:none">CP</th>
+                <th>Localidad</th>
+                <th style="display:none">Telefono</th>
+                <th>Celular</th>
+                <th style="display:none">Teléfono Laboral</th>
+                <th>Email</th>
+                <th style="display:none">Como Nos Conocio</th>
+                <th style="display:none">Estado Civil</th>
+                <th style="display:none">Hijos</th>
+                <th style="display:none">Estudios Realizados</th>
+                <th style="display:none">Experiencias</th>
+                <th style="display:none">Expectativas</th>
+                <th style="display:none">Conocido En Instituto</th>
+                <th>Observaciones</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                //'excel', 'pdf', 'print'
+                'excel', 'print'
+            ]
+        });
+    });
+</script>
