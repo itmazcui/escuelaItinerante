@@ -16,6 +16,8 @@ namespace EscuelaItinerante.Controllers
 
     public class ReporteController : Controller
     {
+        private AlumnoLogic _alumnoLogic = new AlumnoLogic();
+
         public ReporteController()
         {
             
@@ -30,10 +32,8 @@ namespace EscuelaItinerante.Controllers
         [Authorize]
         public ActionResult Alumnos()
         {
-            //TODO: pasar a variable global
-            var al = new AlumnoLogic();
             var vm = new AlumnoReporteViewModel();
-            vm.AlumnosInstitutosTodos = al.GetAlumnos();
+            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
             return View(vm);
         }
         

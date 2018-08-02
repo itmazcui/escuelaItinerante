@@ -12,11 +12,10 @@ namespace EscuelaItinerante.Models
         [Required]
         public decimal Precio { get; set; }
 
-        [Required]
         public List<DateTime> ClasesCubiertasPorElPago { get; set; }
 
-        //[Required]
-        //public
+        public DateTime MesActual { get; set; }
+        
 
     }
 }

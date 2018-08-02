@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EscuelaItinerante.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,11 +13,12 @@ namespace EscuelaItinerante.Controllers
         {
             return View();
         }
-
+        
         public ActionResult NuevoPago()
         {
             ViewBag.Title = "Nuevo pago";
-            return View();
+            var vm = new NuevoPagoViewModel();
+            return View(vm);
         }
     }
 }

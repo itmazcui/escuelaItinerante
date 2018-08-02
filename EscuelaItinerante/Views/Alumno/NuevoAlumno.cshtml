@@ -1,0 +1,92 @@
+﻿@model EscuelaItinerante.Models.NuevoAlumnoViewModel
+@{
+    ViewBag.Title = "Alta de Alumno ";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    @using (Html.BeginForm("NuevoAlumno", "Alumno", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+    <div class="col-md-12 text-danger" >
+        @Html.ValidationSummary()
+    </div>
+        <div class="col-md-4">
+            <div class="form-group col-md-12">
+                <label>Nombre</label>
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Apellido</label>
+                @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <div class="col-md-12 row">
+                    <label>Nro. Documento</label>
+                </div>
+                <div class="col-md-4 row">
+                    @Html.DropDownListFor(x => x.Tipodoc, Model.TipoDocumentos, new { @class = "form-control" })
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control" })
+                    @Html.HiddenFor(x => x.NroDocumento)
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Dirección</label>
+                @Html.TextBoxFor(x => x.Direccion, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>C.P.</label>
+                @Html.TextBoxFor(x => x.CodigoPostal, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Localidad</label>
+                @Html.TextBoxFor(x => x.Localidad, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group col-md-12">
+                <label>Teléfono</label>
+                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Celular</label>
+                @Html.TextBoxFor(x => x.Celular, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Email</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Estado Civil</label>
+                @Html.DropDownListFor(x => x.EstadoCivil, Model.EstadosCiviles, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Cantidad de Hijos</label>
+                @Html.TextBoxFor(x => x.Hijos, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Estudios Realizados</label>
+                @Html.TextBoxFor(x => x.EstudiosRealizados, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group col-md-12">
+                <label>Como Nos Conoció?</label>
+                @Html.TextAreaFor(x => x.ComoNosConocio, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Conocido En Instituto</label>
+                @Html.TextAreaFor(x => x.ConocidoEnInstituto, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Observaciones</label>
+                @Html.TextAreaFor(x => x.Observaciones, new { @class = "form-control", @rows = "4" })
+            </div>
+            <div class="form-group col-md-12 text-right">
+                <input type="submit" name="name" value="Guardar" class="btn btn-success col-md-12" />
+            </div>
+        </div>
+    }
+</div>

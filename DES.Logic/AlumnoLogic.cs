@@ -16,5 +16,10 @@ namespace DES.Logic
         {
             return _alumnosData.GetAlumnos();
         }
+
+        public void NuevoAlumno(Alumno alumno)
+        {
+            _alumnosData.NuevoAlumno(alumno);
+        }
     }
 }

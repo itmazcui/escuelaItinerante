@@ -17,7 +17,7 @@ namespace DES.Data.Classes
 
     public class Alumno
     {
-        public DateTime FechaInscripcion { get; set; }
+        public DateTime FechaIngreso { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Tipodoc { get; set; }
@@ -25,17 +25,16 @@ namespace DES.Data.Classes
         public string Direccion { get; set; }
         public int CodigoPostal { get; set; }
         public string Localidad { get; set; }
-        public string Telefono { get; set; }
-        public string Celular { get; set; }
-        public string TelLaboral { get; set; }
+        public int Telefono { get; set; }
+        public int Celular { get; set; }
         public string Email { get; set; }
         public string ComoNosConocio { get; set; }
         public EstadoCivil EstadoCivil { get; set; }
         public int Hijos { get; set; }
         public string EstudiosRealizados { get; set; }
-        public string Experiencias { get; set; }
-        public string Expectativas { get; set; }
         public string ConocidoEnInstituto { get; set; }
         public string Observaciones { get; set; }
     }
 }
+
+
