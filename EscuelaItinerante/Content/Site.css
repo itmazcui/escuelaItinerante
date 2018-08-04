@@ -30,3 +30,19 @@ table.vamiddle tr td,
 table.vamiddle tr th {
     vertical-align:middle;
 }
+
+.w230 {
+    width: 230px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}

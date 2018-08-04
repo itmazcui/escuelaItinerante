@@ -3,7 +3,7 @@
     ViewBag.Title = "Alta de Alumno ";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h4 class="text-success">@ViewBag.Message</h4>
 
 <div>
     @using (Html.BeginForm("NuevoAlumno", "Alumno", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -28,7 +28,7 @@
                     @Html.DropDownListFor(x => x.Tipodoc, Model.TipoDocumentos, new { @class = "form-control" })
                 </div>
                 <div class="col-md-8">
-                    @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control" })
+                    @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control", @Value = Model.NroDocumento == 0 ? "" : Model.NroDocumento.ToString() })
                     @Html.HiddenFor(x => x.NroDocumento)
                 </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group col-md-12">
                 <label>C.P.</label>
-                @Html.TextBoxFor(x => x.CodigoPostal, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.CodigoPostal, new { @class = "form-control", @Value = Model.CodigoPostal == 0 ? "" : Model.CodigoPostal.ToString() })
             </div>
             <div class="form-group col-md-12">
                 <label>Localidad</label>
@@ -48,11 +48,11 @@
         <div class="col-md-4">
             <div class="form-group col-md-12">
                 <label>Teléfono</label>
-                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", @Value = Model.Telefono == 0 ? "" : Model.Telefono.ToString() })
             </div>
             <div class="form-group col-md-12">
                 <label>Celular</label>
-                @Html.TextBoxFor(x => x.Celular, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Celular, new { @class = "form-control", @Value = Model.Celular == 0 ? "" : Model.Celular.ToString() })
             </div>
             <div class="form-group col-md-12">
                 <label>Email</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="form-group col-md-12">
                 <label>Cantidad de Hijos</label>
-                @Html.TextBoxFor(x => x.Hijos, new { @class = "form-control", type = "number" })
+                @Html.TextBoxFor(x => x.Hijos, new { @class = "form-control", @Value = Model.Hijos == 0 ? "" : Model.Hijos.ToString() })
             </div>
             <div class="form-group col-md-12">
                 <label>Estudios Realizados</label>

@@ -42,6 +42,41 @@ namespace DES.Data
             return alumnos;
         }
 
+        public Alumno GetAlumnoByNroDocumento(int nroDocumento)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@NroDocumento", nroDocumento);
+
+            var da = new DataAccess();
+            var result = da.ExecuteSP("sp_talumno_by_nrodocumento", parametros);
+
+            if (result.Rows.Count > 0)
+            {
+                DataRow item = result.Rows[0];
+
+                var alumno = new Alumno();
+                alumno.Nombre = item["Nombre"].ToString();
+                alumno.Apellido = item["Apellido"].ToString();
+                alumno.Tipodoc = item["Tipodoc"].ToString();
+                alumno.NroDocumento = int.Parse(item["NroDocumento"].ToString());
+                alumno.Direccion = item["Direccion"].ToString();
+                alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
+                alumno.Localidad = item["Localidad"].ToString();
+                alumno.Telefono = int.Parse(item["Telefono"].ToString());
+                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Email = item["Email"].ToString();
+                alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
+                alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
+                alumno.Hijos = int.Parse(item["Hijos"].ToString());
+                alumno.EstudiosRealizados = item["EstudiosRealizados"].ToString();
+                alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
+                alumno.Observaciones = item["Observaciones"].ToString();
+
+                return alumno;
+            }
+            return null;
+        }
+
         public void NuevoAlumno(Alumno alumno)
         {
             var parametros = new Dictionary<string, object>();
@@ -60,12 +95,11 @@ namespace DES.Data
             parametros.Add("@EstadoCivil", alumno.EstadoCivil);
             parametros.Add("@Hijos", alumno.Hijos);
             parametros.Add("@EstudiosRealizados", alumno.EstudiosRealizados);
-            parametros.Add("@ConocidoEnInstituto", alumno.ConocidoEnInstituto);
-            parametros.Add("@Observaciones", alumno.Observaciones);
-
-
+            parametros.Add("@ConocidoEnInstituto", alumno.ConocidoEnInstituto == null ? string.Empty : alumno.ConocidoEnInstituto);
+            parametros.Add("@Observaciones", alumno.Observaciones == null ? string.Empty : alumno.Observaciones);
+            
             var da = new DataAccess();
-            var usuario = da.ExecuteSP("sp_i_talumnos", parametros);
+            da.ExecuteSP("sp_i_talumnos", parametros);
 
         }
     }

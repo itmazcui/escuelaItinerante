@@ -1,0 +1,56 @@
+﻿@model EscuelaItinerante.Models.InscribirAlumnoViewModel
+@{
+    ViewBag.Title = "Inscripción de alumno";
+}
+<h2>@ViewBag.Title.</h2>
+@*<h4 class="text-success">@ViewBag.Message</h4>*@
+
+<div class="container">
+    @using (Html.BeginForm("InscribirAlumno", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="col-md-12 text-danger">
+            @Html.ValidationSummary()
+        </div>
+
+        <h4 class="mb20">Ingrese el DNI del alumno que desea inscribir.</h4>
+        <div class="col-md-3">
+            @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control", @placeholder = "Nro. Documento" })
+        </div>
+        <div class="col-md-3">
+            <input type="submit" name="name" class="btn btn-success" value="Buscar" />
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Turno</td>
+                    <td>Sede</td>
+                    <td>Coordinador</td>
+                    <td>Tipo</td>
+                    <td>Curso</td>
+                    <td>
+                        Version/Año/edición
+                    </td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cursos)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="button" name="name" value="Inscribir" class="btn btn-success" /></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+</div>

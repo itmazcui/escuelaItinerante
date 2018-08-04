@@ -22,20 +22,41 @@ namespace EscuelaItinerante.Controllers
         public AlumnoController()
         {
         }
-        
-        //
-        // GET: /Account/Login
+
+        public ActionResult InscribirAlumno()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InscribirAlumno(InscribirAlumnoViewModel model)
+        {
+            var alumno = _alumnoLogic.GetAlumnoByNroDocumento(model.NroDocumento);
+
+            if (alumno == null)
+                ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
+            else
+                model.Alumno = alumno;
+                
+
+
+            return View(model);
+        }
+
         public ActionResult NuevoAlumno()
         {
             var vm = new NuevoAlumnoViewModel();
             return View(vm);
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
         public ActionResult NuevoAlumno(NuevoAlumnoViewModel model)
         {
+            var alumnoInscripto = _alumnoLogic.GetAlumnoByNroDocumento(model.NroDocumento);
+
+            if (alumnoInscripto != null)
+                ModelState.AddModelError("NroDocumento", "El alumno ya se encuenta inscripto en el instituto");
+
             if (ModelState.IsValid)
             {
                 var alumno = new Alumno();
@@ -57,13 +78,17 @@ namespace EscuelaItinerante.Controllers
                 alumno.Observaciones = model.Observaciones;
                 _alumnoLogic.NuevoAlumno(alumno);
 
-                ViewBag.StatusMessage = "El ingreso se ha efectuado correctamente!";
-
-                var nuevoVM = new NuevoAlumnoViewModel();
-                return View(nuevoVM);
+                return RedirectToAction("NuevoAlumnoExitoso");
             }
 
             return View(model);
         }
+
+        public ActionResult NuevoAlumnoExitoso()
+        {
+            return View();
+        }
+
+
     }
 }

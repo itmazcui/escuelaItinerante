@@ -66,8 +66,7 @@ namespace EscuelaItinerante.Models
 
         [Required(ErrorMessage = "El campo Estudios Realizados es obligatorio.")]
         public string EstudiosRealizados {get;set;}
-
-        [Required(ErrorMessage = "El campo Conocido en Instituto es obligatorio.")]
+        
         public string ConocidoEnInstituto {get;set;}
 
         public string Observaciones {get;set;}        

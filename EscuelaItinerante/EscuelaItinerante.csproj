@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\NuevoPagoViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -269,6 +270,8 @@
     <Content Include="Views\Shared\UsuarioNoAutorizado.cshtml" />
     <Content Include="Views\Pago\Pago.cshtml" />
     <Content Include="Views\Pago\NuevoPago.cshtml" />
+    <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
+    <Content Include="Views\Alumno\InscribirAlumno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
