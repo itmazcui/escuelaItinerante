@@ -25,7 +25,8 @@ namespace EscuelaItinerante.Controllers
 
         public ActionResult InscribirAlumno()
         {
-            return View();
+            var vm = new InscribirAlumnoViewModel();
+            return View(vm);
         }
 
         [HttpPost]
@@ -35,13 +36,25 @@ namespace EscuelaItinerante.Controllers
 
             if (alumno == null)
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
-            else
+            else 
                 model.Alumno = alumno;
-                
-
-
+            
             return View(model);
         }
+
+
+        [HttpPost]
+        public ActionResult FinalizarInscripcion(InscribirAlumnoViewModel model)
+        {
+            //IDCurso
+            //IDAlumno
+            //Precio
+            //Observaciones
+
+            //var alumnoInscripto = _alumnoLogic.InscribirAlumnoACurso();
+            return View();
+        }
+
 
         public ActionResult NuevoAlumno()
         {

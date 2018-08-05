@@ -40,7 +40,7 @@ namespace DES.Data.Classes
         Eduardo_Laurenzi = 9,
         Garciala_Petrella = 10,
         JoseLuis_Cajal = 11,
-        Lilian_CanoGonzalez = 12,
+        Lilian_Cano_Gonzalez = 12,
         Luly_Barcia = 13,
         Marcela_Guala = 14,
         Mirta_Priori = 15,
@@ -56,9 +56,9 @@ namespace DES.Data.Classes
         public int IDCurso { get; set; }
         public string Nombre { get; set; }
         public Turno Turno { get; set; }
-        public Sede IdSede { get; set; }
-        public Coordinador IDCoordinador { get; set; }
-        public TipoCurso IDTipoCurso { get; set; }
+        public Sede Sede { get; set; }
+        public Coordinador Coordinador { get; set; }
+        public TipoCurso TipoCurso { get; set; }
         public int Version { get; set; }
         public decimal Precio { get; set; }
     }

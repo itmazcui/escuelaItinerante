@@ -24,9 +24,9 @@ namespace DES.Data
                 curso.IDCurso = int.Parse(item["ID_curso"].ToString());
                 curso.Nombre = item["Nombre"].ToString();
                 curso.Turno = (Turno)int.Parse(item["ID_Turno"].ToString());
-                curso.IdSede = (Sede)int.Parse(item["ID_Sede"].ToString());
-                curso.IDCoordinador = (Coordinador)int.Parse(item["ID_Coordinador"].ToString());
-                curso.IDTipoCurso = (TipoCurso)int.Parse(item["ID_Tipo_Curso"].ToString());
+                curso.Sede = (Sede)int.Parse(item["ID_Sede"].ToString());
+                curso.Coordinador = (Coordinador)int.Parse(item["ID_Coordinador"].ToString());
+                curso.TipoCurso = (TipoCurso)int.Parse(item["ID_Tipo_Curso"].ToString());
                 curso.Version = int.Parse(item["Version"].ToString());
                 curso.Precio = decimal.Parse(item["Precio"].ToString());
                 

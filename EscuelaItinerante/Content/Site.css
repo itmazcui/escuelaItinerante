@@ -46,3 +46,8 @@ table.vamiddle tr th {
 .mt20 {
     margin-top: 20px;
 }
+
+.p5, table.p5 tr td {
+    padding: 5px;
+}
+

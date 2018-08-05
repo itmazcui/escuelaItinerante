@@ -71,6 +71,7 @@ namespace DES.Data
                 alumno.EstudiosRealizados = item["EstudiosRealizados"].ToString();
                 alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
                 alumno.Observaciones = item["Observaciones"].ToString();
+                alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
 
                 return alumno;
             }

@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/icon.ico" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,7 +30,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alumnos<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("NuevoAlumno", "Alumno" )">Nuevo Alumno</a></li>
-                                <li><a href="@Url.Action("InscribirAlumno", "Alumno" )">Inscribir Alumno</a></li>
+                                <li><a href="@Url.Action("InscribirAlumno", "Alumno" )">Inscribir Alumno a Curso</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="@Url.Action("NuevoAlumno", "Alumno" )">Nuevo Alumno</a></li>
                             </ul>
@@ -38,16 +39,17 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("NuevoPago", "Pago" )">Nuevo Pago</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="@Url.Action("NuevoPago", "Pago")">Nuevo Pago</a></li>
+                                @*<li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("NuevoPago", "Pago")">Nuevo Pago</a></li>*@
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Alumnos", "Reporte")">Alumnos</a></li>
+                                <li><a href="@Url.Action("AlumnosPorCurso", "Reporte" )">Alumnos por cursos</a></li>
+                                <li><a href="@Url.Action("AlumnosConDeuda", "Reporte")">Alumnos con Deuda</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="@Url.Action("Alumnos", "Reporte")">Alumnos</a></li>
+                                <li><a href="@Url.Action("Alumnos", "Reporte")">Todos los Alumnos</a></li>
                             </ul>
                         </li>
                     </ul>
