@@ -267,7 +267,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumno.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
-    <Content Include="Views\Reporte\Alumnos.cshtml" />
+    <Content Include="Views\Reporte\AlumnosTodos.cshtml" />
     <Content Include="Views\Shared\UsuarioNoAutorizado.cshtml" />
     <Content Include="Views\Pago\Pago.cshtml" />
     <Content Include="Views\Pago\NuevoPago.cshtml" />

@@ -13,7 +13,7 @@ using DES.Logic;
 
 namespace EscuelaItinerante.Controllers
 {
-
+    [Authorize]
     public class ReporteController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
@@ -22,20 +22,33 @@ namespace EscuelaItinerante.Controllers
         {
             
         }
-
-        [AllowAnonymous]
+        
         public ActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
-        public ActionResult Alumnos()
+        
+        public ActionResult AlumnosTodos()
         {
             var vm = new AlumnoReporteViewModel();
             vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
             return View(vm);
         }
-        
+
+        public ActionResult AlumnosPorCurso()
+        {
+            var vm = new AlumnoReporteViewModel();
+            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            return View(vm);
+        }
+
+        public ActionResult AlumnosConDeuda()
+        {
+            var vm = new AlumnoReporteViewModel();
+            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            return View(vm);
+        }
+
     }
 }
