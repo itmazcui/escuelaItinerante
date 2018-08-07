@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DES.Data.Classes
+namespace DES.Data.Clases
 {
     public enum Turno
     {

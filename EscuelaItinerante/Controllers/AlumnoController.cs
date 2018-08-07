@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EscuelaItinerante.Models;
-using DES.Data.Classes;
+using DES.Data.Clases;
 using DES.Logic;
 
 namespace EscuelaItinerante.Controllers
@@ -40,7 +40,7 @@ namespace EscuelaItinerante.Controllers
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
             else
             {
-                model.Cursos = _cursoLogic.GetCursosBySede(model.Sede);
+                model.Cursos = _cursoLogic.GetCursos((int)model.Sede);
                 model.Alumno = alumno;
             }
 
@@ -48,16 +48,26 @@ namespace EscuelaItinerante.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult FinalizarInscripcion(InscribirAlumnoViewModel model)
+        public ActionResult FinalizarInscripcion(int idAlumno, int idCurso, int idSede)
         {
-            //IDCurso
-            //IDAlumno
-            //Precio
-            //Observaciones
+            var vm = new FinalizarInscripcionViewModel(idAlumno, idCurso, idSede);
+            return View(vm);
+        }
 
-            //var alumnoInscripto = _alumnoLogic.InscribirAlumnoACurso();
-            return View();
+        [HttpPost]
+        public ActionResult FinalizarInscripcion(FinalizarInscripcionViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var inscribirAlumnoDTO = new InscribirAlumnoDTO();
+                inscribirAlumnoDTO.IdAlumno = model.IdAlumno;
+                inscribirAlumnoDTO.IdComision = model.ComisionSeleccionada;
+                inscribirAlumnoDTO.ObservacionesDeLaInscripcion = model.ObservacionesDelCurso;
+                inscribirAlumnoDTO.PrecioAAbonar = model.PrecioAAbonar;
+
+                bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoACurso(inscribirAlumnoDTO);
+            }
+            return View(model);
         }
 
 

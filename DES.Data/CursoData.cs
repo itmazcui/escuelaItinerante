@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DES.Data.Classes;
+using DES.Data.Clases;
 
 namespace DES.Data
 {
@@ -33,26 +33,11 @@ namespace DES.Data
             return cursos;
         }
 
-        public List<DateTime> GetClases(int idComision)
-        {
-            var parametros = new Dictionary<string, object>();
-            parametros.Add("@id_comision", idComision);
-
-            var da = new DataAccess();
-            var result = da.ExecuteSP("sp_tcursos_comisiones_clases", parametros);
-
-            var clases = new List<DateTime>();
-            foreach (DataRow item in result.Rows)
-                clases.Add(Convert.ToDateTime(item["Fecha_clase"].ToString()));
-
-            
-            return clases;
-        }
-
-        public List<Comision> GetComisiones(int idCurso)
+        public List<Comision> GetComisiones(int idCurso, int idSede)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_curso", idCurso);
+            parametros.Add("@id_sede", idSede);
 
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_tcursos_comisiones", parametros);
@@ -71,6 +56,23 @@ namespace DES.Data
                 comisiones.Add(comision);
             }
             return comisiones;
+        }
+
+
+        public List<DateTime> GetClases(int idComision)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_comision", idComision);
+
+            var da = new DataAccess();
+            var result = da.ExecuteSP("sp_tcursos_comisiones_clases", parametros);
+
+            var clases = new List<DateTime>();
+            foreach (DataRow item in result.Rows)
+                clases.Add(Convert.ToDateTime(item["Fecha_clase"].ToString()));
+
+
+            return clases;
         }
     }
 }

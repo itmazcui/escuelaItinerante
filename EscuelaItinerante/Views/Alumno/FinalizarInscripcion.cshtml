@@ -1,0 +1,36 @@
+﻿@model EscuelaItinerante.Models.FinalizarInscripcionViewModel
+@{
+    ViewBag.Title = "Inscripción de alumno";
+}
+<h2>@ViewBag.Title.</h2>
+@*<h4 class="text-success">@ViewBag.Message</h4>*@
+
+<div class="container">
+    <div class="col-md-4 col-md-offset-4 mb20">
+        @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
+        @Html.TextBoxFor(x => x.IdAlumno)
+    </div>
+    <hr class="col-md-12"/>
+    @using (Html.BeginForm("FinalizarInscripcion", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="col-md-6">
+            <h3>Finalizar inscripción</h3>
+            <h4 class="mt20">Seleccione comisión a inscribir</h4>
+
+            @Html.DropDownListFor(x => x.ComisionSeleccionada, Model.Comisiones, new { @class = "form-control" })
+
+            <h4 class="mt20">Ingrese el monto que abonará el cliente por el curso</h4>
+
+            @Html.TextBoxFor(x => x.PrecioAAbonar, new { @class = "form-control" })
+        </div>
+        <div class="col-md-6">
+            <h4>Ingrese observaciones</h4>
+            <p> Esta información será recordada cada vez que el alumno realice un pago.</p>
+
+            @Html.TextAreaFor(x => x.ObservacionesDelCurso, new { @class = "form-control", @rows = "4" })
+            <div class="mt20 text-right">
+                <input type="submit" name="name" value="Finalizar Inscripción" class="btn btn-success"/>
+            </div>
+        </div>
+    }
+</div>

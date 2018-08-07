@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Alumnos\FinalizarInscripcionViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\NuevoPagoViewModel.cs" />
@@ -275,6 +276,8 @@
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Alumno\InscribirAlumno.cshtml" />
     <Content Include="Views\Reporte\CursosTodos.cshtml" />
+    <Content Include="Views\Alumno\FinalizarInscripcion.cshtml" />
+    <Content Include="Views\Alumno\Partial\AlumnoTabla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

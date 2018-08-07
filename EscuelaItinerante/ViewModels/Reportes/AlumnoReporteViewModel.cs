@@ -1,4 +1,4 @@
-﻿using DES.Data.Classes;
+﻿using DES.Data.Clases;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

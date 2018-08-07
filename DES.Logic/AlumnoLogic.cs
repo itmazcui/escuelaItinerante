@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DES.Data;
-using DES.Data.Classes;
+using DES.Data.Clases;
 
 namespace DES.Logic
 {
@@ -25,6 +25,16 @@ namespace DES.Logic
         public void NuevoAlumno(Alumno alumno)
         {
             _alumnosData.NuevoAlumno(alumno);
+        }
+
+        public Alumno GetAlumnoByID(int idAlumno)
+        {
+            return _alumnosData.GetAlumnoByID(idAlumno);
+        }
+
+        public bool InscribirAlumnoACurso(InscribirAlumnoDTO inscribirAlumnoDTO)
+        {
+            return _alumnosData.InscribirAlumnoACurso(inscribirAlumnoDTO);
         }
     }
 }

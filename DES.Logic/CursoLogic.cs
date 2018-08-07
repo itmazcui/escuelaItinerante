@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DES.Data;
-using DES.Data.Classes;
+using DES.Data.Clases;
 
 namespace DES.Logic
 {
@@ -12,19 +12,19 @@ namespace DES.Logic
     {
         private readonly CursoData _cursosData = new CursoData();
 
-        public List<Curso> GetCursos(int idSede)
+        public List<Curso> GetCursos(int idSede = 0)
         {
             var cursos = _cursosData.GetCursos(idSede);
 
             foreach (var item in cursos)
-                item.Comisiones = GetComisiones(item.IDCurso);
+                item.Comisiones = GetComisiones(item.IDCurso, idSede);
 
             return cursos;
         }
 
-        private List<Comision> GetComisiones(int idCurso)
+        public List<Comision> GetComisiones(int idCurso, int idSede)
         {
-            var comisiones = _cursosData.GetComisiones(idCurso);
+            var comisiones = _cursosData.GetComisiones(idCurso, idSede);
 
             foreach (var item in comisiones)
                 item.Clases = _cursosData.GetClases(item.IdComision);

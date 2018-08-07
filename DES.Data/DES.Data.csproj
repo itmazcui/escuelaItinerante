@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\DTOs\InscribirAlumnoDTO.cs" />
     <Compile Include="CursoData.cs" />
-    <Compile Include="Classes\Curso.cs" />
+    <Compile Include="Clases\Curso.cs" />
     <Compile Include="UsuariosData.cs" />
     <Compile Include="AlumnoData.cs" />
-    <Compile Include="Classes\Alumno.cs" />
+    <Compile Include="Clases\Alumno.cs" />
     <Compile Include="Settings\Connection.cs" />
     <Compile Include="Settings\DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

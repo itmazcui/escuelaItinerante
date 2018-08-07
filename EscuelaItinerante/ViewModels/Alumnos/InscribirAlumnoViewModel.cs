@@ -1,4 +1,4 @@
-﻿using DES.Data.Classes;
+﻿using DES.Data.Clases;
 using DES.Logic;
 using System;
 using System.Collections.Generic;
