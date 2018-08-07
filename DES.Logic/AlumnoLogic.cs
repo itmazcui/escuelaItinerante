@@ -8,13 +8,23 @@ using DES.Data.Classes;
 
 namespace DES.Logic
 {
-    public class CursoLogic
+    public class AlumnoLogic
     {
-        private readonly CursoData _cursoData = new CursoData();
+        private readonly AlumnoData _alumnosData = new AlumnoData();
 
-        public List<Curso> GetCursos()
+        public List<Alumno> GetAlumnos()
         {
-            return _cursoData.GetCursos();
+            return _alumnosData.GetAlumnos();
+        }
+
+        public Alumno GetAlumnoByNroDocumento(int nroDocumento)
+        {
+            return _alumnosData.GetAlumnoByNroDocumento(nroDocumento);
+        }
+
+        public void NuevoAlumno(Alumno alumno)
+        {
+            _alumnosData.NuevoAlumno(alumno);
         }
     }
 }

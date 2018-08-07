@@ -13,7 +13,7 @@ namespace DES.Data.Classes
         Noche
     }
 
-    public enum TipoCurso
+    public enum Modalidad
     {
         Semanal = 1,
         Mensual = 2
@@ -51,15 +51,22 @@ namespace DES.Data.Classes
         Sandra_Palacio = 20,
     }
 
+    public class Comision
+    {
+        public int IdComision { get; set; }
+        public Modalidad Modalidad { get; set; }
+        public Sede Sede { get; set; }
+        public Coordinador Coordinador { get; set; }
+        public Turno Turno { get; set; }
+        public List<DateTime> Clases { get; set; }
+        public decimal Precio { get; set; }
+    }
+
     public class Curso
     {
         public int IDCurso { get; set; }
         public string Nombre { get; set; }
-        public Turno Turno { get; set; }
-        public Sede Sede { get; set; }
-        public Coordinador Coordinador { get; set; }
-        public TipoCurso TipoCurso { get; set; }
-        public int Version { get; set; }
-        public decimal Precio { get; set; }
+        public List<Comision> Comisiones { get; set; }
+        public string Observacion { get; set; }
     }
 }

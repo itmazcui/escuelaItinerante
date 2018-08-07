@@ -8,7 +8,7 @@ using DES.Data.Classes;
 
 namespace DES.Data
 {
-    public class AlumnosData
+    public class AlumnoData
     {
         public List<Alumno> GetAlumnos()
         {
@@ -36,6 +36,7 @@ namespace DES.Data
                 alumno.EstudiosRealizados = item["EstudiosRealizados"].ToString();
                 alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
                 alumno.Observaciones = item["Observaciones"].ToString();
+                alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
                 alumnos.Add(alumno);
             }
 

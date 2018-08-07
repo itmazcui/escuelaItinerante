@@ -210,6 +210,7 @@
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Reportes\CursosTodosViewModel.cs" />
     <Compile Include="ViewModels\Reportes\AlumnoReporteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,10 +233,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\DataTable\buttons.flash.js" />
-    <Content Include="Scripts\DataTable\buttons.print.min.js" />
-    <Content Include="Scripts\DataTable\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTable\buttons.print.js" />
+    <Content Include="Scripts\DataTable\buttons.html5.js" />
     <Content Include="Scripts\DataTable\pdfmake.min.js" />
-    <Content Include="Scripts\DataTable\jszip.min.js" />
+    <Content Include="Scripts\DataTable\jszip.js" />
     <Content Include="Scripts\DataTable\dataTables.buttons.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -245,7 +246,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
@@ -273,6 +274,7 @@
     <Content Include="Views\Pago\NuevoPago.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Alumno\InscribirAlumno.cshtml" />
+    <Content Include="Views\Reporte\CursosTodos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

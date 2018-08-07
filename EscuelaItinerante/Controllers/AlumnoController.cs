@@ -18,6 +18,8 @@ namespace EscuelaItinerante.Controllers
     public class AlumnoController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
+        private CursoLogic _cursoLogic = new CursoLogic();
+        
 
         public AlumnoController()
         {
@@ -36,9 +38,12 @@ namespace EscuelaItinerante.Controllers
 
             if (alumno == null)
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
-            else 
+            else
+            {
+                model.Cursos = _cursoLogic.GetCursosBySede(model.Sede);
                 model.Alumno = alumno;
-            
+            }
+
             return View(model);
         }
 

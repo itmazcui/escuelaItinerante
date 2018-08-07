@@ -14,7 +14,7 @@ namespace EscuelaItinerante.Models
         private CursoLogic _cursoLogic = new CursoLogic();
 
         public InscribirAlumnoViewModel() {
-            Cursos = _cursoLogic.GetCursos();
+            Sedes = (Enum.GetValues(typeof(Sede))).Cast<Sede>().Select(x => new SelectListItem { Text = x.ToString().Replace("_", " "), Value = ((int)x).ToString() }).ToList();
         }
 
         public Alumno Alumno { get; internal set; }
@@ -22,11 +22,16 @@ namespace EscuelaItinerante.Models
 
         public int NroDocumento { get; set; }
 
-        public int IDCurso { get; set; }
+        [Required]
+        public Sede Sede { get; set; }
 
-        public decimal MontoAAbonar { get; set; }
+        public List<SelectListItem> Sedes { get; set; }
 
-        public string ObservacionesDelCurso { get; set; }
+        //public int IDCurso { get; set; }
+
+        //public decimal MontoAAbonar { get; set; }
+
+        //public string ObservacionesDelCurso { get; set; }
 
 
     }

@@ -10,16 +10,23 @@
     {
         using (Html.BeginForm("InscribirAlumno", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-            <div class="col-md-12 text-danger">
-                @Html.ValidationSummary()
-            </div>
+            <div class="col-md-6 col-lg-offset-3 well">
+                <div class="text-danger">
+                    @Html.ValidationSummary()
+                </div>
 
-            <h4 class="mb20">Ingrese el DNI del alumno que desea inscribir.</h4>
-            <div class="col-md-3">
-                @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control", @placeholder = "Nro. Documento" })
-            </div>
-            <div class="col-md-3">
-                <input type="submit" name="name" class="btn btn-success" value="Buscar" />
+                <h4>Ingrese la sede a la que va a inscribir al alumno.</h4>
+                <div>
+                    @Html.DropDownListFor(x => x.Sede, Model.Sedes, new { @class = "form-control" })
+                </div>
+
+                <h4 class="mt20">Ingrese el DNI del alumno que desea inscribir.</h4>
+                <div>
+                    @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control", @placeholder = "Nro. Documento", @Value = Model.NroDocumento == 0 ? "" : Model.NroDocumento.ToString() })
+                </div>
+                <div class="mt20 text-right">
+                    <input type="submit" name="name" class="btn btn-success" value="Buscar" />
+                </div>
             </div>
         }
     }
@@ -62,21 +69,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Cursos)
-                    {
-                        <tr>
-                            <td>@item.Nombre</td>
-                            <td>@item.Turno</td>
-                            <td>@item.Sede.ToString().Replace("_", " ")</td>
-                            <td>@item.Coordinador.ToString().Replace("_", " ")</td>
-                            <td>@item.TipoCurso</td>
-                            <td class="text-center">@item.Version</td>
-                            <td>$ @string.Format("{0:n0}", item.Precio)</td>
-                            <td>
-                                <button type="button" data-precio="@item.Precio" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>
-                            </td>
-                        </tr>
-                    }
+                    @*@foreach (var item in Model.Cursos)
+                        {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Turno</td>
+                                <td>@item.Sede.ToString().Replace("_", " ")</td>
+                                <td>@item.Coordinador.ToString().Replace("_", " ")</td>
+                                <td>@item.TipoCurso</td>
+                                <td class="text-center">@item.Version</td>
+                                <td>$ @string.Format("{0:n0}", item.Precio)</td>
+                                <td>
+                                    <button type="button" data-precio="@item.Precio" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>
+                                </td>
+                            </tr>
+                        }*@
 
                 </tbody>
             </table>
@@ -96,16 +103,16 @@
                         <div class="modal-body">
                             <p>Ingrese los últimos datos para la inscripción:</p>
                             @*@Html.HiddenFor(x => x.)*@
-                            <table class="table">
-                                <tr>
-                                    <td>Monto que abonará:</td>
-                                    <td>@Html.TextBoxFor(x => x.MontoAAbonar, new { @class = "form-control", @id = "montoaabonar" })</td>
-                                </tr>
-                                <tr>
-                                    <td>Observaciones:</td>
-                                    <td>@Html.TextAreaFor(x => x.ObservacionesDelCurso, new { @class = "form-control" })</td>
-                                </tr>
-                            </table>
+                            @*<table class="table">
+                                    <tr>
+                                        <td>Monto que abonará:</td>
+                                        <td>@Html.TextBoxFor(x => x.MontoAAbonar, new { @class = "form-control", @id = "montoaabonar" })</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Observaciones:</td>
+                                        <td>@Html.TextAreaFor(x => x.ObservacionesDelCurso, new { @class = "form-control" })</td>
+                                    </tr>
+                                </table>*@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

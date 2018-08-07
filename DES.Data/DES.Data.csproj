@@ -43,7 +43,7 @@
     <Compile Include="CursoData.cs" />
     <Compile Include="Classes\Curso.cs" />
     <Compile Include="UsuariosData.cs" />
-    <Compile Include="AlumnosData.cs" />
+    <Compile Include="AlumnoData.cs" />
     <Compile Include="Classes\Alumno.cs" />
     <Compile Include="Settings\Connection.cs" />
     <Compile Include="Settings\DataAccess.cs" />

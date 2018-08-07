@@ -17,6 +17,7 @@ namespace EscuelaItinerante.Controllers
     public class ReporteController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
+        private CursoLogic _cursoLogic = new CursoLogic();
 
         public ReporteController()
         {
@@ -33,6 +34,13 @@ namespace EscuelaItinerante.Controllers
         {
             var vm = new AlumnoReporteViewModel();
             vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            return View(vm);
+        }
+
+        public ActionResult CursosTodos()
+        {
+            var vm = new CursosTodosViewModel();
+            vm.Cursos = _cursoLogic.GetCursos();
             return View(vm);
         }
 

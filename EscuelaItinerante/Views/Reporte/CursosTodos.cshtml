@@ -1,0 +1,33 @@
+﻿@model EscuelaItinerante.Models.CursosTodosViewModel
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Todos los reportes</h4>
+    <hr />
+    <table class="table table-striped vamiddle fontsize12 datatable">
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.datatable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                //'excel', 'pdf', 'print'
+                'excel', 'print'
+            ]
+        });
+    });
+</script>
