@@ -22,7 +22,6 @@ namespace EscuelaItinerante.Models
             Comisiones = comisiones.Select(x => new SelectListItem { Text = string.Concat("Coord. ", x.Coordinador.ToString().Replace("_", " "), " - ", x.Modalidad, " - ", x.Turno, " - ", x.Precio.ToString("C")), Value = x.IdComision.ToString() }).ToList();
 
             Alumno = _alumnoLogic.GetAlumnoByID(idAlumno);
-            IdAlumno = idAlumno;
         }
 
         public int ComisionSeleccionada { get; set; }
@@ -30,8 +29,6 @@ namespace EscuelaItinerante.Models
         public List<SelectListItem> Comisiones { get; set; }
 
         public Alumno Alumno { get; }
-
-        public int IdAlumno { get; set; }
 
         public decimal PrecioAAbonar { get; set; }
 

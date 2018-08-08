@@ -38,7 +38,7 @@ namespace DES.Data.Clases
         Claudia_Izquierdo = 7,
         Darian_Spalla = 8,
         Eduardo_Laurenzi = 9,
-        Garciala_Petrella = 10,
+        Graciela_Petrella = 10,
         JoseLuis_Cajal = 11,
         Lilian_Cano_Gonzalez = 12,
         Luly_Barcia = 13,

@@ -18,7 +18,7 @@ namespace DES.Data
             var da = new DataAccess();
             var cursos = new List<Curso>();
 
-            var result = da.ExecuteSP("sp_tcursos", parametros);
+            var result = da.ExecuteSP("sp_tcursos_by_sede", parametros);
 
             foreach (DataRow item in result.Rows)
             {

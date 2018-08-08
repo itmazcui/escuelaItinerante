@@ -60,7 +60,7 @@ namespace EscuelaItinerante.Controllers
             if (ModelState.IsValid)
             {
                 var inscribirAlumnoDTO = new InscribirAlumnoDTO();
-                inscribirAlumnoDTO.IdAlumno = model.IdAlumno;
+                inscribirAlumnoDTO.IdAlumno = model.Alumno.IdAlumno;
                 inscribirAlumnoDTO.IdComision = model.ComisionSeleccionada;
                 inscribirAlumnoDTO.ObservacionesDeLaInscripcion = model.ObservacionesDelCurso;
                 inscribirAlumnoDTO.PrecioAAbonar = model.PrecioAAbonar;
