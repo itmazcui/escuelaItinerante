@@ -69,7 +69,7 @@ namespace DES.Data.Clases
         public Coordinador Coordinador { get; set; }
         public Turno Turno { get; set; }
         public List<DateTime> Clases { get; set; }
-        public decimal Precio { get; set; }
+        public decimal Arancel { get; set; }
     }
 
     //public class Curso

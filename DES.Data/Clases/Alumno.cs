@@ -35,6 +35,8 @@ namespace DES.Data.Clases
         public string EstudiosRealizados { get; set; }
         public string ConocidoEnInstituto { get; set; }
         public string Observaciones { get; set; }
+        public List<Comision> ComisionesInscripto { get; set; }
+
     }
 }
 

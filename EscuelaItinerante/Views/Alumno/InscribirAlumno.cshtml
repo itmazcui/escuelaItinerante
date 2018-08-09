@@ -5,10 +5,11 @@
 <h2>@ViewBag.Title.</h2>
 @*<h4 class="text-success">@ViewBag.Message</h4>*@
 
-<div class="container">
-    @if (Model.Alumno == null)
-    {
-        using (Html.BeginForm("InscribirAlumno", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+@if (Model.Alumno == null)
+{
+    <div class="container">
+        @using (Html.BeginForm("InscribirAlumno", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div class="col-md-6 col-lg-offset-3 well">
                 <div class="text-danger">
@@ -29,23 +30,25 @@
                 </div>
             </div>
         }
-    }
-    else
-    {
+    </div>
+}
+else
+{
+    <div class="container">
         <div class="col-md-4 col-md-offset-4">
             @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
         </div>
         <hr class="col-md-12" />
         <div class="col-md-12">
             <h3>Seleccione el curso a inscribir al alumno</h3>
-            <table class="table table-striped">
+            <table class="table table-striped datatable">
                 <thead>
                     <tr>
                         <th>Comisión</th>
                         <th>Coordinador</th>
                         <th>Modalidad</th>
                         <th>Turno</th>
-                        <th>Precio</th>
+                        <th>Arancel</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -66,55 +69,80 @@
                                 @item.Turno
                             </td>
                             <td>
-                                @item.Precio
+                                @item.Arancel
                             </td>
                             <td>
-                                <button type="button" data-idcomision="@item.IdComision" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>
-                                @*<a class="btn btn-default" href="@Url.Action("FinalizarInscripcion", new { idAlumno = Model.Alumno.IdAlumno, idComision = item.IdComision })">Finalizar inscripción</a>*@
+                                <button type="button" data-arancel="@item.Arancel" data-idcomision="@item.IdComision" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-    }
-</div>
 
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Finalizar inscripción</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="IdComision" value="" id="idcomision" />
 
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+                        <div>
+                            <p>El alumno puede abonar un arancel distinto al fijado en el curso. TODO</p>
+                            <h4>Arancel</h4>
+                            <div class="mb20">
+                                <input type="text" name="arancel" id="arancel" class="form-control" value="" />
+                            </div>
+                            <h4>Observaciones</h4>
+                            <div>
+                                <textarea name="observacionesdelainscripcion" id="observacionesdelainscripcion" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Inscripción</button>
+                    </div>
+                </div>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="idcomision" value="" id="idcomision" />
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Inscripción</button>
             </div>
         </div>
-
     </div>
-</div>
 
 
-<script>
-    $(function () {
-        $('.inscribir').click(function () {
-            $('#idcomision').val($(this).data("idcomision"));
+
+    <script>
+        $(function () {
+            var idAlumno = @Model.Alumno.IdAlumno;
+
+            $('.inscribir').click(function () {
+                $('#idcomision').val($(this).data("idcomision"));
+                $('#arancel').val($(this).data("arancel"));
+            });
+
+            $('#finalizarinscripcion').click(function () {
+                var idComision = 0;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("FinalizarInscripcion", "Alumno")',
+                    data: {
+                        idalumno: idAlumno,
+                        idcomision: $('#idcomision').val(),
+                        arancel: $('#arancel').val(),
+                        observacionesdelainscripcion: $('#observacionesdelainscripcion').val()
+                    },
+                    success: function (data) {
+
+                    }
+                });
+            });
+
         });
+    </script>
 
-
-        $('#finalizarinscripcion').click(function () {
-            alert
-        });
-
-    });
-</script>
+}

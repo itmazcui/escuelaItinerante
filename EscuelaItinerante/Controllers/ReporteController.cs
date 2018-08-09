@@ -17,7 +17,7 @@ namespace EscuelaItinerante.Controllers
     public class ReporteController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
-        private CursoLogic _cursoLogic = new CursoLogic();
+        private ComisionLogic _comisionLogic = new ComisionLogic();
 
         public ReporteController()
         {

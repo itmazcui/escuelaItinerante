@@ -11,6 +11,6 @@ namespace DES.Data.Clases
         public int IdAlumno { get; set; }
         public int IdComision { get; set; }
         public string ObservacionesDeLaInscripcion { get; set; }
-        public decimal PrecioAAbonar { get; set; }
+        public decimal Arancel { get; set; }
     }
 }

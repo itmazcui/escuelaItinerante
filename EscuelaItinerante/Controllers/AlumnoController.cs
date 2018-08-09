@@ -18,8 +18,8 @@ namespace EscuelaItinerante.Controllers
     public class AlumnoController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
-        private CursoLogic _cursoLogic = new CursoLogic();
-        
+        private ComisionLogic _comisionLogic = new ComisionLogic();
+
 
         public AlumnoController()
         {
@@ -40,38 +40,26 @@ namespace EscuelaItinerante.Controllers
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
             else
             {
-                model.Comisiones = _cursoLogic.GetComisiones((int)model.Sede);
+                model.Comisiones = _comisionLogic.GetComisiones((int)model.Sede);
                 model.Alumno = alumno;
             }
 
             return View(model);
         }
 
-
-        //public ActionResult FinalizarInscripcion(int idAlumno, int idComision)
-        //{
-        //    var vm = new FinalizarInscripcionViewModel(idAlumno, idComision);
-        //    return View(vm);
-        //}
-
         [HttpPost]
-        public ActionResult FinalizarInscripcion(FinalizarInscripcionViewModel model)
+        public ActionResult FinalizarInscripcion(int idAlumno, int idComision, int arancel, string observacionesDeLaInscripcion)
         {
-            if (ModelState.IsValid)
-            {
-                var inscribirAlumnoDTO = new InscribirAlumnoDTO();
-                inscribirAlumnoDTO.IdAlumno = model.IDAlumno;
-                inscribirAlumnoDTO.IdComision = model.ComisionSeleccionada;
-                inscribirAlumnoDTO.ObservacionesDeLaInscripcion = model.ObservacionesDelCurso;
-                inscribirAlumnoDTO.PrecioAAbonar = model.PrecioAAbonar;
+            var inscribirAlumnoDTO = new InscribirAlumnoDTO();
+            inscribirAlumnoDTO.IdAlumno = idAlumno;
+            inscribirAlumnoDTO.IdComision = idComision;
+            inscribirAlumnoDTO.ObservacionesDeLaInscripcion = observacionesDeLaInscripcion;
+            inscribirAlumnoDTO.Arancel = arancel;
 
-                bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoACurso(inscribirAlumnoDTO);
-                if (inscripcionExitosa)
-                {
-                    return RedirectToAction("FinalizarInscripcionExitoso");
-                }
-            }
-            
+            bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoAComision(inscribirAlumnoDTO);
+            if (inscripcionExitosa)
+                return RedirectToAction("FinalizarInscripcionExitoso");
+
             return RedirectToAction("InscribirAlumno");
         }
 
@@ -99,7 +87,7 @@ namespace EscuelaItinerante.Controllers
             if (ModelState.IsValid)
             {
                 var alumno = new Alumno();
-                alumno.Nombre = model.Nombre;    
+                alumno.Nombre = model.Nombre;
                 alumno.Apellido = model.Apellido;
                 alumno.Tipodoc = model.Tipodoc;
                 alumno.NroDocumento = model.NroDocumento;

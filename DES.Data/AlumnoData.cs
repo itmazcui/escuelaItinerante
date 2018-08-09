@@ -44,13 +44,13 @@ namespace DES.Data
             return alumnos;
         }
 
-        public bool InscribirAlumnoACurso(InscribirAlumnoDTO inscribirAlumnoDTO)
+        public bool InscribirAlumnoAComision(InscribirAlumnoDTO inscribirAlumnoDTO)
         {
 
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", inscribirAlumnoDTO.IdAlumno);
             parametros.Add("@id_comision", inscribirAlumnoDTO.IdComision);
-            parametros.Add("@PrecioAAbonar", inscribirAlumnoDTO.PrecioAAbonar);
+            parametros.Add("@PrecioAAbonar", inscribirAlumnoDTO.Arancel);
             parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion == null ? string.Empty : inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
 
             var da = new DataAccess();

@@ -8,7 +8,7 @@ using DES.Data.Clases;
 
 namespace DES.Data
 {
-    public class CursoData
+    public class ComisionData
     {
         //public List<Comision> GetCursos(int idSede)
         //{
@@ -51,13 +51,13 @@ namespace DES.Data
                 comision.Sede = (Sede)int.Parse(item["ID_Sede"].ToString());
                 comision.Coordinador = (Coordinador)int.Parse(item["ID_Coordinador"].ToString());
                 comision.Modalidad = (Modalidad)int.Parse(item["id_modalidad"].ToString());
-                comision.Precio = decimal.Parse(item["Precio"].ToString());
+                comision.Arancel = decimal.Parse(item["Precio"].ToString());
                 comisiones.Add(comision);
             }
             return comisiones;
         }
 
-        public List<Curso> GetCursosDelAlumno(int idAlumno)
+        public List<Comision> GetCursosDelAlumno(int idAlumno)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", idAlumno);
@@ -65,16 +65,16 @@ namespace DES.Data
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_talumno_curso_inscripto", parametros);
 
-            var cursos = new List<Curso>();
+            var cursos = new List<Comision>();
 
             foreach (DataRow item in result.Rows)
             {
-                var curso = new Curso();
+                var comision = new Comision();
 
                 //curso.IDCurso = int.Parse(item["ID_curso"].ToString());
                 //curso.Nombre = item["Nombre"].ToString();
                 //curso.Observacion = item["Observacion"].ToString();
-                cursos.Add(curso);
+                cursos.Add(comision);
             }
 
             return cursos;

@@ -203,7 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Alumnos\FinalizarInscripcionViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\NuevoPagoViewModel.cs" />

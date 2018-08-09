@@ -8,9 +8,9 @@ using DES.Data.Clases;
 
 namespace DES.Logic
 {
-    public class CursoLogic
+    public class ComisionLogic
     {
-        private readonly CursoData _cursosData = new CursoData();
+        private readonly ComisionData _comisionData = new ComisionData();
 
         //public List<Curso> GetCursos(int idSede = 0)
         //{
@@ -24,22 +24,22 @@ namespace DES.Logic
 
         public List<Comision> GetComisiones(int idSede)
         {
-            var comisiones = _cursosData.GetComisiones(idSede);
+            var comisiones = _comisionData.GetComisiones(idSede);
 
             foreach (var item in comisiones)
-                item.Clases = _cursosData.GetClases(item.IdComision);
+                item.Clases = _comisionData.GetClases(item.IdComision);
 
             return comisiones;
         }
 
-        public List<Curso> GetCursosDelAlumno(int idAlumno)
+        public List<Comision> GetComisionesDelAlumno(int idAlumno)
         {
-            var cursos = _cursosData.GetCursosDelAlumno(idAlumno);
+            var comisiones = _comisionData.GetCursosDelAlumno(idAlumno);
 
             //foreach (var item in cursos)
             //    item.Comisiones = GetComisiones(item.IDCurso, idSede);
 
-            return cursos;
+            return comisiones;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace EscuelaItinerante.Models
     public class NuevoPagoViewModel
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
-        private CursoLogic _cursoLogic = new CursoLogic();
+        private ComisionLogic _cursoLogic = new ComisionLogic();
 
         public NuevoPagoViewModel()
         {
@@ -26,13 +26,5 @@ namespace EscuelaItinerante.Models
 
         public List<DateTime> ClasesCubiertasPorElPago { get; set; }
 
-        public DateTime MesActual { get; set; }
-
-        public List<Curso> CursosDelAlumno { get; set; }
-
-        internal void Inicializar()
-        {
-            CursosDelAlumno = _cursoLogic.GetCursosDelAlumno(Alumno.IdAlumno);
-        }
     }
 }
