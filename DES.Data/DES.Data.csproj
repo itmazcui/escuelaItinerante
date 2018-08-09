@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Clases\DTOs\InscribirAlumnoDTO.cs" />
     <Compile Include="CursoData.cs" />
-    <Compile Include="Clases\Curso.cs" />
+    <Compile Include="Clases\Comision.cs" />
     <Compile Include="UsuariosData.cs" />
     <Compile Include="AlumnoData.cs" />
     <Compile Include="Clases\Alumno.cs" />

@@ -12,8 +12,8 @@
     <hr class="col-md-12" />
     @using (Html.BeginForm("FinalizarInscripcion", "Alumno", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
-        @Html.HiddenFor(x => x.Alumno)
-        @Html.HiddenFor(x => x.Alumno.IdAlumno)
+        @Html.HiddenFor(x => x.IDAlumno)
+
         <div class="col-md-6">
             <h3>Finalizar inscripción</h3>
             <h4 class="mt20">Seleccione comisión a inscribir</h4>
@@ -22,7 +22,7 @@
 
             <h4 class="mt20">Ingrese el monto que abonará el cliente por el curso</h4>
 
-            @Html.TextBoxFor(x => x.PrecioAAbonar, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.PrecioAAbonar, new { @class = "form-control", @type= "number" })
         </div>
         <div class="col-md-6">
             <h4>Ingrese observaciones</h4>

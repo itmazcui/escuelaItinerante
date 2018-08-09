@@ -51,7 +51,7 @@ namespace DES.Data
             parametros.Add("@id_alumno", inscribirAlumnoDTO.IdAlumno);
             parametros.Add("@id_comision", inscribirAlumnoDTO.IdComision);
             parametros.Add("@PrecioAAbonar", inscribirAlumnoDTO.PrecioAAbonar);
-            parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
+            parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion == null ? string.Empty : inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
 
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_i_talumno_curso_inscripto", parametros);

@@ -12,19 +12,19 @@ namespace DES.Logic
     {
         private readonly CursoData _cursosData = new CursoData();
 
-        public List<Curso> GetCursos(int idSede = 0)
+        //public List<Curso> GetCursos(int idSede = 0)
+        //{
+        //    var cursos = _cursosData.GetCursos(idSede);
+
+        //    foreach (var item in cursos)
+        //        item.Comisiones = GetComisiones(item.IDCurso, idSede);
+
+        //    return cursos;
+        //}
+
+        public List<Comision> GetComisiones(int idSede)
         {
-            var cursos = _cursosData.GetCursos(idSede);
-
-            foreach (var item in cursos)
-                item.Comisiones = GetComisiones(item.IDCurso, idSede);
-
-            return cursos;
-        }
-
-        public List<Comision> GetComisiones(int idCurso, int idSede)
-        {
-            var comisiones = _cursosData.GetComisiones(idCurso, idSede);
+            var comisiones = _cursosData.GetComisiones(idSede);
 
             foreach (var item in comisiones)
                 item.Clases = _cursosData.GetClases(item.IdComision);
@@ -32,5 +32,14 @@ namespace DES.Logic
             return comisiones;
         }
 
+        public List<Curso> GetCursosDelAlumno(int idAlumno)
+        {
+            var cursos = _cursosData.GetCursosDelAlumno(idAlumno);
+
+            //foreach (var item in cursos)
+            //    item.Comisiones = GetComisiones(item.IDCurso, idSede);
+
+            return cursos;
+        }
     }
 }

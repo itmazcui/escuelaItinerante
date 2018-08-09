@@ -271,13 +271,14 @@
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Reporte\AlumnosTodos.cshtml" />
     <Content Include="Views\Shared\UsuarioNoAutorizado.cshtml" />
-    <Content Include="Views\Pago\Pago.cshtml" />
     <Content Include="Views\Pago\NuevoPago.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Alumno\InscribirAlumno.cshtml" />
     <Content Include="Views\Reporte\CursosTodos.cshtml" />
     <Content Include="Views\Alumno\FinalizarInscripcion.cshtml" />
     <Content Include="Views\Alumno\Partial\AlumnoTabla.cshtml" />
+    <Content Include="Views\Alumno\FinalizarInscripcionExitoso.cshtml" />
+    <Content Include="Views\Pago\FinalizarPago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

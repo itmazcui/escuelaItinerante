@@ -40,7 +40,7 @@ namespace EscuelaItinerante.Controllers
         public ActionResult CursosTodos()
         {
             var vm = new CursosTodosViewModel();
-            vm.Cursos = _cursoLogic.GetCursos();
+            //vm.Cursos = _cursoLogic.GetCursos();
             return View(vm);
         }
 

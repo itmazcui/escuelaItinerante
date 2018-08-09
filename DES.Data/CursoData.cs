@@ -10,33 +10,32 @@ namespace DES.Data
 {
     public class CursoData
     {
-        public List<Curso> GetCursos(int idSede)
+        //public List<Comision> GetCursos(int idSede)
+        //{
+        //    var parametros = new Dictionary<string, object>();
+        //    parametros.Add("@id_sede", idSede);
+
+        //    var da = new DataAccess();
+        //    var cursos = new List<Curso>();
+
+        //    var result = da.ExecuteSP("sp_tcursos_by_sede", parametros);
+
+        //    foreach (DataRow item in result.Rows)
+        //    {
+        //        var curso = new Curso();
+
+        //        curso.IDCurso = int.Parse(item["ID_curso"].ToString());
+        //        curso.Nombre = item["Nombre"].ToString();
+        //        curso.Observacion = item["Observacion"].ToString();
+        //        cursos.Add(curso);
+        //    }
+
+        //    return cursos;
+        //}
+
+        public List<Comision> GetComisiones(int idSede)
         {
             var parametros = new Dictionary<string, object>();
-            parametros.Add("@id_sede", idSede);
-
-            var da = new DataAccess();
-            var cursos = new List<Curso>();
-
-            var result = da.ExecuteSP("sp_tcursos_by_sede", parametros);
-
-            foreach (DataRow item in result.Rows)
-            {
-                var curso = new Curso();
-
-                curso.IDCurso = int.Parse(item["ID_curso"].ToString());
-                curso.Nombre = item["Nombre"].ToString();
-                curso.Observacion = item["Observacion"].ToString();
-                cursos.Add(curso);
-            }
-
-            return cursos;
-        }
-
-        public List<Comision> GetComisiones(int idCurso, int idSede)
-        {
-            var parametros = new Dictionary<string, object>();
-            parametros.Add("@id_curso", idCurso);
             parametros.Add("@id_sede", idSede);
 
             var da = new DataAccess();
@@ -58,6 +57,28 @@ namespace DES.Data
             return comisiones;
         }
 
+        public List<Curso> GetCursosDelAlumno(int idAlumno)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_alumno", idAlumno);
+
+            var da = new DataAccess();
+            var result = da.ExecuteSP("sp_talumno_curso_inscripto", parametros);
+
+            var cursos = new List<Curso>();
+
+            foreach (DataRow item in result.Rows)
+            {
+                var curso = new Curso();
+
+                //curso.IDCurso = int.Parse(item["ID_curso"].ToString());
+                //curso.Nombre = item["Nombre"].ToString();
+                //curso.Observacion = item["Observacion"].ToString();
+                cursos.Add(curso);
+            }
+
+            return cursos;
+        }
 
         public List<DateTime> GetClases(int idComision)
         {

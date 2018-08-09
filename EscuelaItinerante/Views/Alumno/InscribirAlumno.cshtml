@@ -41,27 +41,36 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad de comisiones</th>
-                        <th>Observación</th>
+                        <th>Comisión</th>
+                        <th>Coordinador</th>
+                        <th>Modalidad</th>
+                        <th>Turno</th>
+                        <th>Precio</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Cursos)
+                    @foreach (var item in Model.Comisiones)
                     {
                         <tr>
-                            <td>@item.Nombre</td>
-                            <td>@item.Comisiones.Count()</td>
-                            <td>@item.Observacion</td>
-                            @*<td>@item.Turno</td>
-                                <td>@item.Sede.ToString().Replace("_", " ")</td>
-                                <td>@item.Coordinador.ToString().Replace("_", " ")</td>
-                                <td>@item.TipoCurso</td>
-                                <td class="text-center">@item.Version</td>
-                                <td>$ @string.Format("{0:n0}", item.Precio)</td>*@
                             <td>
-                                <a class="btn btn-default" href="@Url.Action("FinalizarInscripcion", new { idAlumno = Model.Alumno.IdAlumno, idCurso = item.IDCurso, idSede = (int)Model.Sede })">Finalizar inscripción</a>
+                                @item.IdComision
+                            </td>
+                            <td>
+                                @item.Coordinador.ToString().Replace("_", " ")
+                            </td>
+                            <td>
+                                @item.Modalidad
+                            </td>
+                            <td>
+                                @item.Turno
+                            </td>
+                            <td>
+                                @item.Precio
+                            </td>
+                            <td>
+                                <button type="button" data-idcomision="@item.IdComision" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>
+                                @*<a class="btn btn-default" href="@Url.Action("FinalizarInscripcion", new { idAlumno = Model.Alumno.IdAlumno, idComision = item.IdComision })">Finalizar inscripción</a>*@
                             </td>
                         </tr>
                     }
@@ -70,3 +79,42 @@
         </div>
     }
 </div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="idcomision" value="" id="idcomision" />
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Inscripción</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.inscribir').click(function () {
+            $('#idcomision').val($(this).data("idcomision"));
+        });
+
+
+        $('#finalizarinscripcion').click(function () {
+            alert
+        });
+
+    });
+</script>

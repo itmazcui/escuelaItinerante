@@ -16,19 +16,22 @@ namespace EscuelaItinerante.Models
 
         public FinalizarInscripcionViewModel() { }
 
-        public FinalizarInscripcionViewModel(int idAlumno, int idCurso, int idSede) {
-            var comisiones = _cursoLogic.GetComisiones(idCurso, idSede);
+        public FinalizarInscripcionViewModel(int idAlumno, int idComision) {
+            //var comisiones = _cursoLogic.GetComisiones(idSede);
 
-            Comisiones = comisiones.Select(x => new SelectListItem { Text = string.Concat("Coord. ", x.Coordinador.ToString().Replace("_", " "), " - ", x.Modalidad, " - ", x.Turno, " - ", x.Precio.ToString("C")), Value = x.IdComision.ToString() }).ToList();
+            //Comisiones = comisiones.Select(x => new SelectListItem { Text = string.Concat("Coord. ", x.Coordinador.ToString().Replace("_", " "), " - ", x.Modalidad, " - ", x.Turno, " - ", x.Precio.ToString("C")), Value = x.IdComision.ToString() }).ToList();
 
             Alumno = _alumnoLogic.GetAlumnoByID(idAlumno);
+            IDAlumno = idAlumno;
         }
 
         public int ComisionSeleccionada { get; set; }
 
         public List<SelectListItem> Comisiones { get; set; }
 
-        public Alumno Alumno { get; }
+        public Alumno Alumno { get; set; }
+
+        public int IDAlumno { get; set; }
 
         public decimal PrecioAAbonar { get; set; }
 

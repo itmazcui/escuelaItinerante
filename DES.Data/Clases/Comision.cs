@@ -50,6 +50,16 @@ namespace DES.Data.Clases
         Sabrina_Keller = 19,
         Sandra_Palacio = 20,
     }
+    public enum Curso
+    {
+        Acompañante_Terapeutoco = 1,
+        Diplomatura = 2,
+        Operador_Socio_Comunitario = 3,
+        P_N_L = 4,
+        Psicodrama = 5,
+        Psicologia_Social = 6
+    }
+
 
     public class Comision
     {
@@ -62,11 +72,11 @@ namespace DES.Data.Clases
         public decimal Precio { get; set; }
     }
 
-    public class Curso
-    {
-        public int IDCurso { get; set; }
-        public string Nombre { get; set; }
-        public List<Comision> Comisiones { get; set; }
-        public string Observacion { get; set; }
-    }
+    //public class Curso
+    //{
+    //    public int IDCurso { get; set; }
+    //    public string Nombre { get; set; }
+    //    public List<Comision> Comisiones { get; set; }
+    //    public string Observacion { get; set; }
+    //}
 }

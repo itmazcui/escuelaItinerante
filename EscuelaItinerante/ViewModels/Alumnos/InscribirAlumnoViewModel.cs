@@ -18,7 +18,7 @@ namespace EscuelaItinerante.Models
         }
 
         public Alumno Alumno { get; internal set; }
-        public List<Curso> Cursos { get; set; }
+        public List<Comision> Comisiones { get; set; }
 
         public int NroDocumento { get; set; }
 

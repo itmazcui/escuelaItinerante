@@ -40,7 +40,7 @@ namespace EscuelaItinerante.Controllers
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
             else
             {
-                model.Cursos = _cursoLogic.GetCursos((int)model.Sede);
+                model.Comisiones = _cursoLogic.GetComisiones((int)model.Sede);
                 model.Alumno = alumno;
             }
 
@@ -48,11 +48,11 @@ namespace EscuelaItinerante.Controllers
         }
 
 
-        public ActionResult FinalizarInscripcion(int idAlumno, int idCurso, int idSede)
-        {
-            var vm = new FinalizarInscripcionViewModel(idAlumno, idCurso, idSede);
-            return View(vm);
-        }
+        //public ActionResult FinalizarInscripcion(int idAlumno, int idComision)
+        //{
+        //    var vm = new FinalizarInscripcionViewModel(idAlumno, idComision);
+        //    return View(vm);
+        //}
 
         [HttpPost]
         public ActionResult FinalizarInscripcion(FinalizarInscripcionViewModel model)
@@ -60,14 +60,25 @@ namespace EscuelaItinerante.Controllers
             if (ModelState.IsValid)
             {
                 var inscribirAlumnoDTO = new InscribirAlumnoDTO();
-                inscribirAlumnoDTO.IdAlumno = model.Alumno.IdAlumno;
+                inscribirAlumnoDTO.IdAlumno = model.IDAlumno;
                 inscribirAlumnoDTO.IdComision = model.ComisionSeleccionada;
                 inscribirAlumnoDTO.ObservacionesDeLaInscripcion = model.ObservacionesDelCurso;
                 inscribirAlumnoDTO.PrecioAAbonar = model.PrecioAAbonar;
 
                 bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoACurso(inscribirAlumnoDTO);
+                if (inscripcionExitosa)
+                {
+                    return RedirectToAction("FinalizarInscripcionExitoso");
+                }
             }
-            return View(model);
+            
+            return RedirectToAction("InscribirAlumno");
+        }
+
+
+        public ActionResult FinalizarInscripcionExitoso()
+        {
+            return View();
         }
 
 
