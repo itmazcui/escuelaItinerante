@@ -7,13 +7,14 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 
-<div>
+@if (Model.Alumno == null)
+{
     <div class="col-md-6 col-lg-offset-3 well">
         @using (Html.BeginForm("NuevoPago", "Pago", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
         {
 
             <h4 class="mt20">Ingrese el DNI del alumno que desea abonar.</h4>
-            
+
             <div class="text-danger">
                 @Html.ValidationSummary()
             </div>
@@ -27,24 +28,34 @@
             </div>
         }
     </div>
-</div>
+}
+else
+{
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4 mb20">
+            @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
+        </div>
+        <hr class="col-md-12" />
+        
+    </div>
+}
 
-@*<script>
-        $(function(){
-            $('#buscar').click(function () {
+    @*<script>
+            $(function(){
+                $('#buscar').click(function () {
 
-                var nrodoc = $('#nrodocumento').val();
+                    var nrodoc = $('#nrodocumento').val();
 
-                var data = { NroDocumento: nrodoc };
+                    var data = { NroDocumento: nrodoc };
 
-                $.post('@Url.Action("GetAlumno")', data).
-                done((response) => {
-                    fillDropdown(response, $dropdown, 'No tiene cuentas disponibles');
-                }).
-                fail((error) => {
-                    console.warn(error);
-                    toastr.error('Ha ocurrido un error.');
-                });*
+                    $.post('@Url.Action("GetAlumno")', data).
+                    done((response) => {
+                        fillDropdown(response, $dropdown, 'No tiene cuentas disponibles');
+                    }).
+                    fail((error) => {
+                        console.warn(error);
+                        toastr.error('Ha ocurrido un error.');
+                    });*
+                });
             });
-        });
-    </script>*@
+        </script>*@

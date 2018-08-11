@@ -22,7 +22,7 @@ namespace DES.Logic
         //    return cursos;
         //}
 
-        public List<Comision> GetComisiones(int idSede)
+        public List<Comision> GetComisiones(int idSede = 0)
         {
             var comisiones = _comisionData.GetComisiones(idSede);
 

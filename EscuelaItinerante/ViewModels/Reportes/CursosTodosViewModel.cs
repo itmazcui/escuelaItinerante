@@ -6,6 +6,6 @@ namespace EscuelaItinerante.Models
 {
     public class CursosTodosViewModel
     {
-        public List<Curso> Cursos { get; set; }
+        public List<Comision> Comisiones { get; set; }
     }
 }

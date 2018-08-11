@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace DES.Data.Clases
     }
     public enum Curso
     {
-        Acompañante_Terapeutoco = 1,
+        Acompañante_Terapeutico = 1,
         Diplomatura = 2,
         Operador_Socio_Comunitario = 3,
         P_N_L = 4,
@@ -70,8 +71,22 @@ namespace DES.Data.Clases
         public Turno Turno { get; set; }
         public List<DateTime> Clases { get; set; }
         public decimal Arancel { get; set; }
-    }
+        public Curso Curso { get; internal set; }
 
+        public static Comision MapComisionFromDataRow(DataRow dataRow)
+        {
+            var comision = new Comision();
+            comision.IdComision = int.Parse(dataRow["id_comision"].ToString());
+            comision.Curso = (Curso)int.Parse(dataRow["id_curso"].ToString());
+            comision.Turno = (Turno)int.Parse(dataRow["ID_Turno"].ToString());
+            comision.Sede = (Sede)int.Parse(dataRow["ID_Sede"].ToString());
+            comision.Coordinador = (Coordinador)int.Parse(dataRow["ID_Coordinador"].ToString());
+            comision.Modalidad = (Modalidad)int.Parse(dataRow["id_modalidad"].ToString());
+            comision.Arancel = decimal.Parse(dataRow["Precio"].ToString());
+            return comision;
+        }
+    }
+    
     //public class Curso
     //{
     //    public int IDCurso { get; set; }

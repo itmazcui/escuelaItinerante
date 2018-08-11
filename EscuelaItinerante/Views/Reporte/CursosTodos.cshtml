@@ -9,25 +9,45 @@
 <div>
     <h4>Todos los reportes</h4>
     <hr />
-    <table class="table table-striped vamiddle fontsize12 datatable">
+    <table class="table table-striped datatable">
         <thead>
-            <tr></tr>
+            <tr>
+                <th>Comisión</th>
+                <th>Curso</th>
+                <th>Coordinador</th>
+                <th>Modalidad</th>
+                <th>Turno</th>
+                <th>Arancel</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-            <tr></tr>
+            @foreach (var item in Model.Comisiones)
+            {
+                <tr>
+                    <td>
+                        @item.IdComision
+                    </td>
+                    <td>
+                        @item.Curso.ToString().Replace("_", " ")
+                    </td>
+                    <td>
+                        @item.Coordinador.ToString().Replace("_", " ")
+                    </td>
+                    <td>
+                        @item.Modalidad
+                    </td>
+                    <td>
+                        @item.Turno
+                    </td>
+                    <td>
+                        @item.Arancel
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-info">Ver alumnos</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-        $('.datatable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                //'excel', 'pdf', 'print'
-                'excel', 'print'
-            ]
-        });
-    });
-</script>

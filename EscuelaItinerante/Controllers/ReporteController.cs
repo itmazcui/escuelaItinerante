@@ -40,16 +40,16 @@ namespace EscuelaItinerante.Controllers
         public ActionResult CursosTodos()
         {
             var vm = new CursosTodosViewModel();
-            //vm.Cursos = _cursoLogic.GetCursos();
+            vm.Comisiones = _comisionLogic.GetComisiones();
             return View(vm);
         }
 
-        public ActionResult AlumnosPorCurso()
-        {
-            var vm = new AlumnoReporteViewModel();
-            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
-            return View(vm);
-        }
+        //public ActionResult AlumnosPorCurso()
+        //{
+        //    var vm = new AlumnoReporteViewModel();
+        //    vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+        //    return View(vm);
+        //}
 
         public ActionResult AlumnosConDeuda()
         {

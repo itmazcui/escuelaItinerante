@@ -45,6 +45,7 @@ else
                 <thead>
                     <tr>
                         <th>Comisión</th>
+                        <th>Curso</th>
                         <th>Coordinador</th>
                         <th>Modalidad</th>
                         <th>Turno</th>
@@ -58,6 +59,9 @@ else
                         <tr>
                             <td>
                                 @item.IdComision
+                            </td>
+                            <td>
+                                @item.Curso.ToString().Replace("_"," ")
                             </td>
                             <td>
                                 @item.Coordinador.ToString().Replace("_", " ")
@@ -93,14 +97,18 @@ else
                         <input type="hidden" name="IdComision" value="" id="idcomision" />
 
                         <div>
-                            <p>El alumno puede abonar un arancel distinto al fijado en el curso. TODO</p>
+                            <p>El alumno puede abonar un arancel distinto al fijado en el curso. Si lo desea, puede aclararlo en los siguientes campos.</p>
+                            <hr />
                             <h4>Arancel</h4>
                             <div class="mb20">
                                 <input type="text" name="arancel" id="arancel" class="form-control" value="" />
                             </div>
-                            <h4>Observaciones</h4>
+                            <h4>Observaciones*</h4>
                             <div>
                                 <textarea name="observacionesdelainscripcion" id="observacionesdelainscripcion" class="form-control"></textarea>
+                            </div>
+                            <div>
+                                <small>(*) Este campo será mostrado cada vez que el alumno haga un pago. </small>
                             </div>
                         </div>
                     </div>

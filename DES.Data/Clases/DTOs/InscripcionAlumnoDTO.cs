@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DES.Data.Clases
 {
-    public class InscribirAlumnoDTO
+    public class InscripcionAlumnoDTO
     {
         public int IdAlumno { get; set; }
         public int IdComision { get; set; }
         public string ObservacionesDeLaInscripcion { get; set; }
-        public decimal Arancel { get; set; }
+        public int Arancel { get; set; }
+        //public Comision Comision { get; set; }
     }
 }

@@ -45,14 +45,7 @@ namespace DES.Data
 
             foreach (DataRow item in result.Rows)
             {
-                var comision = new Comision();
-                comision.IdComision = int.Parse(item["id_comision"].ToString());
-                comision.Turno = (Turno)int.Parse(item["ID_Turno"].ToString());
-                comision.Sede = (Sede)int.Parse(item["ID_Sede"].ToString());
-                comision.Coordinador = (Coordinador)int.Parse(item["ID_Coordinador"].ToString());
-                comision.Modalidad = (Modalidad)int.Parse(item["id_modalidad"].ToString());
-                comision.Arancel = decimal.Parse(item["Precio"].ToString());
-                comisiones.Add(comision);
+                comisiones.Add(Comision.MapComisionFromDataRow(item));
             }
             return comisiones;
         }
@@ -63,21 +56,14 @@ namespace DES.Data
             parametros.Add("@id_alumno", idAlumno);
 
             var da = new DataAccess();
-            var result = da.ExecuteSP("sp_talumno_curso_inscripto", parametros);
+            var result = da.ExecuteSP("sp_talumno_comision_inscripto", parametros);
 
-            var cursos = new List<Comision>();
+            var comisiones = new List<Comision>();
 
             foreach (DataRow item in result.Rows)
-            {
-                var comision = new Comision();
+                comisiones.Add(Comision.MapComisionFromDataRow(item));
 
-                //curso.IDCurso = int.Parse(item["ID_curso"].ToString());
-                //curso.Nombre = item["Nombre"].ToString();
-                //curso.Observacion = item["Observacion"].ToString();
-                cursos.Add(comision);
-            }
-
-            return cursos;
+            return comisiones;
         }
 
         public List<DateTime> GetClases(int idComision)

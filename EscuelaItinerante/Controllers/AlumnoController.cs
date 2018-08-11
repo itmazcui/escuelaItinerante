@@ -50,7 +50,7 @@ namespace EscuelaItinerante.Controllers
         [HttpPost]
         public ActionResult FinalizarInscripcion(int idAlumno, int idComision, int arancel, string observacionesDeLaInscripcion)
         {
-            var inscribirAlumnoDTO = new InscribirAlumnoDTO();
+            var inscribirAlumnoDTO = new InscripcionAlumnoDTO();
             inscribirAlumnoDTO.IdAlumno = idAlumno;
             inscribirAlumnoDTO.IdComision = idComision;
             inscribirAlumnoDTO.ObservacionesDeLaInscripcion = observacionesDeLaInscripcion;

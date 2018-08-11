@@ -44,7 +44,7 @@ namespace DES.Data
             return alumnos;
         }
 
-        public bool InscribirAlumnoAComision(InscribirAlumnoDTO inscribirAlumnoDTO)
+        public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
         {
 
             var parametros = new Dictionary<string, object>();

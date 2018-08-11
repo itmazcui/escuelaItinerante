@@ -32,7 +32,7 @@ namespace DES.Logic
             return _alumnosData.GetAlumnoByID(idAlumno);
         }
 
-        public bool InscribirAlumnoAComision(InscribirAlumnoDTO inscribirAlumnoDTO)
+        public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
         {
             return _alumnosData.InscribirAlumnoAComision(inscribirAlumnoDTO);
         }
