@@ -70,9 +70,9 @@ namespace DES.Data.Clases
         public Coordinador Coordinador { get; set; }
         public Turno Turno { get; set; }
         public List<DateTime> Clases { get; set; }
-        public decimal Arancel { get; set; }
+        public int Arancel { get; set; }
         public Curso Curso { get; internal set; }
-
+        
         public static Comision MapComisionFromDataRow(DataRow dataRow)
         {
             var comision = new Comision();
@@ -82,16 +82,8 @@ namespace DES.Data.Clases
             comision.Sede = (Sede)int.Parse(dataRow["ID_Sede"].ToString());
             comision.Coordinador = (Coordinador)int.Parse(dataRow["ID_Coordinador"].ToString());
             comision.Modalidad = (Modalidad)int.Parse(dataRow["id_modalidad"].ToString());
-            comision.Arancel = decimal.Parse(dataRow["Precio"].ToString());
+            comision.Arancel = int.Parse(dataRow["Precio"].ToString());
             return comision;
         }
     }
-    
-    //public class Curso
-    //{
-    //    public int IDCurso { get; set; }
-    //    public string Nombre { get; set; }
-    //    public List<Comision> Comisiones { get; set; }
-    //    public string Observacion { get; set; }
-    //}
 }

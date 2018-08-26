@@ -36,26 +36,102 @@ else
             @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
         </div>
         <hr class="col-md-12" />
-        
+        <div class="col-md-12">
+            <table class="table table-striped datatable">
+                <thead>
+                    <tr>
+                        <th>Comisión</th>
+                        <th>Curso</th>
+                        <th>Coordinador</th>
+                        <th>Modalidad</th>
+                        <th>Turno</th>
+                        <th>Arancel</th>
+                        <th class="text-center">Arancel <br />del alumno</th>
+                        <th class="text-center">Observación de la <br /> inscripción</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Alumno.ComisionesInscripto)
+                    {
+                    <tr>
+                        <td>
+                            @item.IdComision
+                        </td>
+                        <td>
+                            @item.Curso.ToString().Replace("_", " ")
+                        </td>
+                        <td>
+                            @item.Coordinador.ToString().Replace("_", " ")
+                        </td>
+                        <td>
+                            @item.Modalidad
+                        </td>
+                        <td>
+                            @item.Turno
+                        </td>
+                        <td class="text-right">
+                            @item.Arancel.ToString("C2")
+                        </td>
+                        <td class="text-right">
+                            @item.ArancelAlumno.ToString("C2")
+                        </td>
+                        <td>
+                            @item.ObservacionInscripcion
+                        </td>
+                        <td>
+                            <button class="btn btn-info cargarpago" data-toggle="modal" data-target="#myModal" data-arancelalumno="@item.ArancelAlumno">Cargar Pago</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Finalizar inscripción</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="IdComision" value="" id="idcomision" />
+
+                    <div>
+                        <h4>Arancel</h4>
+                        <div class="mb20">
+                            <input type="text" name="arancel" id="arancel" class="form-control" value="" readonly />
+                        </div>
+                        <h4>Clase de pago</h4>
+                        <div>
+                            <select class="form-control">
+                                <option value="value">text</option>
+                            </select>
+                        </div>
+                        <div>
+                            <small>(*) Este campo será mostrado cada vez que el alumno haga un pago. </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Inscripción</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 }
 
-    @*<script>
-            $(function(){
-                $('#buscar').click(function () {
-
-                    var nrodoc = $('#nrodocumento').val();
-
-                    var data = { NroDocumento: nrodoc };
-
-                    $.post('@Url.Action("GetAlumno")', data).
-                    done((response) => {
-                        fillDropdown(response, $dropdown, 'No tiene cuentas disponibles');
-                    }).
-                    fail((error) => {
-                        console.warn(error);
-                        toastr.error('Ha ocurrido un error.');
-                    });*
-                });
+<script>
+        $(function(){
+            $('.cargarpago').click(function () {
+                $('#arancel').val($(this).data("arancelalumno"));
             });
-        </script>*@
+        });
+</script>

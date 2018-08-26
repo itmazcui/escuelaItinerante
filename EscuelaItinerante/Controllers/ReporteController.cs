@@ -37,9 +37,9 @@ namespace EscuelaItinerante.Controllers
             return View(vm);
         }
 
-        public ActionResult CursosTodos()
+        public ActionResult ComisionesTodas()
         {
-            var vm = new CursosTodosViewModel();
+            var vm = new ComisionesTodasViewModel();
             vm.Comisiones = _comisionLogic.GetComisiones();
             return View(vm);
         }

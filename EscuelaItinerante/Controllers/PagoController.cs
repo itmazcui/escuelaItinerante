@@ -25,10 +25,9 @@ namespace EscuelaItinerante.Controllers
             if (nroDocumento != 0)
             {
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
+
                 if (vm.Alumno != null)
-                {
                     vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
-                }
             }
 
             return View(vm);
@@ -38,12 +37,7 @@ namespace EscuelaItinerante.Controllers
         {
             var vm = new NuevoPagoViewModel();
             vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
-
-            //if (vm.Alumno != null)
-            //{
-            //    vm.Inicializar();
-            //}
-
+            
             ModelState.AddModelError("NroDocumento", "El documento ingresado no corresponde a ningún alumno.");
 
             return View("NuevoPago", vm);

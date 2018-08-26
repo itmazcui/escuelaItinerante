@@ -26,20 +26,20 @@ namespace DES.Logic
         {
             var comisiones = _comisionData.GetComisiones(idSede);
 
-            foreach (var item in comisiones)
-                item.Clases = _comisionData.GetClases(item.IdComision);
+            foreach (var comision in comisiones)
+                comision.Clases = _comisionData.GetClases(comision.IdComision);
 
             return comisiones;
         }
 
-        public List<Comision> GetComisionesDelAlumno(int idAlumno)
+        public List<ComisionAlumno> GetComisionesDelAlumno(int idAlumno)
         {
-            var comisiones = _comisionData.GetCursosDelAlumno(idAlumno);
+            var comisionesAlumno = _comisionData.GetComisionesDelAlumno(idAlumno);
 
-            //foreach (var item in cursos)
-            //    item.Comisiones = GetComisiones(item.IDCurso, idSede);
+            foreach (var comision in comisionesAlumno)
+                comision.Clases = _comisionData.GetClasesAlumno(comision.IdComision, idAlumno);
 
-            return comisiones;
+            return comisionesAlumno;
         }
     }
 }

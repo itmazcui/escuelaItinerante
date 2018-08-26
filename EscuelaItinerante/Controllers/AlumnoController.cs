@@ -57,18 +57,9 @@ namespace EscuelaItinerante.Controllers
             inscribirAlumnoDTO.Arancel = arancel;
 
             bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoAComision(inscribirAlumnoDTO);
-            if (inscripcionExitosa)
-                return RedirectToAction("FinalizarInscripcionExitoso");
 
-            return RedirectToAction("InscribirAlumno");
+            return Json(inscripcionExitosa, JsonRequestBehavior.AllowGet);
         }
-
-
-        public ActionResult FinalizarInscripcionExitoso()
-        {
-            return View();
-        }
-
 
         public ActionResult NuevoAlumno()
         {

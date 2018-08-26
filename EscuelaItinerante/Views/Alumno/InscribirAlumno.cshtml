@@ -40,6 +40,16 @@ else
         </div>
         <hr class="col-md-12" />
         <div class="col-md-12">
+            <div id="inscripcioncorrecta" class="hidden">
+                <div class="alert alert-success">
+                    <strong>Éxito!</strong> El alumno ha sido inscripto de manera exitosa.
+                </div>
+            </div>
+            <div id="inscripcionerror" class="hidden">
+                <div class="alert alert-warning">
+                    <strong>Inscripción no permitida:</strong> El alumno ya se encuentra inscripto en el curso seleccionado.
+                </div>
+            </div>
             <h3>Seleccione el curso a inscribir al alumno</h3>
             <table class="table table-striped datatable">
                 <thead>
@@ -61,7 +71,7 @@ else
                                 @item.IdComision
                             </td>
                             <td>
-                                @item.Curso.ToString().Replace("_"," ")
+                                @item.Curso.ToString().Replace("_", " ")
                             </td>
                             <td>
                                 @item.Coordinador.ToString().Replace("_", " ")
@@ -144,8 +154,18 @@ else
                         arancel: $('#arancel').val(),
                         observacionesdelainscripcion: $('#observacionesdelainscripcion').val()
                     },
-                    success: function (data) {
-
+                    success: function (inscripcionExitosa) {
+                        document.body.scrollTop = 0;
+                        if (inscripcionExitosa) {
+                            $('#inscripcioncorrecta').removeClass("hidden");
+                            $('#inscripcionerror').addClass("hidden");
+                        }
+                        else
+                        {
+                            $('#inscripcionerror').removeClass("hidden");
+                            $('#inscripcioncorrecta').addClass("hidden");
+                        }
+                        $('#observacionesdelainscripcion').val("");
                     }
                 });
             });

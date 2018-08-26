@@ -46,7 +46,6 @@ namespace DES.Data
 
         public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
         {
-
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", inscribirAlumnoDTO.IdAlumno);
             parametros.Add("@id_comision", inscribirAlumnoDTO.IdComision);
@@ -54,9 +53,9 @@ namespace DES.Data
             parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion == null ? string.Empty : inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
 
             var da = new DataAccess();
-            var result = da.ExecuteSP("sp_i_talumno_curso_inscripto", parametros);
+            var result = da.ExecuteSPBool("sp_i_talumno_curso_inscripto", parametros);
 
-            return true;
+            return result;
         }
 
         public Alumno GetAlumnoByID(int idAlumno)
