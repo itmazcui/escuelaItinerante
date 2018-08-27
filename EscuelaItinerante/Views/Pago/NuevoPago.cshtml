@@ -37,52 +37,63 @@ else
         </div>
         <hr class="col-md-12" />
         <div class="col-md-12">
-            <table class="table table-striped datatable">
+            <table class="table table-striped datatable vamiddle fontsize12">
                 <thead>
                     <tr>
                         <th>Comisión</th>
                         <th>Curso</th>
                         <th>Coordinador</th>
-                        <th>Modalidad</th>
-                        <th>Turno</th>
+                        @*<th>Modalidad</th>
+                        <th>Turno</th>*@
                         <th>Arancel</th>
                         <th class="text-center">Arancel <br />del alumno</th>
-                        <th class="text-center">Observación de la <br /> inscripción</th>
+                        <th class="text-center">Observación <br /> de la inscripción</th>
+                        <th class="text-center">Clase a pagar</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Alumno.ComisionesInscripto)
                     {
-                    <tr>
-                        <td>
-                            @item.IdComision
-                        </td>
-                        <td>
-                            @item.Curso.ToString().Replace("_", " ")
-                        </td>
-                        <td>
-                            @item.Coordinador.ToString().Replace("_", " ")
-                        </td>
-                        <td>
-                            @item.Modalidad
-                        </td>
-                        <td>
-                            @item.Turno
-                        </td>
-                        <td class="text-right">
-                            @item.Arancel.ToString("C2")
-                        </td>
-                        <td class="text-right">
-                            @item.ArancelAlumno.ToString("C2")
-                        </td>
-                        <td>
-                            @item.ObservacionInscripcion
-                        </td>
-                        <td>
-                            <button class="btn btn-info cargarpago" data-toggle="modal" data-target="#myModal" data-arancelalumno="@item.ArancelAlumno">Cargar Pago</button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @item.IdComision
+                            </td>
+                            <td>
+                                @item.Curso.ToString().Replace("_", " ")
+                            </td>
+                            <td>
+                                @item.Coordinador.ToString().Replace("_", " ")
+                            </td>
+                            @*<td>
+                                @item.Modalidad
+                            </td>
+                            <td>
+                                @item.Turno
+                            </td>*@
+                            <td class="text-right">
+                                @item.Arancel.ToString("C2")
+                            </td>
+                            <td class="text-right">
+                                @item.ArancelAlumno.ToString("C2")
+                            </td>
+                            <td>
+                                @item.ObservacionInscripcion
+                            </td>
+                            <td>
+                                @* Debo poner disable aquuellas que el alumno ya pagó *@
+                                @Html.DropDownList("Foo", new SelectList(item.Clases.Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("MM/dd/yyyy hh:mm tt") }),
+                                        "Value",
+                                        "Text"
+                                    ),
+                                    new { @class="form-control fontsize12"}
+                                )
+
+                            </td>
+                            <td>
+                                <button class="btn btn-info cargarpago" data-toggle="modal" data-target="#myModal" data-arancelalumno="@item.ArancelAlumno">Cargar Pago</button>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -120,7 +131,7 @@ else
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Inscripción</button>
+                    <button class="btn btn-success" data-dismiss="modal" id="finalizarinscripcion">Finalizar Pago</button>
                 </div>
             </div>
 
@@ -132,6 +143,31 @@ else
         $(function(){
             $('.cargarpago').click(function () {
                 $('#arancel').val($(this).data("arancelalumno"));
+
+                @*$.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("FinalizarInscripcion", "Alumno")',
+                    data: {
+                        idalumno: idAlumno,
+                        idcomision: $('#idcomision').val(),
+                        arancel: $('#arancel').val(),
+                        observacionesdelainscripcion: $('#observacionesdelainscripcion').val()
+                    },
+                    success: function (inscripcionExitosa) {
+                        document.body.scrollTop = 0;
+                        if (inscripcionExitosa) {
+                            $('#inscripcioncorrecta').removeClass("hidden");
+                            $('#inscripcionerror').addClass("hidden");
+                        }
+                        else
+                        {
+                            $('#inscripcionerror').removeClass("hidden");
+                            $('#inscripcioncorrecta').addClass("hidden");
+                        }
+                        $('#observacionesdelainscripcion').val("");
+                    }
+                });*@
+
             });
         });
 </script>
