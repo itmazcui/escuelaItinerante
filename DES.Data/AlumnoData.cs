@@ -44,6 +44,19 @@ namespace DES.Data
             return alumnos;
         }
 
+        public bool SetPago(PagoDTO pagoDTO)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_alumno", pagoDTO.IdAlumno);
+            parametros.Add("@id_comision", pagoDTO.IdComision);
+            parametros.Add("@id_clase", pagoDTO.IdClase);
+
+            var da = new DataAccess();
+            var result = da.ExecuteSPBool("sp_i_tpago", parametros);
+
+            return result;
+        }
+
         public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
         {
             var parametros = new Dictionary<string, object>();

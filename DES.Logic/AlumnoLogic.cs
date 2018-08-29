@@ -36,5 +36,10 @@ namespace DES.Logic
         {
             return _alumnosData.InscribirAlumnoAComision(inscribirAlumnoDTO);
         }
+
+        public bool SetPago(PagoDTO pagoDTO)
+        {
+            return _alumnosData.SetPago(pagoDTO);
+        }
     }
 }

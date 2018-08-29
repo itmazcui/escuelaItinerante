@@ -1,4 +1,5 @@
-﻿using DES.Logic;
+﻿using DES.Data.Clases;
+using DES.Logic;
 using EscuelaItinerante.Models;
 using System;
 using System.Collections.Generic;
@@ -33,32 +34,18 @@ namespace EscuelaItinerante.Controllers
             return View(vm);
         }
 
-        public ActionResult FinalizarPago(int nroDocumento)
+        [HttpPost]
+        public ActionResult NuevoPago(int idAlumno, int idComision, int idClase)
         {
-            var vm = new NuevoPagoViewModel();
-            vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
-            
-            ModelState.AddModelError("NroDocumento", "El documento ingresado no corresponde a ningún alumno.");
+            var pagoDTO = new PagoDTO();
+            pagoDTO.IdAlumno = idAlumno;
+            pagoDTO.IdClase = idClase;
+            pagoDTO.IdComision = idComision;
 
-            return View("NuevoPago", vm);
+            bool pagoexitoso = _alumnoLogic.SetPago(pagoDTO);
+
+            return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
         }
-
-        //[HttpGet]
-        //public ActionResult NuevoPago(int dniAlumno)
-        //{
-        //    var vm = new NuevoPagoViewModel(dniAlumno);
-
-        //    if (vm.Alumno != null)
-        //    {
-        //        vm.Inicializar();
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError("Alumno", "No ha ingresado un alumno válido");
-        //    }
-
-        //    return View(vm);
-        //}
 
     }
 }

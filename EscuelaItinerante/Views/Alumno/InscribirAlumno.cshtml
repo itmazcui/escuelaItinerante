@@ -155,7 +155,7 @@ else
                         observacionesdelainscripcion: $('#observacionesdelainscripcion').val()
                     },
                     success: function (inscripcionExitosa) {
-                        document.body.scrollTop = 0;
+                        window.scrollTo(0, 0);
                         if (inscripcionExitosa) {
                             $('#inscripcioncorrecta').removeClass("hidden");
                             $('#inscripcionerror').addClass("hidden");

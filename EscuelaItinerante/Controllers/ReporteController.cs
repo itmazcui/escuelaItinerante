@@ -44,12 +44,12 @@ namespace EscuelaItinerante.Controllers
             return View(vm);
         }
 
-        //public ActionResult AlumnosPorCurso()
-        //{
-        //    var vm = new AlumnoReporteViewModel();
-        //    vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
-        //    return View(vm);
-        //}
+        public ActionResult AlumnosPorCurso()
+        {
+            var vm = new AlumnoReporteViewModel();
+            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            return View(vm);
+        }
 
         public ActionResult AlumnosConDeuda()
         {
