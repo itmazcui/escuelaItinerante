@@ -87,7 +87,7 @@ else
                         </td>
                         <td>
                             @* Debo poner disable aquuellas que el alumno ya pagó *@
-                            @Html.DropDownList("Foo", new SelectList(item.Clases.Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("MM/dd/yyyy hh:mm tt") }),
+                            @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("MM/dd/yyyy hh:mm tt") }),
                                     "Value",
                                     "Text"
                                 ),

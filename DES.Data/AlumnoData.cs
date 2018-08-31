@@ -44,6 +44,19 @@ namespace DES.Data
             return alumnos;
         }
 
+        public bool CambiarEstadoCursada(int idAlumno, int idComision, EstadoCursada estadoCursada)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_alumno", idAlumno);
+            parametros.Add("@id_comision", idComision);
+            parametros.Add("@id_estado_cursada", estadoCursada);
+
+            var da = new DataAccess();
+            var result = da.ExecuteSPBool("sp_u_talumno_curso_inscripto", parametros);
+
+            return result;
+        }
+
         public bool SetPago(PagoDTO pagoDTO)
         {
             var parametros = new Dictionary<string, object>();
@@ -62,6 +75,7 @@ namespace DES.Data
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", inscribirAlumnoDTO.IdAlumno);
             parametros.Add("@id_comision", inscribirAlumnoDTO.IdComision);
+            parametros.Add("@id_estado_cursada", (int)EstadoCursada.Cursando);
             parametros.Add("@PrecioAAbonar", inscribirAlumnoDTO.Arancel);
             parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion == null ? string.Empty : inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
 

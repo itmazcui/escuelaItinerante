@@ -56,9 +56,32 @@ namespace EscuelaItinerante.Controllers
             inscribirAlumnoDTO.ObservacionesDeLaInscripcion = observacionesDeLaInscripcion;
             inscribirAlumnoDTO.Arancel = arancel;
 
-            bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoAComision(inscribirAlumnoDTO);
+            bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoComision(inscribirAlumnoDTO);
 
             return Json(inscripcionExitosa, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AlumnoAbandonaComision(int nroDocumento = 0)
+        {
+            var vm = new AlumnoAbandonaComisionViewModel();
+
+            if (nroDocumento != 0)
+            {
+                vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
+
+                if (vm.Alumno != null)
+                    vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+            }
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult AlumnoAbandonaComision(int idAlumno, int idComision)
+        {
+            bool pagoexitoso = _alumnoLogic.CambiarEstadoCursada(idAlumno, idComision, EstadoCursada.Abandonado);
+
+            return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult NuevoAlumno()

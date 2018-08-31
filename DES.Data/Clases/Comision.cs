@@ -51,6 +51,7 @@ namespace DES.Data.Clases
         Sabrina_Keller = 19,
         Sandra_Palacio = 20,
     }
+
     public enum Curso
     {
         Acompañante_Terapeutico = 1,
@@ -61,6 +62,11 @@ namespace DES.Data.Clases
         Psicologia_Social = 6
     }
 
+    public enum EstadoCursada
+    {
+        Cursando = 1,
+        Abandonado = 2
+    }
 
     public class Comision
     {

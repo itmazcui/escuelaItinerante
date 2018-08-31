@@ -32,7 +32,7 @@ namespace DES.Logic
             return _alumnosData.GetAlumnoByID(idAlumno);
         }
 
-        public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
+        public bool InscribirAlumnoComision(InscripcionAlumnoDTO inscribirAlumnoDTO)
         {
             return _alumnosData.InscribirAlumnoAComision(inscribirAlumnoDTO);
         }
@@ -40,6 +40,11 @@ namespace DES.Logic
         public bool SetPago(PagoDTO pagoDTO)
         {
             return _alumnosData.SetPago(pagoDTO);
+        }
+
+        public bool CambiarEstadoCursada(int idAlumno, int idComision, EstadoCursada estadoCursada)
+        {
+            return _alumnosData.CambiarEstadoCursada(idAlumno, idComision, estadoCursada);
         }
     }
 }
