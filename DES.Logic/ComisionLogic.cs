@@ -12,16 +12,6 @@ namespace DES.Logic
     {
         private readonly ComisionData _comisionData = new ComisionData();
 
-        //public List<Curso> GetCursos(int idSede = 0)
-        //{
-        //    var cursos = _cursosData.GetCursos(idSede);
-
-        //    foreach (var item in cursos)
-        //        item.Comisiones = GetComisiones(item.IDCurso, idSede);
-
-        //    return cursos;
-        //}
-
         public List<Comision> GetComisiones(int idSede = 0)
         {
             var comisiones = _comisionData.GetComisiones(idSede);
@@ -40,6 +30,11 @@ namespace DES.Logic
                 comision.Clases = _comisionData.GetClasesAlumno(comision.IdComision, idAlumno);
 
             return comisionesAlumno;
+        }
+
+        public List<Alumno> GetAlumnosConDeuda(int idComision)
+        {
+            throw new NotImplementedException();
         }
     }
 }

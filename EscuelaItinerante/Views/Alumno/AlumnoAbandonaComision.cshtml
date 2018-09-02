@@ -84,7 +84,7 @@ else
                             <td>
                                 @if (item.IdEstadoCursada == DES.Data.Clases.EstadoCursada.Cursando)
                                 {
-                                    <button type="button" data-idcomision="@item.IdComision" class="btn btn-info desinscribir">Desinscribir</button>
+                                    <button type="button" data-idcomision="@item.IdComision" class="btn btn-danger desinscribir">Desinscribir</button>
                                 }
                                 else
                                 {
@@ -115,16 +115,13 @@ else
                                 idalumno: idAlumno,
                                 idcomision: $(this).data("idcomision")
                             },
-                            success: function (inscripcionExitosa) {
+                            success: function (bajaexitosa) {
                                 window.scrollTo(0, 0);
-                                if (inscripcionExitosa) {
-                                    $('#desinscripcioncorrecta').removeClass("hidden");
-                                    $('#desinscripcionerror').addClass("hidden");
-                                    $(this).hide();
+                                if (bajaexitosa) {
+                                    location.reload();
                                 }
                                 else {
-                                    $('#desinscripcionerror').removeClass("hidden");
-                                    $('#desinscripcioncorrecta').addClass("hidden");
+                                    alert("No se ha podido dar de baja el alumno");
                                 }
                             }
                         });

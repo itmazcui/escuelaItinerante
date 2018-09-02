@@ -50,11 +50,14 @@ namespace EscuelaItinerante.Controllers
             vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
             return View(vm);
         }
-
-        public ActionResult AlumnosConDeuda()
+        
+        public ActionResult AlumnosConDeuda(int idComision = 0)
         {
-            var vm = new AlumnoReporteViewModel();
-            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            var vm = new AlumnosConDeudaViewModel();
+
+            if (idComision != 0)
+                vm.AlumnosConDeuda = _alumnoLogic.GetAlumnosConDeuda(idComision);
+
             return View(vm);
         }
 

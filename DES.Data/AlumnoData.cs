@@ -44,6 +44,43 @@ namespace DES.Data
             return alumnos;
         }
 
+        public List<Alumno> GetAlumnosConDeuda(int idComision)
+        {
+            var da = new DataAccess();
+            var alumnos = new List<Alumno>();
+
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_comision", idComision);
+
+            var result = da.ExecuteSP("sp_talumno_comision_inscripto", parametros);
+
+            foreach (DataRow item in result.Rows)
+            {
+                var alumno = new Alumno();
+                alumno.IdAlumno = int.Parse(item["id_alumno"].ToString());
+                alumno.Nombre = item["Nombre"].ToString();
+                alumno.Apellido = item["Apellido"].ToString();
+                alumno.Tipodoc = item["Tipodoc"].ToString();
+                alumno.NroDocumento = int.Parse(item["NroDocumento"].ToString());
+                alumno.Direccion = item["Direccion"].ToString();
+                alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
+                alumno.Localidad = item["Localidad"].ToString();
+                alumno.Telefono = int.Parse(item["Telefono"].ToString());
+                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Email = item["Email"].ToString();
+                alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
+                alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
+                alumno.Hijos = int.Parse(item["Hijos"].ToString());
+                alumno.EstudiosRealizados = item["EstudiosRealizados"].ToString();
+                alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
+                alumno.Observaciones = item["Observaciones"].ToString();
+                alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
+                alumnos.Add(alumno);
+            }
+
+            return alumnos;
+        }
+
         public bool CambiarEstadoCursada(int idAlumno, int idComision, EstadoCursada estadoCursada)
         {
             var parametros = new Dictionary<string, object>();
@@ -52,7 +89,7 @@ namespace DES.Data
             parametros.Add("@id_estado_cursada", estadoCursada);
 
             var da = new DataAccess();
-            var result = da.ExecuteSPBool("sp_u_talumno_curso_inscripto", parametros);
+            var result = da.ExecuteSPBool("sp_u_talumno_comision_inscripto", parametros);
 
             return result;
         }
@@ -65,7 +102,7 @@ namespace DES.Data
             parametros.Add("@id_clase", pagoDTO.IdClase);
 
             var da = new DataAccess();
-            var result = da.ExecuteSPBool("sp_i_tpago", parametros);
+            var result = da.ExecuteSPBool("sp_i_talumno_pago", parametros);
 
             return result;
         }
@@ -80,7 +117,7 @@ namespace DES.Data
             parametros.Add("@ObservacionesDeLaInscripcion", inscribirAlumnoDTO.ObservacionesDeLaInscripcion == null ? string.Empty : inscribirAlumnoDTO.ObservacionesDeLaInscripcion);
 
             var da = new DataAccess();
-            var result = da.ExecuteSPBool("sp_i_talumno_curso_inscripto", parametros);
+            var result = da.ExecuteSPBool("sp_i_talumno_comision_inscripto", parametros);
 
             return result;
         }
