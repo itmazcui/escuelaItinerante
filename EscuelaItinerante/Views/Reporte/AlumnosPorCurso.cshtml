@@ -1,4 +1,4 @@
-﻿@model EscuelaItinerante.Models.AlumnoReporteViewModel
+﻿@model EscuelaItinerante.Models.AlumnosPorCursoViewModel
 @{
     ViewBag.Title = "Reportes";
 }
@@ -9,72 +9,100 @@
 <div>
     <h4>Alumnos del instituto</h4>
     <hr />
-    <table id="example" class="table table-striped vamiddle fontsize12">
-        <thead>
-            <tr>
-                <th>Fecha Ingreso</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Nro. Documento</th>
-                <th style="display:none">Dirección</th>
-                <th style="display:none">CP</th>
-                <th>Localidad</th>
-                <th style="display:none">Telefono</th>
-                <th style="width:75px">Celular</th>
-                <th>Email</th>
-                <th style="display:none">Como Nos Conocio</th>
-                <th style="display:none">Estado Civil</th>
-                <th style="display:none">Hijos</th>
-                <th style="display:none">Estudios Realizados</th>
-                <th>Conocido En Instituto</th>
-                <th>Observaciones</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            @foreach (var item in Model.AlumnosInstitutosTodos)
+    @if (Model.Alumnos == null)
+    {
+
+        <div class="col-md-6 col-lg-offset-3 well">
+            @using (Html.BeginForm("AlumnosPorCurso", "Reporte", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                <tr>
-                    <td>@item.FechaIngreso.ToString("d")</td>
-                    <td>@item.Nombre</td>
-                    <td>@item.Apellido</td>
-                    <td>@item.Tipodoc @item.NroDocumento</td>
-                    <td style="display:none">@item.Direccion</td>
-                    <td style="display:none">@item.CodigoPostal</td>
-                    <td>@item.Localidad</td>
-                    <td style="display:none">@item.Telefono</td>
-                    <td>@item.Celular</td>
-                    <td>@item.Email</td>
-                    <td style="display:none">@item.ComoNosConocio</td>
-                    <td style="display:none">@item.EstadoCivil</td>
-                    <td style="display:none">@item.Hijos</td>
-                    <td style="display:none">@item.EstudiosRealizados</td>
-                    <td>@item.ConocidoEnInstituto</td>
-                    <td>@item.Observaciones</td>
-                </tr>
+
+                <h4 class="mt20">Seleccione la comisión</h4>
+
+                <div class="text-danger">
+                    @Html.ValidationSummary()
+                </div>
+
+                <div>
+                    @Html.DropDownListFor(x => x.IdComision, Model.Comisiones, new { @class = "form-control" })
+                </div>
+
+                <div class="mt20 text-right">
+                    <input type="submit" class="btn btn-success" value="Buscar" id="buscar" />
+                </div>
             }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Fecha Ingreso</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Nro. Documento</th>
-                <th style="display:none">Dirección</th>
-                <th style="display:none">CP</th>
-                <th>Localidad</th>
-                <th style="display:none">Telefono</th>
-                <th>Celular</th>
-                <th>Email</th>
-                <th style="display:none">Como Nos Conocio</th>
-                <th style="display:none">Estado Civil</th>
-                <th style="display:none">Hijos</th>
-                <th style="display:none">Estudios Realizados</th>
-                <th>Conocido En Instituto</th>
-                <th>Observaciones</th>
-            </tr>
-        </tfoot>
-    </table>
+        </div>
+    }
+    else
+    {
+        <table id="example" class="table table-striped vamiddle fontsize12">
+            <thead>
+                <tr>
+                    <th>Fecha Ingreso</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Nro. Documento</th>
+                    <th style="display:none">Dirección</th>
+                    <th style="display:none">CP</th>
+                    <th>Localidad</th>
+                    <th style="display:none">Telefono</th>
+                    <th style="width:75px">Celular</th>
+                    <th>Email</th>
+                    <th style="display:none">Como Nos Conocio</th>
+                    <th style="display:none">Estado Civil</th>
+                    <th style="display:none">Hijos</th>
+                    <th style="display:none">Estudios Realizados</th>
+                    <th>Conocido En Instituto</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Alumnos)
+                {
+                    var esDeudorClass = item.EstaAlDia ? "bg-info" : "bg-danger";
+                    <tr class="@esDeudorClass">
+                        <td>@item.FechaIngreso.ToString("d")</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Apellido</td>
+                        <td>@item.Tipodoc @item.NroDocumento</td>
+                        <td style="display:none">@item.Direccion</td>
+                        <td style="display:none">@item.CodigoPostal</td>
+                        <td>@item.Localidad</td>
+                        <td style="display:none">@item.Telefono</td>
+                        <td>@item.Celular</td>
+                        <td>@item.Email</td>
+                        <td style="display:none">@item.ComoNosConocio</td>
+                        <td style="display:none">@item.EstadoCivil</td>
+                        <td style="display:none">@item.Hijos</td>
+                        <td style="display:none">@item.EstudiosRealizados</td>
+                        <td>@item.ConocidoEnInstituto</td>
+                        <td>@item.Observaciones</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Fecha Ingreso</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Nro. Documento</th>
+                    <th style="display:none">Dirección</th>
+                    <th style="display:none">CP</th>
+                    <th>Localidad</th>
+                    <th style="display:none">Telefono</th>
+                    <th>Celular</th>
+                    <th>Email</th>
+                    <th style="display:none">Como Nos Conocio</th>
+                    <th style="display:none">Estado Civil</th>
+                    <th style="display:none">Hijos</th>
+                    <th style="display:none">Estudios Realizados</th>
+                    <th>Conocido En Instituto</th>
+                    <th>Observaciones</th>
+                </tr>
+            </tfoot>
+        </table>
+    }
 </div>
 
 

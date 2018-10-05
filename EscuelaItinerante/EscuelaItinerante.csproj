@@ -211,9 +211,8 @@
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Reporte\AlumnosConDeudaViewModel.cs" />
+    <Compile Include="ViewModels\Reporte\AlumnosPorCursoViewModel.cs" />
     <Compile Include="ViewModels\Reporte\ComisionesTodasViewModel.cs" />
-    <Compile Include="ViewModels\Reporte\AlumnoReporteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -281,7 +280,6 @@
     <Content Include="Views\Alumno\AlumnoAbandonaComision.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Reporte\AlumnosPorCurso.cshtml" />
-    <Content Include="Views\Reporte\AlumnosConDeuda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

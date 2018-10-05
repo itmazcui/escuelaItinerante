@@ -51,3 +51,10 @@ table.vamiddle tr th {
     padding: 5px;
 }
 
+tr.bg-danger td {
+    background-color: #f2dede;
+}
+
+tr.bg-info td {
+    background-color: #d9edf7;
+}

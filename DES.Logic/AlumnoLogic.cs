@@ -47,9 +47,9 @@ namespace DES.Logic
             return _alumnosData.CambiarEstadoCursada(idAlumno, idComision, estadoCursada);
         }
 
-        public List<Alumno> GetAlumnosConDeuda(int idComision)
+        public List<AlumnoComision> GetAlumnosByComision(int idComision)
         {
-            return _alumnosData.GetAlumnosConDeuda(idComision);
+            return _alumnosData.GetAlumnosByComision(idComision);
         }
     }
 }

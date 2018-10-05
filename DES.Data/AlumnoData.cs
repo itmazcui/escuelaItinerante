@@ -43,20 +43,19 @@ namespace DES.Data
 
             return alumnos;
         }
-
-        public List<Alumno> GetAlumnosConDeuda(int idComision)
+        public List<AlumnoComision> GetAlumnosByComision(int idComision)
         {
             var da = new DataAccess();
-            var alumnos = new List<Alumno>();
+            var alumnos = new List<AlumnoComision>();
 
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_comision", idComision);
 
-            var result = da.ExecuteSP("sp_talumno_comision_inscripto", parametros);
+            var result = da.ExecuteSP("sp_talumno_comision", parametros);
 
             foreach (DataRow item in result.Rows)
             {
-                var alumno = new Alumno();
+                var alumno = new AlumnoComision();
                 alumno.IdAlumno = int.Parse(item["id_alumno"].ToString());
                 alumno.Nombre = item["Nombre"].ToString();
                 alumno.Apellido = item["Apellido"].ToString();
@@ -75,6 +74,7 @@ namespace DES.Data
                 alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
                 alumno.Observaciones = item["Observaciones"].ToString();
                 alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
+                alumno.EstaAlDia = Convert.ToDateTime(item["FechaClaseImpaga"].ToString()) < DateTime.Now; 
                 alumnos.Add(alumno);
             }
 

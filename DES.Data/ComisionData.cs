@@ -16,7 +16,7 @@ namespace DES.Data
             parametros.Add("@id_sede", idSede);
 
             var da = new DataAccess();
-            var result = da.ExecuteSP("sp_tcursos_comisiones", parametros);
+            var result = da.ExecuteSP("sp_tcomisiones", parametros);
 
             var comisiones = new List<Comision>();
 
@@ -27,7 +27,7 @@ namespace DES.Data
             return comisiones;
         }
 
-        public List<ClaseAlumno> GetClasesAlumno(int idComision, int idAlumno)
+        public List<AlumnoClase> GetClasesAlumno(int idComision, int idAlumno)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_comision", idComision);
@@ -36,11 +36,11 @@ namespace DES.Data
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_talumno_pago_clase", parametros);
 
-            var comisiones = new List<ClaseAlumno>();
+            var comisiones = new List<AlumnoClase>();
 
             foreach (DataRow item in result.Rows)
             {
-                comisiones.Add(ClaseAlumno.MapClaseAlumnoFromDataRow(item));
+                comisiones.Add(AlumnoClase.MapClaseAlumnoFromDataRow(item));
             }
             return comisiones;
         }
@@ -67,7 +67,7 @@ namespace DES.Data
             parametros.Add("@id_comision", idComision);
 
             var da = new DataAccess();
-            var result = da.ExecuteSP("sp_tcursos_comisiones_clases", parametros);
+            var result = da.ExecuteSP("sp_tcomisiones_clases", parametros);
 
             var clases = new List<DateTime>();
             foreach (DataRow item in result.Rows)

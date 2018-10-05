@@ -37,20 +37,7 @@ else
         </div>
         <div class="col-md-3"></div>
         <hr class="col-md-12" />
-        <div class="col-md-12">
-            <div id="inscripcioncorrecta" class="hidden">
-                <div class="alert alert-success">
-                    <strong>Éxito!</strong> El pago se ha cargado correctamente.
-                </div>
-            </div>
-            <div id="inscripcionerror" class="hidden">
-                <div class="alert alert-warning">
-                    <strong>Inscripción no permitida:</strong> El alumno ya ha abonado la clase seleccionada.
-                </div>
-            </div>
-        </div>
-
-        <table class="table table-striped datatable vamiddle fontsize12">
+        <table class="table datatable vamiddle fontsize12">
             <thead>
                 <tr>
                     <th>Comisión</th>
@@ -66,7 +53,8 @@ else
             <tbody>
                 @foreach (var item in Model.Alumno.ComisionesInscripto)
                 {
-                    <tr>
+                    var css = item.EstaAlDia ? "bg-info" : "bg-danger";
+                    <tr class="@css">
                         <td>
                             @item.IdComision
                         </td>
@@ -87,7 +75,7 @@ else
                         </td>
                         <td>
                             @* Debo poner disable aquuellas que el alumno ya pagó *@
-                            @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("MM/dd/yyyy hh:mm tt") }),
+                            @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("dd/MM/yyyy hh:mm tt") }),
                                     "Value",
                                     "Text"
                                 ),
@@ -122,15 +110,8 @@ else
                         },
                         success: function (inscripcionExitosa) {
                             document.body.scrollTop = 0;
-                            if (inscripcionExitosa) {
-                                $('#inscripcioncorrecta').removeClass("hidden");
-                                $('#inscripcionerror').addClass("hidden");
-                            }
-                            else
-                            {
-                                $('#inscripcionerror').removeClass("hidden");
-                                $('#inscripcioncorrecta').addClass("hidden");
-                            }
+                            alert("El pago ha sido cargado correctamente");
+                            window.location.reload();
                         }
                     });
                 }

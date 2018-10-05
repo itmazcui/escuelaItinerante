@@ -29,14 +29,6 @@ namespace EscuelaItinerante.Controllers
             return View();
         }
 
-        
-        public ActionResult AlumnosTodos()
-        {
-            var vm = new AlumnoReporteViewModel();
-            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
-            return View(vm);
-        }
-
         public ActionResult ComisionesTodas()
         {
             var vm = new ComisionesTodasViewModel();
@@ -46,19 +38,15 @@ namespace EscuelaItinerante.Controllers
 
         public ActionResult AlumnosPorCurso()
         {
-            var vm = new AlumnoReporteViewModel();
-            vm.AlumnosInstitutosTodos = _alumnoLogic.GetAlumnos();
+            var vm = new AlumnosPorCursoViewModel();
             return View(vm);
         }
-        
-        public ActionResult AlumnosConDeuda(int idComision = 0)
+
+        [HttpPost]
+        public ActionResult AlumnosPorCurso(AlumnosPorCursoViewModel model)
         {
-            var vm = new AlumnosConDeudaViewModel();
-
-            if (idComision != 0)
-                vm.AlumnosConDeuda = _alumnoLogic.GetAlumnosConDeuda(idComision);
-
-            return View(vm);
+            model.Alumnos = _alumnoLogic.GetAlumnosByComision(model.IdComision);
+            return View(model);
         }
 
     }

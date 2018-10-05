@@ -31,10 +31,5 @@ namespace DES.Logic
 
             return comisionesAlumno;
         }
-
-        public List<Alumno> GetAlumnosConDeuda(int idComision)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

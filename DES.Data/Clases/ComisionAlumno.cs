@@ -12,7 +12,16 @@ namespace DES.Data.Clases
         public int ArancelAlumno { get; set; }
         public string ObservacionInscripcion { get; set; }
         public EstadoCursada IdEstadoCursada { get; set; }
-        public new List<ClaseAlumno> Clases { get; set; }
+        public new List<AlumnoClase> Clases { get; set; }
+
+        public bool EstaAlDia
+        {
+            get
+            {
+                var ret = !Clases.Exists(x => !x.EstaPagada && x.FechaClase < DateTime.Now);
+                return ret;
+            }
+        }
 
         public new static ComisionAlumno MapComisionFromDataRow(DataRow dataRow)
         {
@@ -29,5 +38,6 @@ namespace DES.Data.Clases
             comisionAlumno.IdEstadoCursada = (EstadoCursada)int.Parse(dataRow["id_estado_cursada"].ToString());
             return comisionAlumno;
         }
+
     }
 }

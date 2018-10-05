@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\ClaseAlumno.cs" />
+    <Compile Include="Clases\AlumnoComision.cs" />
+    <Compile Include="Clases\AlumnoClase.cs" />
     <Compile Include="Clases\ComisionAlumno.cs" />
     <Compile Include="Clases\DTOs\PagoDTO.cs" />
     <Compile Include="Clases\DTOs\InscripcionAlumnoDTO.cs" />

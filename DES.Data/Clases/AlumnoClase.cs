@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DES.Data.Clases
 {
-    public class ClaseAlumno
+    public class AlumnoClase
     {
         public int IdClase { get; set; }
         public int IdAlumno { get; set; }
@@ -17,9 +17,9 @@ namespace DES.Data.Clases
 
         public bool EstaPagada { get { return FechaPago != null; } }
 
-        internal static ClaseAlumno MapClaseAlumnoFromDataRow(DataRow dataRow)
+        internal static AlumnoClase MapClaseAlumnoFromDataRow(DataRow dataRow)
         {
-            var claseAlumno = new ClaseAlumno();
+            var claseAlumno = new AlumnoClase();
             claseAlumno.IdComision = int.Parse(dataRow["id_comision"].ToString());
             claseAlumno.FechaClase = DateTime.Parse(dataRow["fechaClase"].ToString());
             claseAlumno.IdAlumno = dataRow["id_alumno"] != DBNull.Value ? int.Parse(dataRow["id_alumno"].ToString()) : 0;

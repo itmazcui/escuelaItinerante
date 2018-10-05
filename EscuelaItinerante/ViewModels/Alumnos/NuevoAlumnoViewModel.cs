@@ -24,7 +24,6 @@ namespace EscuelaItinerante.Models
 
         }
 
-        //public Alumno Alumno { get; set; }
         [Required]
         public string Nombre {get;set;}
 
