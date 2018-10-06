@@ -58,7 +58,7 @@
             </thead>
 
             <tbody>
-                @foreach (var item in Model.Alumnos)
+                @foreach (var item in Model.Alumnos.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
                 {
                     var esDeudorClass = item.EstaAlDia ? "bg-info" : "bg-danger";
                     <tr class="@esDeudorClass">

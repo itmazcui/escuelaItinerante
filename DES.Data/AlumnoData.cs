@@ -74,7 +74,11 @@ namespace DES.Data
                 alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
                 alumno.Observaciones = item["Observaciones"].ToString();
                 alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
-                alumno.EstaAlDia = Convert.ToDateTime(item["FechaClaseImpaga"].ToString()) < DateTime.Now; 
+                alumno.EstadoCursada = (EstadoCursada)int.Parse(item["id_estado_cursada"].ToString());
+
+                if (item["FechaClasePaga"] != DBNull.Value)
+                    alumno.EstaAlDia = Convert.ToDateTime(item["FechaClasePaga"].ToString()) >= DateTime.Now;
+
                 alumnos.Add(alumno);
             }
 

@@ -18,6 +18,8 @@ namespace DES.Data
         public DataTable ExecuteSP(string procedureName, Dictionary<string, object> parameters = null)
         {
             var command = new SqlCommand(procedureName);
+            var asd = command.CommandTimeout;
+            command.CommandTimeout = 60;
 
             if (parameters != null)
                 foreach (var item in parameters)
@@ -32,7 +34,7 @@ namespace DES.Data
             _reader = command.ExecuteReader();
             //Esto devuelve un datatable. Esto significa: DataTable firstTable = dataSet.Tables[0];
             _tabla.Load(_reader);
-            command.Connection = _connection.OpenConnection();
+            command.Connection = _connection.CloseConnection();
 
             return _tabla;
         }
@@ -54,7 +56,7 @@ namespace DES.Data
             var valor = int.Parse(command.ExecuteScalar().ToString());
             //Esto devuelve un datatable. Esto significa: DataTable firstTable = dataSet.Tables[0];
             //_tabla.Load(_reader);
-            command.Connection = _connection.OpenConnection();
+            command.Connection = _connection.CloseConnection();
 
             return valor == 1;
         }

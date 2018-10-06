@@ -33,10 +33,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alumnos<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("NuevoAlumno", "Alumno" )">Nuevo Alumno</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="@Url.Action("InscribirAlumno", "Alumno" )">Inscribir Alumno a Curso</a></li>
                                 <li><a href="@Url.Action("AlumnoAbandonaComision", "Alumno" )">Baja de Alumno a Curso</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="@Url.Action("NuevoAlumno", "Alumno" )">Nuevo Alumno</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -51,10 +50,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("AlumnosPorCurso", "Reporte" )">Alumnos por cursos</a></li>
-                                <li><a href="@Url.Action("AlumnosConDeuda", "Reporte" )">Alumnos con Deuda</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="@Url.Action("AlumnosTodos", "Reporte")">Todos los Alumnos</a></li>
-                                <li><a href="@Url.Action("CursosTodos", "Reporte")">Todos los Cursos</a></li>
                             </ul>
                         </li>
                     </ul>

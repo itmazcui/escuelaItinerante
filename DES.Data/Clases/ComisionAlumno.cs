@@ -11,14 +11,14 @@ namespace DES.Data.Clases
     {
         public int ArancelAlumno { get; set; }
         public string ObservacionInscripcion { get; set; }
-        public EstadoCursada IdEstadoCursada { get; set; }
+        public EstadoCursada EstadoCursada { get; set; }
         public new List<AlumnoClase> Clases { get; set; }
 
         public bool EstaAlDia
         {
             get
             {
-                var ret = !Clases.Exists(x => !x.EstaPagada && x.FechaClase < DateTime.Now);
+                var ret = Clases.Where(x => x.EstaPagada).Any(w => w.FechaClase >= DateTime.Now); //!Clases.Any(x => !x.EstaPagada && x.FechaClase < DateTime.Now);
                 return ret;
             }
         }
@@ -35,7 +35,7 @@ namespace DES.Data.Clases
             comisionAlumno.Arancel = int.Parse(dataRow["Precio"].ToString());
             comisionAlumno.ArancelAlumno = int.Parse(dataRow["PrecioAAbonar"].ToString());
             comisionAlumno.ObservacionInscripcion = dataRow["ObservacionesDelCurso"].ToString();
-            comisionAlumno.IdEstadoCursada = (EstadoCursada)int.Parse(dataRow["id_estado_cursada"].ToString());
+            comisionAlumno.EstadoCursada = (EstadoCursada)int.Parse(dataRow["id_estado_cursada"].ToString());
             return comisionAlumno;
         }
 
