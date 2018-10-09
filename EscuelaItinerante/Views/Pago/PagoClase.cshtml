@@ -1,0 +1,174 @@
+﻿@model EscuelaItinerante.Models.PagoClaseViewModel
+@{
+    ViewBag.Title = "Nuevo Pago";
+}
+
+<h2 class="text-success">@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+@if (Model.Alumno == null)
+{
+    <div class="col-md-6 col-lg-offset-3 well">
+        @using (Html.BeginForm("PagoClase", "Pago", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="mt20">Ingrese el DNI del alumno que desea abonar.</h4>
+
+            <div class="text-danger">
+                @Html.ValidationSummary()
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.NroDocumento, new { @type = "number", @class = "form-control", @placeholder = "Nro. Documento", @Value = Model.NroDocumento == 0 ? "" : Model.NroDocumento.ToString() })
+            </div>
+
+            <div class="mt20 text-right">
+                <input type="submit" class="btn btn-success" value="Buscar" id="buscar" />
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3 mb20">
+            @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
+        </div>
+        <div class="col-md-3"></div>
+        <hr class="col-md-12" />
+        <table class="table datatable vamiddle fontsize12">
+            <thead>
+                <tr>
+                    <th>Comisión</th>
+                    <th>Curso</th>
+                    <th>Coordinador</th>
+                    <th>Arancel</th>
+                    <th class="text-center">Arancel <br />del alumno</th>
+                    <th class="text-center">Observación <br /> de la inscripción</th>
+                    <th class="text-center">Clase a pagar</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Alumno.ComisionesInscripto.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
+                {
+                    var css = item.EstaAlDia ? "bg-info" : "bg-danger";
+                    <tr class="@css">
+                        <td>
+                            @item.IdComision
+                        </td>
+                        <td>
+                            @item.Curso.ToString().Replace("_", " ")
+                        </td>
+                        <td>
+                            @item.Coordinador.ToString().Replace("_", " ")
+                        </td>
+                        <td class="text-right">
+                            @item.Arancel.ToString("C2")
+                        </td>
+                        <td class="text-right">
+                            @item.ArancelAlumno.ToString("C2")
+                        </td>
+                        <td>
+                            @item.ObservacionInscripcion
+                        </td>
+                        <td>
+                            @* Debo poner disable aquuellas que el alumno ya pagó *@
+                            @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("dd/MM/yyyy hh:mm tt") }),
+                                    "Value",
+                                    "Text"
+                                ),
+                                new { @class="form-control fontsize12", @data_idcomision = item.IdComision}
+                            )
+
+                        </td>
+                        <td>
+                            <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision" data-arancelalumno="@item.ArancelAlumno" data-toggle="modal" data-target="#myModal">Cargar Pago</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pago total clase</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="IdComision" value="" id="idcomision" />
+                    <input type="hidden" name="IdClase" value="" id="idclase" />
+                    <p>El alumno puede abonar un arancel distinto al fijado al momento de inscripción. Si es este el caso, puede cambiarlo a continuación. </p>
+                    <div class="text-center">
+                        $ <input type="number" name="montoabonado" id="montoabonado" class="text-right w100" value="" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success" data-dismiss="modal" id="pagarclase">Aceptar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            var idAlumno = @Model.Alumno.IdAlumno;
+
+            $('#pagarclase').click(function (e) {
+                if (window.confirm("Está a punto de cargar un pago de clase. Está seguro?")) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("PagoClase", "Pago")',
+                        data: {
+                            idalumno: idAlumno,
+                            idComision: $("#idcomision").val(),
+                            idClase: $("#idclase").val(),
+                            montoabonado: $("#montoabonado").val(),
+                        },
+                        success: function (inscripcionExitosa) {
+                            document.body.scrollTop = 0;
+                            alert("El pago ha sido cargado correctamente");
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+
+            $('.cargarpago').click(function (e) {
+                $('#idcomision').val($(this).data("idcomision"));
+                $('#montoabonado').val($(this).data("arancelalumno"));
+                $('#idclase').val($("select[data-idcomision='" + $(this).data("idcomision") + "']").val());
+
+                //var mensaje = "Desea acreditar el pago para la clase en la fecha: " + $('select[data-idcomision="' + $(this).data("idcomision") + '"] option:selected').text() + "?";
+
+                @*e.preventDefault();
+                if (window.confirm(mensaje)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("PagoClase", "Pago")',
+                        data: {
+                            idalumno: idAlumno,
+                            idComision: $(this).data("idcomision"),
+                            idClase: $("select[data-idcomision='" + $(this).data("idcomision") + "']").val()
+                        },
+                        success: function (inscripcionExitosa) {
+                            document.body.scrollTop = 0;
+                            alert("El pago ha sido cargado correctamente");
+                            window.location.reload();
+                        }
+                    });
+                }*@
+            });
+        });
+    </script>
+
+}
+

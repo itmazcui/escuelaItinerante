@@ -83,7 +83,7 @@ else
                                 @item.Turno
                             </td>
                             <td>
-                                @item.Arancel
+                                @item.Arancel.ToString("C2")
                             </td>
                             <td>
                                 <button type="button" data-arancel="@item.Arancel" data-idcomision="@item.IdComision" class="btn btn-info inscribir" data-toggle="modal" data-target="#myModal">Inscribir</button>

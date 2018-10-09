@@ -104,6 +104,7 @@ namespace DES.Data
             parametros.Add("@id_alumno", pagoDTO.IdAlumno);
             parametros.Add("@id_comision", pagoDTO.IdComision);
             parametros.Add("@id_clase", pagoDTO.IdClase);
+            parametros.Add("@MontoAbonado", pagoDTO.MontoAbonado);
 
             var da = new DataAccess();
             var result = da.ExecuteSPBool("sp_i_talumno_pago", parametros);

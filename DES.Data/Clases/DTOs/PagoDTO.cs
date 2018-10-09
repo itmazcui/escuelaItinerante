@@ -11,5 +11,6 @@ namespace DES.Data.Clases
         public int IdAlumno { get; set; }
         public int IdComision { get; set; }
         public int IdClase { get; set; }
+        public int MontoAbonado { get; set; }
     }
 }

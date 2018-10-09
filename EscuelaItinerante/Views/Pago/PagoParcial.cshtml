@@ -1,19 +1,19 @@
-﻿@model EscuelaItinerante.Models.NuevoPagoViewModel
+﻿@model EscuelaItinerante.Models.PagoParcialViewModel
 @{
-    ViewBag.Title = "Nuevo Pago";
+    ViewBag.Title = "Nuevo pago parcial";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 class="text-primary">@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+<p class="text-primary">Utilice esta opción solo cuando un alumno NO abone el valor total de una clase.</p>
 
 @if (Model.Alumno == null)
 {
     <div class="col-md-6 col-lg-offset-3 well">
-        @using (Html.BeginForm("NuevoPago", "Pago", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("PagoParcial", "Pago", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
         {
 
-            <h4 class="mt20">Ingrese el DNI del alumno que desea abonar.</h4>
+            <h4 class="mt20">Ingrese el DNI del alumno que hará un pago parcial.</h4>
 
             <div class="text-danger">
                 @Html.ValidationSummary()
@@ -74,17 +74,10 @@ else
                             @item.ObservacionInscripcion
                         </td>
                         <td>
-                            @* Debo poner disable aquuellas que el alumno ya pagó *@
-                            @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("dd/MM/yyyy hh:mm tt") }),
-                                    "Value",
-                                    "Text"
-                                ),
-                                new { @class="form-control fontsize12", @data_idcomision = item.IdComision}
-                            )
-
+                            @item.Clases.Where(x => !x.EstaPagada).FirstOrDefault().FechaClase.ToString()
                         </td>
                         <td>
-                            <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision">Cargar Pago</button>
+                            <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision">Cargar Pago Parcial</button>
                         </td>
                     </tr>
                 }
@@ -102,7 +95,7 @@ else
                 if (window.confirm(mensaje)) {
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("NuevoPago", "Pago")',
+                        url: '@Url.Action("PagoClase", "Pago")',
                         data: {
                             idalumno: idAlumno,
                             idComision: $(this).data("idcomision"),

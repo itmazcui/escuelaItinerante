@@ -19,9 +19,9 @@ namespace EscuelaItinerante.Controllers
             return View();
         }
 
-        public ActionResult NuevoPago(int nroDocumento = 0)
+        public ActionResult PagoClase(int nroDocumento = 0)
         {
-            var vm = new NuevoPagoViewModel();
+            var vm = new PagoClaseViewModel();
 
             if (nroDocumento != 0)
             {
@@ -35,16 +35,38 @@ namespace EscuelaItinerante.Controllers
         }
 
         [HttpPost]
-        public ActionResult NuevoPago(int idAlumno, int idComision, int idClase)
+        public ActionResult PagoClase(int idAlumno, int idComision, int idClase, int montoAbonado)
         {
             var pagoDTO = new PagoDTO();
             pagoDTO.IdAlumno = idAlumno;
             pagoDTO.IdClase = idClase;
             pagoDTO.IdComision = idComision;
+            pagoDTO.MontoAbonado = montoAbonado;
 
             bool pagoexitoso = _alumnoLogic.SetPago(pagoDTO);
 
             return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult PagoParcial(int nroDocumento = 0)
+        {
+            var vm = new PagoParcialViewModel();
+
+            if (nroDocumento != 0)
+            {
+                vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
+
+                if (vm.Alumno != null)
+                    vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+            }
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult PagoParcial(PagoParcialViewModel vm)
+        {
+            return View(vm);
         }
 
     }

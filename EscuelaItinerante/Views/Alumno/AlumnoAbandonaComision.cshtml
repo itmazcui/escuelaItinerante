@@ -82,13 +82,13 @@ else
                                 @item.Arancel.ToString("C2")
                             </td>
                             <td>
-                                @if (item.IdEstadoCursada == DES.Data.Clases.EstadoCursada.Cursando)
+                                @if (item.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando)
                                 {
                                     <button type="button" data-idcomision="@item.IdComision" class="btn btn-danger desinscribir">Desinscribir</button>
                                 }
                                 else
                                 {
-                                    @item.IdEstadoCursada.ToString()
+                                    @item.EstadoCursada.ToString()
                                 }
                             </td>
                         </tr>
