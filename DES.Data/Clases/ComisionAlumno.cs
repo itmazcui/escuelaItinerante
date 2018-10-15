@@ -18,7 +18,13 @@ namespace DES.Data.Clases
         {
             get
             {
-                var ret = Clases.Where(x => x.EstaPagada).Any(w => w.FechaClase >= DateTime.Now); //!Clases.Any(x => !x.EstaPagada && x.FechaClase < DateTime.Now);
+                var clasesPagas = Clases.Where(x => x.EstaPagada);
+
+                DateTime FechaMinimaPagoAlDia = DateTime.Now.AddDays(-7);
+                if (Modalidad == Modalidad.Mensual)
+                    FechaMinimaPagoAlDia = DateTime.Now.AddMonths(-1);
+
+                var ret = clasesPagas.Any(x => x.FechaClase > FechaMinimaPagoAlDia);
                 return ret;
             }
         }

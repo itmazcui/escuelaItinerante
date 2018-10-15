@@ -20,6 +20,6 @@ namespace EscuelaItinerante.Models
 
         [Required]
         public int NroDocumento { get; set; }
-        
+        public List<ComisionAlumno> Comisiones { get; internal set; }
     }
 }

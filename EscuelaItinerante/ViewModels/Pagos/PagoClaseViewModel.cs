@@ -23,6 +23,6 @@ namespace EscuelaItinerante.Models
         
         [Required]
         public decimal MontoParcial { get; set; }
-
+        public List<ComisionAlumno> ComisionesAlumno { get; internal set; }
     }
 }

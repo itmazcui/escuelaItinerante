@@ -98,7 +98,7 @@ namespace DES.Data
             return result;
         }
 
-        public bool SetPago(PagoDTO pagoDTO)
+        public bool SetPagoClase(PagoDTO pagoDTO)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", pagoDTO.IdAlumno);

@@ -4,6 +4,7 @@ using EscuelaItinerante.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,7 +29,7 @@ namespace EscuelaItinerante.Controllers
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
 
                 if (vm.Alumno != null)
-                    vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+                    vm.ComisionesAlumno = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
             }
 
             return View(vm);
@@ -43,9 +44,29 @@ namespace EscuelaItinerante.Controllers
             pagoDTO.IdComision = idComision;
             pagoDTO.MontoAbonado = montoAbonado;
 
-            bool pagoexitoso = _alumnoLogic.SetPago(pagoDTO);
+            bool pagoexitoso = _alumnoLogic.SetPagoClase(pagoDTO);
+
+            if (pagoexitoso)
+            {
+                EnviarRecibosPorMail();
+            }
 
             return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
+        }
+
+        private void EnviarRecibosPorMail()
+        {
+            MailMessage mail = new MailMessage("matias.azcui@gmail.com", "matias.azcui@gmail.com");
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential("matias.azcui@gmail.com", "chirolita123..");
+            client.Port = 465;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = true;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+            mail.Subject = "this is a test email.";
+            mail.Body = "this is my test email body";
+            client.Send(mail);
         }
 
         public ActionResult PagoParcial(int nroDocumento = 0)
@@ -57,7 +78,7 @@ namespace EscuelaItinerante.Controllers
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
 
                 if (vm.Alumno != null)
-                    vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
             }
 
             return View(vm);

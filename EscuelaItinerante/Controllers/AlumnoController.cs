@@ -68,9 +68,9 @@ namespace EscuelaItinerante.Controllers
             if (nroDocumento != 0)
             {
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
-
+                
                 if (vm.Alumno != null)
-                    vm.Alumno.ComisionesInscripto = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
             }
 
             return View(vm);

@@ -25,7 +25,7 @@ namespace EscuelaItinerante.Models
 
         //public Alumno Alumno { get; internal set; }
 
-        //public List<Comision> Comisiones { get; set; }
+        public List<ComisionAlumno> Comisiones { get; set; }
 
         //public int IdComision { get; set; }
 

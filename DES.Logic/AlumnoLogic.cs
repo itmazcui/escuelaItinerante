@@ -37,9 +37,9 @@ namespace DES.Logic
             return _alumnosData.InscribirAlumnoAComision(inscribirAlumnoDTO);
         }
 
-        public bool SetPago(PagoDTO pagoDTO)
+        public bool SetPagoClase(PagoDTO pagoDTO)
         {
-            return _alumnosData.SetPago(pagoDTO);
+            return _alumnosData.SetPagoClase(pagoDTO);
         }
 
         public bool CambiarEstadoCursada(int idAlumno, int idComision, EstadoCursada estadoCursada)

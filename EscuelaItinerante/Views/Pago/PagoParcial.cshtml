@@ -51,7 +51,7 @@ else
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Alumno.ComisionesInscripto.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
+                @foreach (var item in Model.Comisiones.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
                 {
                     var css = item.EstaAlDia ? "bg-info" : "bg-danger";
                     <tr class="@css">
@@ -74,7 +74,7 @@ else
                             @item.ObservacionInscripcion
                         </td>
                         <td>
-                            @item.Clases.Where(x => !x.EstaPagada).FirstOrDefault().FechaClase.ToString()
+                            @Model.Comisiones.Where(x => x.IdComision == item.IdComision)
                         </td>
                         <td>
                             <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision">Cargar Pago Parcial</button>
