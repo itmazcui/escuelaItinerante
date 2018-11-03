@@ -19,22 +19,9 @@ namespace EscuelaItinerante.Models
 
         public Alumno Alumno { get; internal set; }
 
-        //public List<SelectListItem> Sedes { get; set; }
-
         public int NroDocumento { get; set; }
 
-        //public Alumno Alumno { get; internal set; }
-
-        public List<ComisionAlumno> Comisiones { get; set; }
-
-        //public int IdComision { get; set; }
-
-        //[Required]
-        //public Sede Sede { get; set; }
-
-        //public int Arancel { get; set; }
-
-        //public string ObservacionesDeLaInscripcion { get; set; }
+        public List<ComisionDelAlumno> Comisiones { get; set; }
 
 
     }

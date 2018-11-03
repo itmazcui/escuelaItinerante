@@ -77,7 +77,9 @@ namespace DES.Data
                 alumno.EstadoCursada = (EstadoCursada)int.Parse(item["id_estado_cursada"].ToString());
 
                 if (item["FechaClasePaga"] != DBNull.Value)
+                { 
                     alumno.EstaAlDia = Convert.ToDateTime(item["FechaClasePaga"].ToString()) >= DateTime.Now;
+                }
 
                 alumnos.Add(alumno);
             }
@@ -110,6 +112,20 @@ namespace DES.Data
             var result = da.ExecuteSPBool("sp_i_talumno_pago", parametros);
 
             return result;
+        }
+
+
+        public void SetPagoParcial(PagoDTO pagoDTO)
+        {
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("@id_alumno", pagoDTO.IdAlumno);
+            parametros.Add("@id_comision", pagoDTO.IdComision);
+            parametros.Add("@id_clase", pagoDTO.IdClase);
+            parametros.Add("@MontoAbonado", pagoDTO.MontoAbonado);
+
+            var da = new DataAccess();
+            da.ExecuteSP("sp_i_talumno_pago_parcial", parametros);
+
         }
 
         public bool InscribirAlumnoAComision(InscripcionAlumnoDTO inscribirAlumnoDTO)

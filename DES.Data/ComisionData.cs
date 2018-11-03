@@ -45,7 +45,7 @@ namespace DES.Data
             return comisiones;
         }
 
-        public List<ComisionAlumno> GetComisionesDelAlumno(int idAlumno)
+        public List<ComisionDelAlumno> GetComisionesDelAlumno(int idAlumno)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_alumno", idAlumno);
@@ -53,10 +53,10 @@ namespace DES.Data
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_talumno_comision_inscripto", parametros);
 
-            var comisiones = new List<ComisionAlumno>();
+            var comisiones = new List<ComisionDelAlumno>();
 
             foreach (DataRow item in result.Rows)
-                comisiones.Add(ComisionAlumno.MapComisionFromDataRow(item));
+                comisiones.Add(ComisionDelAlumno.MapComisionFromDataRow(item));
 
             return comisiones;
         }

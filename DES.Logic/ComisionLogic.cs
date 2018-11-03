@@ -22,12 +22,13 @@ namespace DES.Logic
             return comisiones;
         }
 
-        public List<ComisionAlumno> GetComisionesDelAlumno(int idAlumno)
+        public List<ComisionDelAlumno> GetComisionesDelAlumno(int idAlumno)
         {
             var comisionesAlumno = _comisionData.GetComisionesDelAlumno(idAlumno);
 
-            foreach (var comision in comisionesAlumno)
+            foreach (var comision in comisionesAlumno) { 
                 comision.Clases = _comisionData.GetClasesAlumno(comision.IdComision, idAlumno);
+            }
 
             return comisionesAlumno;
         }

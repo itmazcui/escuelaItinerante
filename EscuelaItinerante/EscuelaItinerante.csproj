@@ -206,6 +206,7 @@
     <Compile Include="ViewModels\Alumnos\AlumnoAbandonaComisionViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
+    <Compile Include="ViewModels\Pagos\CargarPagoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoParcialViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoClaseViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Reporte\AlumnosPorCurso.cshtml" />
     <Content Include="Views\Pago\PagoParcial.cshtml" />
+    <Content Include="Views\Pago\CargarPago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

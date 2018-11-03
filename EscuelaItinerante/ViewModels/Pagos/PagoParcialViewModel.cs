@@ -8,9 +8,6 @@ namespace EscuelaItinerante.Models
 {
     public class PagoParcialViewModel
     {
-        private AlumnoLogic _alumnoLogic = new AlumnoLogic();
-        private ComisionLogic _cursoLogic = new ComisionLogic();
-
         public PagoParcialViewModel()
         {
 
@@ -20,6 +17,7 @@ namespace EscuelaItinerante.Models
 
         [Required]
         public int NroDocumento { get; set; }
-        public List<ComisionAlumno> Comisiones { get; internal set; }
+
+        public List<ComisionDelAlumno> Comisiones { get; internal set; }
     }
 }

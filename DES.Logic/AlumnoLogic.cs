@@ -51,5 +51,22 @@ namespace DES.Logic
         {
             return _alumnosData.GetAlumnosByComision(idComision);
         }
+
+        public bool AlumnoEstaAlDia(List<AlumnoClase> clases, Modalidad modalidad)
+        {
+            var clasesPagas = clases.Where(x => x.EstaPagada);
+
+            DateTime FechaMinimaPagoAlDia = DateTime.Now.AddDays(-7);
+            if (modalidad == Modalidad.Mensual)
+                FechaMinimaPagoAlDia = DateTime.Now.AddMonths(-1);
+
+            var ret = clasesPagas.Any(x => x.FechaClase > FechaMinimaPagoAlDia);
+            return ret;
+        }
+
+        public void SetPagoParcial(PagoDTO pagoDTO)
+        {
+            _alumnosData.SetPagoParcial(pagoDTO);
+        }
     }
 }

@@ -20,6 +20,20 @@ namespace EscuelaItinerante.Controllers
             return View();
         }
 
+        public ActionResult CargarPago(int nroDocumento = 0)
+        {
+            var vm = new PagoClaseViewModel();
+
+            if (nroDocumento != 0)
+            {
+                vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
+
+                if (vm.Alumno != null)
+                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+            }   
+            return View();
+        }
+
         public ActionResult PagoClase(int nroDocumento = 0)
         {
             var vm = new PagoClaseViewModel();
@@ -29,7 +43,7 @@ namespace EscuelaItinerante.Controllers
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
 
                 if (vm.Alumno != null)
-                    vm.ComisionesAlumno = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
             }
 
             return View(vm);
@@ -48,7 +62,9 @@ namespace EscuelaItinerante.Controllers
 
             if (pagoexitoso)
             {
-                EnviarRecibosPorMail();
+                _comisionLogic.GetComisionesDelAlumno(idAlumno).Where(x =)
+                //Debe enviar un mail con el monto que el cliente abonó - la cantidad que ya había abonado para pagos parciales
+                //EnviarRecibosPorMail();
             }
 
             return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
@@ -59,7 +75,7 @@ namespace EscuelaItinerante.Controllers
             MailMessage mail = new MailMessage("matias.azcui@gmail.com", "matias.azcui@gmail.com");
             SmtpClient client = new SmtpClient();
             client.Credentials = new System.Net.NetworkCredential("matias.azcui@gmail.com", "chirolita123..");
-            client.Port = 465;
+            client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = true;
             client.EnableSsl = true;
@@ -85,9 +101,19 @@ namespace EscuelaItinerante.Controllers
         }
 
         [HttpPost]
-        public ActionResult PagoParcial(PagoParcialViewModel vm)
+        public ActionResult PagoParcial(int idAlumno, int idComision, int idClase, int montoAbonado)
         {
-            return View(vm);
+            var pagoDTO = new PagoDTO();
+            pagoDTO.IdAlumno = idAlumno;
+            pagoDTO.IdClase = idClase;
+            pagoDTO.IdComision = idComision;
+            pagoDTO.MontoAbonado = montoAbonado;
+
+            _alumnoLogic.SetPagoParcial(pagoDTO);
+
+            //EnviarRecibosPorMail();
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
     }

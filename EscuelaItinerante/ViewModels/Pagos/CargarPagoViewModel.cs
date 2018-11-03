@@ -6,23 +6,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EscuelaItinerante.Models
 {
-    public class PagoClaseViewModel
+    public class CargarPagoViewModel
     {
-        private AlumnoLogic _alumnoLogic = new AlumnoLogic();
-        private ComisionLogic _cursoLogic = new ComisionLogic();
-
-        public PagoClaseViewModel()
+        public CargarPagoViewModel()
         {
 
         }
 
         public Alumno Alumno { get; set; }
 
-        [Required]
         public int NroDocumento { get; set; }
-        
-        [Required]
-        public decimal MontoParcial { get; set; }
+
         public List<ComisionDelAlumno> Comisiones { get; internal set; }
     }
 }

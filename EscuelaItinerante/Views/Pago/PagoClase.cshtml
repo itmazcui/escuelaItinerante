@@ -51,7 +51,7 @@ else
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ComisionesAlumno.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
+                @foreach (var item in Model.Comisiones.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
                 {
                     var css = item.EstaAlDia ? "bg-info" : "bg-danger";
                     <tr class="@css">
@@ -146,26 +146,6 @@ else
                 $('#idcomision').val($(this).data("idcomision"));
                 $('#montoabonado').val($(this).data("arancelalumno"));
                 $('#idclase').val($("select[data-idcomision='" + $(this).data("idcomision") + "']").val());
-
-                //var mensaje = "Desea acreditar el pago para la clase en la fecha: " + $('select[data-idcomision="' + $(this).data("idcomision") + '"] option:selected').text() + "?";
-
-                @*e.preventDefault();
-                if (window.confirm(mensaje)) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("PagoClase", "Pago")',
-                        data: {
-                            idalumno: idAlumno,
-                            idComision: $(this).data("idcomision"),
-                            idClase: $("select[data-idcomision='" + $(this).data("idcomision") + "']").val()
-                        },
-                        success: function (inscripcionExitosa) {
-                            document.body.scrollTop = 0;
-                            alert("El pago ha sido cargado correctamente");
-                            window.location.reload();
-                        }
-                    });
-                }*@
             });
         });
     </script>
