@@ -30,10 +30,5 @@ namespace EscuelaItinerante.Models
         [Required]
         public Sede Sede { get; set; }
 
-        //public int Arancel { get; set; }
-
-        //public string ObservacionesDeLaInscripcion { get; set; }
-
-
     }
 }

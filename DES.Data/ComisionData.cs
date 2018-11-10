@@ -10,10 +10,11 @@ namespace DES.Data
 {
     public class ComisionData
     {
-        public List<Comision> GetComisiones(int idSede)
+        public List<Comision> GetComisiones(int idSede, int idComision = 0)
         {
             var parametros = new Dictionary<string, object>();
             parametros.Add("@id_sede", idSede);
+            parametros.Add("@id_comision", idComision);
 
             var da = new DataAccess();
             var result = da.ExecuteSP("sp_tcomisiones", parametros);

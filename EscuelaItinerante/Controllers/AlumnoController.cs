@@ -14,7 +14,6 @@ using DES.Logic;
 
 namespace EscuelaItinerante.Controllers
 {
-    [Authorize]
     public class AlumnoController : Controller
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
@@ -25,12 +24,14 @@ namespace EscuelaItinerante.Controllers
         {
         }
 
+        [Authorize]
         public ActionResult InscribirAlumno()
         {
             var vm = new InscribirAlumnoViewModel();
             return View(vm);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult InscribirAlumno(InscribirAlumnoViewModel model)
         {
@@ -47,6 +48,7 @@ namespace EscuelaItinerante.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult FinalizarInscripcion(int idAlumno, int idComision, int arancel, string observacionesDeLaInscripcion)
         {
@@ -61,35 +63,39 @@ namespace EscuelaItinerante.Controllers
             return Json(inscripcionExitosa, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AlumnoAbandonaComision(int nroDocumento = 0)
+        [Authorize]
+        public ActionResult CambiarEstadoCursada(int nroDocumento = 0)
         {
-            var vm = new AlumnoAbandonaComisionViewModel();
+            var vm = new CambiarEstadoCursadaViewModel();
 
             if (nroDocumento != 0)
             {
                 vm.Alumno = _alumnoLogic.GetAlumnoByNroDocumento(nroDocumento);
                 
                 if (vm.Alumno != null)
-                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+                    vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.
+                        Alumno.IdAlumno);
             }
 
             return View(vm);
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult AlumnoAbandonaComision(int idAlumno, int idComision)
+        public ActionResult CambiarEstadoCursada(int idAlumno, int idComision, int nuevoestadocursada)
         {
-            bool pagoexitoso = _alumnoLogic.CambiarEstadoCursada(idAlumno, idComision, EstadoCursada.Abandonado);
+            bool pagoexitoso = _alumnoLogic.CambiarEstadoCursada(idAlumno, idComision, (EstadoCursada)nuevoestadocursada);
 
             return Json(pagoexitoso, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         public ActionResult NuevoAlumno()
         {
             var vm = new NuevoAlumnoViewModel();
             return View(vm);
         }
-
+        
         [HttpPost]
         public ActionResult NuevoAlumno(NuevoAlumnoViewModel model)
         {
@@ -123,6 +129,13 @@ namespace EscuelaItinerante.Controllers
             }
 
             return View(model);
+        }
+
+
+        public ActionResult NuevoAlumnoExterno()
+        {
+            var vm = new NuevoAlumnoViewModel();
+            return View(vm);
         }
 
         public ActionResult NuevoAlumnoExitoso()

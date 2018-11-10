@@ -9,13 +9,16 @@ using System.Web.Mvc;
 namespace EscuelaItinerante.Models
 {
 
-    public class AlumnoAbandonaComisionViewModel
+    public class CambiarEstadoCursadaViewModel
     {
         private ComisionLogic _comisionLogic = new ComisionLogic();
 
-        public AlumnoAbandonaComisionViewModel() {
-            //Sedes = (Enum.GetValues(typeof(Sede))).Cast<Sede>().Select(x => new SelectListItem { Text = x.ToString().Replace("_", " "), Value = ((int)x).ToString() }).ToList();}
+        public CambiarEstadoCursadaViewModel()
+        {
+            EstadosCursada = (Enum.GetValues(typeof(EstadoCursada))).Cast<EstadoCursada>().Select(x => new SelectListItem { Text = x.ToString().Replace("_", " "), Value = ((int)x).ToString() }).ToList();
         }
+
+        public List<SelectListItem> EstadosCursada { get; }
 
         public Alumno Alumno { get; internal set; }
 

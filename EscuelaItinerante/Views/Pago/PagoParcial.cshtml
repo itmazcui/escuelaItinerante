@@ -92,7 +92,7 @@ else
                                 <button class="btn btn-info cargarpago" data-toggle="modal" data-target="#myModal" 
                                         data-idcomision="@item.IdComision" data-idclase="@item.ClaseAPagarPagoParcial.IdClase" 
                                         data-montoabonado="@item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados"
-                                        data-arancel="@item.ArancelAlumno.ToString("C2")">Cargar Pago Parcial</button>
+                                        data-arancel="@item.ArancelAlumno">Cargar Pago Parcial</button>
                             }
                         </td>
                     </tr>
@@ -114,6 +114,7 @@ else
                     <input type="hidden" name="IdComision" value="" id="idcomision" />
                     <input type="hidden" name="IdClase" value="" id="idclase" />
                     <input type="hidden" name="montoabonado" value="" id="montoabonado" />
+                    <input type="hidden" name="arancelalumno" value="" id="arancelalumno" />
                     <p>
                         Ingresará un pago parcial. Recuerde que la suma de pagos parciales no pueden superar el valor de la clase.
                     </p>
@@ -138,17 +139,16 @@ else
                 $('#idcomision').val($(this).data("idcomision"));
                 $('#idclase').val($(this).data("idclase"));
                 $('#montoabonado').val($(this).data("montoabonado"));
+                $('#arancelalumno').val($(this).data("arancel"));
             });
 
             $('#aceptarpagoparcial').click(function (e) {
                 var sumaDePagos = parseInt($('#montoabonado').val()) + parseInt($('#montoaabonar').val());
 
-                if (sumaDePagos >= ) {
-
-                }
-
-
-                var mensaje = "Desea acreditar el pago para la clase en la fecha: " + $('select[data-idcomision="' + $(this).data("idcomision") + '"] option:selected').text() + "?";
+                if (sumaDePagos >= parseInt($('#arancelalumno').val())) 
+                    alert("El pago parcial sumado a los pagos realizados es mayor o igual a el valor de la cuota.");
+                
+                var mensaje = "Desea acreditar el pago parcial?";
 
                 e.preventDefault();
                 if (window.confirm(mensaje)) {

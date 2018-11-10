@@ -32,5 +32,10 @@ namespace DES.Logic
 
             return comisionesAlumno;
         }
+
+        public Comision GetComision(int idComision)
+        {
+            return _comisionData.GetComisiones(0, idComision).Single();
+        }
     }
 }
