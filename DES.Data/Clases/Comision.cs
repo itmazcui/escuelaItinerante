@@ -65,7 +65,8 @@ namespace DES.Data.Clases
     public enum EstadoCursada
     {
         Cursando = 1,
-        Abandonado = 2
+        Abandonado = 2,
+        Egresado = 3
     }
 
     public class Comision

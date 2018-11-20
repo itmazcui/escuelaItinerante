@@ -1,4 +1,4 @@
-﻿@model EscuelaItinerante.Models.AlumnoReporteViewModel
+﻿@model EscuelaItinerante.Models.AlumnosTodosViewModel
 @{
     ViewBag.Title = "Reportes";
 }
@@ -32,7 +32,7 @@
         </thead>
 
         <tbody>
-            @foreach (var item in Model.AlumnosInstitutosTodos)
+            @foreach (var item in Model.Alumnos)
             {
                 <tr>
                     <td>@item.FechaIngreso.ToString("d")</td>

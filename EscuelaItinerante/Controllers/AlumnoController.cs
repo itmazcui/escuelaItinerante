@@ -41,7 +41,7 @@ namespace EscuelaItinerante.Controllers
                 ModelState.AddModelError("NroDocumento", "El Nro. de Documento ingresado no existe.");
             else
             {
-                model.Comisiones = _comisionLogic.GetComisiones((int)model.Sede);
+                model.Comisiones = _comisionLogic.GetComisiones((int)model.Sede).OrderBy(x => x.Curso.ToString()).ThenBy(x => x.Coordinador.ToString()).ToList();
                 model.Alumno = alumno;
             }
 
@@ -50,12 +50,12 @@ namespace EscuelaItinerante.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult FinalizarInscripcion(int idAlumno, int idComision, int arancel, string observacionesDeLaInscripcion)
+        public ActionResult FinalizarInscripcion(int idalumno, int idcomision, int arancel, string observacionesdelainscripcion)
         {
             var inscribirAlumnoDTO = new InscripcionAlumnoDTO();
-            inscribirAlumnoDTO.IdAlumno = idAlumno;
-            inscribirAlumnoDTO.IdComision = idComision;
-            inscribirAlumnoDTO.ObservacionesDeLaInscripcion = observacionesDeLaInscripcion;
+            inscribirAlumnoDTO.IdAlumno = idalumno;
+            inscribirAlumnoDTO.IdComision = idcomision;
+            inscribirAlumnoDTO.ObservacionesDeLaInscripcion = observacionesdelainscripcion;
             inscribirAlumnoDTO.Arancel = arancel;
 
             bool inscripcionExitosa = _alumnoLogic.InscribirAlumnoComision(inscribirAlumnoDTO);

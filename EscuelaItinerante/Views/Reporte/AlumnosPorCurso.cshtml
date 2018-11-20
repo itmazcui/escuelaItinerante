@@ -39,6 +39,10 @@
             <thead>
                 <tr>
                     <th>Fecha Ingreso</th>
+                    <th>
+                        Última clase <br />
+                        paga
+                    </th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Nro. Documento</th>
@@ -60,9 +64,14 @@
             <tbody>
                 @foreach (var item in Model.Alumnos.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
                 {
-                    var esDeudorClass = item.EstaAlDia ? "bg-info" : "bg-danger";
-                    <tr class="@esDeudorClass">
+                    <tr>
                         <td>@item.FechaIngreso.ToString("d")</td>
+                        <td>
+                            @if (item.UltimaClasePaga != null)
+                            {
+                                @item.UltimaClasePaga.Value.ToString("d");
+                            }
+                        </td>
                         <td>@item.Nombre</td>
                         <td>@item.Apellido</td>
                         <td>@item.Tipodoc @item.NroDocumento</td>
@@ -81,26 +90,6 @@
                     </tr>
                 }
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Fecha Ingreso</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Nro. Documento</th>
-                    <th style="display:none">Dirección</th>
-                    <th style="display:none">CP</th>
-                    <th>Localidad</th>
-                    <th style="display:none">Telefono</th>
-                    <th>Celular</th>
-                    <th>Email</th>
-                    <th style="display:none">Como Nos Conocio</th>
-                    <th style="display:none">Estado Civil</th>
-                    <th style="display:none">Hijos</th>
-                    <th style="display:none">Estudios Realizados</th>
-                    <th>Conocido En Instituto</th>
-                    <th>Observaciones</th>
-                </tr>
-            </tfoot>
         </table>
     }
 </div>

@@ -3,9 +3,7 @@
     ViewBag.Title = "Nuevo Pago";
 }
 
-<h2 class="text-success">@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
+<h2>@ViewBag.Title.</h2>
 
 @if (Model.Alumno == null)
 {
@@ -45,6 +43,7 @@ else
                     <th>Coordinador</th>
                     <th>Arancel</th>
                     <th class="text-center">Arancel <br />del alumno</th>
+                    <th>Pagos parciales realizados</th>
                     <th class="text-center">Observación <br /> de la inscripción</th>
                     <th class="text-center">Clase a pagar</th>
                     <th></th>
@@ -69,6 +68,12 @@ else
                         </td>
                         <td class="text-right">
                             @item.ArancelAlumno.ToString("C2")
+                        </td>
+                        <td>
+                            @if (item.ClaseAPagarPagoParcial != null)
+                            {
+                                @item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados.ToString("C2")
+                            }
                         </td>
                         <td>
                             @item.ObservacionInscripcion

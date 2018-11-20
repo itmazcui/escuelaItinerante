@@ -36,6 +36,12 @@ namespace EscuelaItinerante.Controllers
             return View(vm);
         }
 
+        public ActionResult AlumnosTodos()
+        {
+            var vm = new AlumnosTodosViewModel();
+            return View(vm);
+        }
+
         public ActionResult AlumnosPorCurso()
         {
             var vm = new AlumnosPorCursoViewModel();

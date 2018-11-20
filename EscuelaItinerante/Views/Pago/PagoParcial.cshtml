@@ -1,9 +1,6 @@
 ﻿@model EscuelaItinerante.Models.PagoParcialViewModel
-@{
-    ViewBag.Title = "Nuevo pago parcial";
-}
 
-<h2>@ViewBag.Title.</h2>
+<h2>Nuevo pago <span class="text-danger">parcial</span>.</h2>
 
 <p>Utilice esta opción solo cuando un alumno NO abone el valor total de una clase.</p>
 
@@ -148,7 +145,7 @@ else
                 if (sumaDePagos >= parseInt($('#arancelalumno').val())) 
                     alert("El pago parcial sumado a los pagos realizados es mayor o igual a el valor de la cuota.");
                 
-                var mensaje = "Desea acreditar el pago parcial?";
+                var mensaje = "¿Desea acreditar el pago parcial?";
 
                 e.preventDefault();
                 if (window.confirm(mensaje)) {

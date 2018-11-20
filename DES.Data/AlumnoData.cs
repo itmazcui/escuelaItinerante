@@ -78,7 +78,8 @@ namespace DES.Data
 
                 if (item["FechaClasePaga"] != DBNull.Value)
                 { 
-                    alumno.EstaAlDia = Convert.ToDateTime(item["FechaClasePaga"].ToString()) >= DateTime.Now;
+                    alumno.UltimaClasePaga = Convert.ToDateTime(item["FechaClasePaga"].ToString());
+                    //alumno.EstaAlDia = Convert.ToDateTime(item["FechaClasePaga"].ToString()) >= DateTime.Now;
                 }
 
                 alumnos.Add(alumno);

@@ -27,8 +27,8 @@ namespace DES.Data.Clases
                 if (Modalidad == Modalidad.Mensual)
                     FechaMinimaPagoAlDia = DateTime.Now.AddMonths(-1);
 
-                var ret = clasesPagas.Any(x => x.FechaClase > FechaMinimaPagoAlDia);
-                return ret;
+                var estaAlDia = clasesPagas.Any(x => x.FechaClase > FechaMinimaPagoAlDia);
+                return estaAlDia;
             }
         }
 

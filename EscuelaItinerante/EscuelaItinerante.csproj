@@ -213,6 +213,7 @@
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Reporte\AlumnosTodosViewModel.cs" />
     <Compile Include="ViewModels\Reporte\AlumnosPorCursoViewModel.cs" />
     <Compile Include="ViewModels\Reporte\ComisionesTodasViewModel.cs" />
   </ItemGroup>
