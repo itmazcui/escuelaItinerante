@@ -1,0 +1,20 @@
+﻿@model DES.Data.Clases.Alumno
+
+<table class="table table-bordered">
+    <tr>
+        <td>Nombre de alumno:</td>
+        <td>@Model.Nombre @Model.Apellido.</td>
+    </tr>
+    <tr>
+        <td>Nro. de documento:</td>
+        <td>@string.Format("{0:n0}", Model.NroDocumento)</td>
+    </tr>
+    <tr>
+        <td>Fecha de Inscripción:</td>
+        <td>@Model.FechaIngreso hs.</td>
+    </tr>
+    <tr>
+        <td>Observaciones:</td>
+        <td>@Model.Observaciones. </td>
+    </tr>
+</table>

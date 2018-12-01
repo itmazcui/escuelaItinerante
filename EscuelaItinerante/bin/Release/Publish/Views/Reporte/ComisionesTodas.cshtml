@@ -1,0 +1,13 @@
+﻿@model EscuelaItinerante.Models.ComisionesTodasViewModel
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Todos los reportes</h4>
+    <hr />
+    @Html.Partial("~/Views/Reporte/Partial/Comisiones.cshtml", Model.Comisiones)
+</div>

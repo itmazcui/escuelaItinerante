@@ -18,6 +18,12 @@ namespace EscuelaItinerante
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "alta",
+                url: "alumno/nuevoalumnoexterno",
+                defaults: new { controller = "alumno", action = "nuevoalumnoexterno" }
+            );
         }
     }
 }

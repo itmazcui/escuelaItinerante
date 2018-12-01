@@ -130,6 +130,8 @@ C:\Users\azcui\source\repos\EscuelaItinerante\EscuelaItinerante\obj\Debug\Escuel
 C:\Users\azcui\source\repos\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.dll
 C:\Users\azcui\source\repos\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.pdb
 C:\Users\azcui\source\repos\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.csprojAssemblyReference.cache
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\ApplicationInsights.config
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\EscuelaItinerante.dll.config
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\EscuelaItinerante.dll
@@ -144,8 +146,6 @@ C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.Build.Tasks.Code
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -181,6 +181,7 @@ C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\vbc.rsp
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\VBCSCompiler.exe
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\roslyn\VBCSCompiler.exe.config
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\Antlr3.Runtime.dll
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Logic.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\EntityFramework.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\EntityFramework.SqlServer.dll
@@ -217,6 +218,7 @@ C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.WebPages.Deployment.dl
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.WebPages.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.WebPages.Razor.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\WebGrease.dll
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.pdb
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Logic.pdb
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Helpers.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Mvc.xml
@@ -264,5 +266,3 @@ C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.csproj.Co
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.csproj.CopyComplete
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\obj\Debug\EscuelaItinerante.pdb
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.dll
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.pdb

@@ -1,0 +1,141 @@
+﻿@model EscuelaItinerante.Models.CambiarEstadoCursadaViewModel
+@{
+    ViewBag.Title = "Desinscripción de alumno";
+}
+<h2>@ViewBag.Title.</h2>
+@*<h4 class="text-success">@ViewBag.Message</h4>*@
+
+
+@if (Model.Alumno == null)
+{
+    <div class="col-md-6 col-lg-offset-3 well">
+        @using (Html.BeginForm("CambiarEstadoCursada", "Alumno", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="mt20">Ingrese el DNI del alumno que desea desinscribir.</h4>
+
+            <div class="text-danger">
+                @Html.ValidationSummary()
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.NroDocumento, new { @type = "number", @class = "form-control", @placeholder = "Nro. Documento", @Value = Model.NroDocumento == 0 ? "" : Model.NroDocumento.ToString() })
+            </div>
+
+            <div class="mt20 text-right">
+                <input type="submit" class="btn btn-success" value="Buscar" id="buscar" />
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
+        </div>
+        <hr class="col-md-12" />
+        <div class="col-md-12">
+            <div id="desinscripcioncorrecta" class="hidden">
+                <div class="alert alert-success">
+                    <strong>Éxito!</strong> El alumno ha sido desinscripto de manera exitosa.
+                </div>
+            </div>
+            <div id="desinscripcionerror" class="hidden">
+                <div class="alert alert-warning">
+                    <strong>Inscripción no permitida:</strong> No se ha podido desinscribir al alumno.
+                </div>
+            </div>
+            <h3>Estados de cursada del alumno @Model.Alumno.Nombre @Model.Alumno.Apellido</h3>
+            <p>Si desea cambiarlo, solo tiene seleccionar el nuevo estado en el desplegable y luego hacer click en "cambiar".</p>
+            <div class="mt20">
+                <table class="table table-striped datatable vamiddle">
+                    <thead>
+                        <tr>
+                            <th>Comisión</th>
+                            <th>Curso</th>
+                            <th>Coordinador</th>
+                            <th>Modalidad</th>
+                            <th>Turno</th>
+                            <th>Arancel</th>
+                            <th class="text-center">Estado cursada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Comisiones)
+                        {
+                            <tr>
+                                <td>
+                                    @item.IdComision
+                                </td>
+                                <td>
+                                    @item.Curso.ToString().Replace("_", " ")
+                                </td>
+                                <td>
+                                    @item.Coordinador.ToString().Replace("_", " ")
+                                </td>
+                                <td>
+                                    @item.Modalidad
+                                </td>
+                                <td>
+                                    @item.Turno
+                                </td>
+                                <td>
+                                    @item.Arancel.ToString("C2")
+                                </td>
+                                <td class="text-center">
+                                    <select data-idcomision="@item.IdComision">
+                                        @foreach (var option in Model.EstadosCursada)
+                                        {
+                                            var selected = option.Text == item.EstadoCursada.ToString() ? "selected" : "";
+                                            <option value="@option.Value" @selected>@option.Text</option>
+                                        }
+                                    </select>
+
+                                    <button type="button" data-idcomision="@item.IdComision" class="btn cambiar">Cambiar</button>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+            $(function () {
+                var idAlumno = @Model.Alumno.IdAlumno;
+
+                $('.cambiar').click(function () {
+
+                    if (window.confirm("Está por cambiar el estado de cursada. Está seguro?")) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("CambiarEstadoCursada", "Alumno")',
+                            data: {
+                                idalumno: idAlumno,
+                                idcomision: $(this).data("idcomision"),
+                                nuevoestadocursada: $("select[data-idcomision='" + $(this).data("idcomision") + "']").val()
+                            },
+                            success: function (bajaexitosa) {
+                            window.scrollTo(0, 0);
+                                if (bajaexitosa) {
+                                    alert('El estado ha sido cambiado.');
+                                    location.reload();
+                                }
+                                else {
+                                    alert("No se ha podido completar la operación.");
+                                }
+                            }
+                        });
+                    }
+                });
+
+            });
+    </script>
+
+}

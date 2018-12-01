@@ -206,7 +206,6 @@
     <Compile Include="ViewModels\Alumnos\CambiarEstadoCursadaViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
-    <Compile Include="ViewModels\Pagos\CargarPagoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoParcialViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoClaseViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -223,7 +222,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\DataTable\buttons.dataTables.css" />
     <Content Include="Content\DataTable\jquery.dataTables.css" />
-    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -243,6 +241,8 @@
     <Content Include="Scripts\DataTable\jszip.js" />
     <Content Include="Scripts\DataTable\dataTables.buttons.js" />
     <Content Include="Scripts\DataTable\jquery.dataTables.js" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -284,7 +284,6 @@
     <Content Include="Views\Alumno\NuevoAlumnoExitoso.cshtml" />
     <Content Include="Views\Reporte\AlumnosPorCurso.cshtml" />
     <Content Include="Views\Pago\PagoParcial.cshtml" />
-    <Content Include="Views\Pago\CargarPago.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumnoExterno.cshtml" />
   </ItemGroup>
   <ItemGroup>
