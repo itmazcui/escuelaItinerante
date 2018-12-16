@@ -1,0 +1,173 @@
+﻿@model EscuelaItinerante.Models.PagoParcialViewModel
+
+<h2>Nuevo pago <span class="text-danger">parcial</span>.</h2>
+
+<p>Utilice esta opción solo cuando un alumno NO abone el valor total de una clase.</p>
+
+@if (Model.Alumno == null)
+{
+    <div class="col-md-6 col-lg-offset-3 well">
+        @using (Html.BeginForm("PagoParcial", "Pago", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="mt20">Ingrese el DNI del alumno que hará un pago parcial.</h4>
+
+            <div class="text-danger">
+                @Html.ValidationSummary()
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.NroDocumento, new { @type = "number", @class = "form-control", @placeholder = "Nro. Documento", @Value = Model.NroDocumento == 0 ? "" : Model.NroDocumento.ToString() })
+            </div>
+
+            <div class="mt20 text-right">
+                <input type="submit" class="btn btn-success" value="Buscar" id="buscar" />
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3 mb20">
+            @Html.Partial("~/Views/Alumno/Partial/AlumnoTabla.cshtml", Model.Alumno)
+        </div>
+        <div class="col-md-3"></div>
+        <hr class="col-md-12" />
+        <table class="table datatable vamiddle fontsize12">
+            <thead>
+                <tr>
+                    <th>Comisión</th>
+                    <th>Curso</th>
+                    <th>Coordinador</th>
+                    <th>Arancel</th>
+                    <th class="text-center">Arancel <br />alumno</th>
+                    <th class="text-center">Suma de <br>pagos parciales</th>
+                    @*<th class="text-center">Observación <br /> de la inscripción</th>*@
+                    <th class="text-center">Clase a pagar</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Comisiones.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
+                {
+                    var css = item.EstaAlDia ? "bg-info" : "bg-danger";
+                    <tr class="@css">
+                        <td>
+                            @item.IdComision
+                        </td>
+                        <td>
+                            @item.Curso.ToString().Replace("_", " ")
+                        </td>
+                        <td>
+                            @item.Coordinador.ToString().Replace("_", " ")
+                        </td>
+                        <td class="text-right">
+                            @item.Arancel.ToString("C2")
+                        </td>
+                        <td class="text-right">
+                            @item.ArancelAlumno.ToString("C2")
+                        </td>
+                        <td class="text-right">
+                            @if (item.ClaseAPagarPagoParcial != null)
+                            {
+                                @item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados.ToString("C2")
+                            }
+                        </td>
+                        @*<td>
+                            @item.ObservacionInscripcion
+                        </td>*@
+                        <td>
+                            @if (item.ClaseAPagarPagoParcial != null)
+                            {
+                                @item.ClaseAPagarPagoParcial.FechaClase
+                            }
+                        </td>
+                        <td>
+                            @if (item.ClaseAPagarPagoParcial != null)
+                            {
+                                <button class="btn btn-info cargarpago" data-toggle="modal" data-target="#myModal" 
+                                        data-idcomision="@item.IdComision" data-idclase="@item.ClaseAPagarPagoParcial.IdClase" 
+                                        data-montoabonado="@item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados"
+                                        data-arancel="@item.ArancelAlumno">Cargar Pago Parcial</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pago parcial de clase</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="IdComision" value="" id="idcomision" />
+                    <input type="hidden" name="IdClase" value="" id="idclase" />
+                    <input type="hidden" name="montoabonado" value="" id="montoabonado" />
+                    <input type="hidden" name="arancelalumno" value="" id="arancelalumno" />
+                    <p>
+                        Ingresará un pago parcial. Recuerde que la suma de pagos parciales no pueden superar el valor de la clase.
+                    </p>
+                    <div class="text-center">
+                        $ <input type="number" name="MontoAbonoParcial" id="montoaabonar" class="text-right w100" value="" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success" data-dismiss="modal" id="aceptarpagoparcial">Aceptar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            var idAlumno = @Model.Alumno.IdAlumno;
+
+            $('.cargarpago').click(function (e) {
+                $('#idcomision').val($(this).data("idcomision"));
+                $('#idclase').val($(this).data("idclase"));
+                $('#montoabonado').val($(this).data("montoabonado"));
+                $('#arancelalumno').val($(this).data("arancel"));
+            });
+
+            $('#aceptarpagoparcial').click(function (e) {
+                var sumaDePagos = parseInt($('#montoabonado').val()) + parseInt($('#montoaabonar').val());
+
+                if (sumaDePagos >= parseInt($('#arancelalumno').val())) 
+                    alert("El pago parcial sumado a los pagos realizados es mayor o igual a el valor de la cuota.");
+                
+                var mensaje = "¿Desea acreditar el pago parcial?";
+
+                e.preventDefault();
+                if (window.confirm(mensaje)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("PagoParcial", "Pago")',
+                        data: {
+                            idAlumno: idAlumno,
+                            idClase: $('#idclase').val(),
+                            idComision: $('#idcomision').val(),
+                            montoAbonado: $('#montoaabonar').val()
+                        },
+                        success: function (inscripcionExitosa) {
+                            document.body.scrollTop = 0;
+                            alert("El pago ha sido cargado correctamente");
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+}
+

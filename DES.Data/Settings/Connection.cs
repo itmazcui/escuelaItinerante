@@ -10,7 +10,7 @@ namespace DES.Data
 {
     public class Connection
     {
-        private SqlConnection Conn = new SqlConnection("Server=win03.tmd.cloud;DataBase=it_matiasazcui_gmail_com_;User Id=administrador;Password = Jugodemanzana1;");
+        private SqlConnection Conn = new SqlConnection("Server=DESKTOP-UQBFOLU\\SQLEXPRESS;DataBase=EscuelaItinerante;User Id=escuelaitinerante;Password=testeo123;");
 
         public SqlConnection OpenConnection()
         {

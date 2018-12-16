@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Aplicación de Escuela Itinerante de Psicología Social</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/datatable")
+    <link href="~/Content/DataTable/jquery.dataTables.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatable")
+    <script src="~/Scripts/sitio.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/icon.ico" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Denver", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alumnos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("NuevoAlumno", "Alumno" )">Nuevo Alumno</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("InscribirAlumno", "Alumno" )">Inscribir Alumno a Curso</a></li>
+                                <li><a href="@Url.Action("CambiarEstadoCursada", "Alumno" )">Cambiar estado de cursada</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("PagoClase", "Pago" )">Nuevo Pago</a></li>
+                                <li><a href="@Url.Action("PagoParcial", "Pago" )">Nuevo Pago Parcial</a></li>
+                                @*<li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("NuevoPago", "Pago")">Nuevo Pago</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("AlumnosPorCurso", "Reporte" )">Alumnos por cursos</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("AlumnosTodos", "Reporte")">Todos los Alumnos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr class="col-md-12"/>
+        <footer class="col-md-12">
+            <p>&copy; @DateTime.Now.Year - Desarrollado por mazcui</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
