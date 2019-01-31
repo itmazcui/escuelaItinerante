@@ -1,5 +1,6 @@
 C:\git\EscuelaItinerante\DES.Data\bin\Release\DES.Data.dll
 C:\git\EscuelaItinerante\DES.Data\bin\Release\DES.Data.pdb
+C:\git\EscuelaItinerante\DES.Data\obj\Release\DES.Data.csprojAssemblyReference.cache
 C:\git\EscuelaItinerante\DES.Data\obj\Release\DES.Data.csproj.CoreCompileInputs.cache
 C:\git\EscuelaItinerante\DES.Data\obj\Release\DES.Data.dll
 C:\git\EscuelaItinerante\DES.Data\obj\Release\DES.Data.pdb
