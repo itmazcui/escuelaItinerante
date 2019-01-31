@@ -1,3 +1,4 @@
 EscuelaItinerante/obj
 EscuelaItinerante/bin
-.vs/
+*.dll
+*.pdb

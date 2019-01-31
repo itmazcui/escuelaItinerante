@@ -113,7 +113,7 @@ namespace EscuelaItinerante.Controllers
             if (model.Hijos == 0)
                 ModelState["Hijos"].Errors.Clear();
 
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 var alumno = new Alumno();
                 alumno.Nombre = model.Nombre;
