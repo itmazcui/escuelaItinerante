@@ -160,7 +160,8 @@ else
                         },
                         success: function (inscripcionExitosa) {
                             document.body.scrollTop = 0;
-                            alert("El pago ha sido cargado correctamente");
+                            alert(inscripcionExitosa);
+                            alert("El pago PARCIAL ha sido cargado correctamente");
                             window.location.reload();
                         }
                     });

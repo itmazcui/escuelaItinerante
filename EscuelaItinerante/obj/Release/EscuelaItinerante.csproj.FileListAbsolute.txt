@@ -92,9 +92,9 @@ C:\git\EscuelaItinerante\EscuelaItinerante\bin\WebGrease.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Data.pdb
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\DES.Logic.pdb
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Optimization.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Helpers.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Mvc.xml
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Optimization.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.Razor.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.WebPages.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\System.Web.WebPages.Deployment.xml
@@ -120,9 +120,9 @@ C:\git\EscuelaItinerante\EscuelaItinerante\bin\Microsoft.AspNet.TelemetryCorrela
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\Microsoft.AI.DependencyCollector.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\Microsoft.AI.WindowsServer.xml
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\Microsoft.AI.Web.xml
+C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.Optimization.resources.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.Helpers.resources.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.Mvc.resources.dll
-C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.Optimization.resources.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.Razor.resources.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.WebPages.resources.dll
 C:\git\EscuelaItinerante\EscuelaItinerante\bin\es\System.Web.WebPages.Deployment.resources.dll
