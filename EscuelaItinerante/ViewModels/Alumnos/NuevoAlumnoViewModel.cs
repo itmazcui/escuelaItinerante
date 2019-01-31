@@ -42,7 +42,7 @@ namespace EscuelaItinerante.Models
         
         public int CodigoPostal {get;set;}
 
-        [Required]
+        //[Required]
         public string Localidad {get;set;}
 
         public int Telefono {get;set;}
@@ -53,17 +53,17 @@ namespace EscuelaItinerante.Models
         [EmailAddress]
         public string Email {get;set;}
 
-        [Required(ErrorMessage = "El campo Como nos conocoió es obligatorio.")]
+        //[Required(ErrorMessage = "El campo Como nos conocoió es obligatorio.")]
         public string ComoNosConocio {get;set;}
 
-        [Required]
+        //[Required]
         public EstadoCivil EstadoCivil { get;set;}
 
         public List<SelectListItem> EstadosCiviles { get; set; }
 
         public int Hijos {get;set;}
 
-        [Required(ErrorMessage = "El campo Estudios Realizados es obligatorio.")]
+        //[Required(ErrorMessage = "El campo Estudios Realizados es obligatorio.")]
         public string EstudiosRealizados {get;set;}
         
         public string ConocidoEnInstituto {get;set;}

@@ -104,6 +104,15 @@ namespace EscuelaItinerante.Controllers
             if (alumnoInscripto != null)
                 ModelState.AddModelError("NroDocumento", "El alumno ya se encuenta inscripto en el instituto");
 
+            if (model.CodigoPostal == 0)
+                ModelState["CodigoPostal"].Errors.Clear();
+
+            if (model.Celular == 0)
+                ModelState["Celular"].Errors.Clear();
+
+            if (model.Hijos == 0)
+                ModelState["Hijos"].Errors.Clear();
+
             if (ModelState.IsValid)
             {
                 var alumno = new Alumno();
@@ -111,18 +120,18 @@ namespace EscuelaItinerante.Controllers
                 alumno.Apellido = model.Apellido;
                 alumno.Tipodoc = model.Tipodoc;
                 alumno.NroDocumento = model.NroDocumento;
-                alumno.Direccion = model.Direccion;
+                alumno.Direccion = model.Direccion ?? string.Empty;
                 alumno.CodigoPostal = model.CodigoPostal;
-                alumno.Localidad = model.Localidad;
+                alumno.Localidad = model.Localidad ?? string.Empty;
                 alumno.Telefono = model.Telefono;
                 alumno.Celular = model.Celular;
                 alumno.Email = model.Email;
-                alumno.ComoNosConocio = model.ComoNosConocio;
+                alumno.ComoNosConocio = model.ComoNosConocio ?? string.Empty;
                 alumno.EstadoCivil = model.EstadoCivil;
                 alumno.Hijos = model.Hijos;
-                alumno.EstudiosRealizados = model.EstudiosRealizados;
-                alumno.ConocidoEnInstituto = model.ConocidoEnInstituto;
-                alumno.Observaciones = model.Observaciones;
+                alumno.EstudiosRealizados = model.EstudiosRealizados ?? string.Empty;
+                alumno.ConocidoEnInstituto = model.ConocidoEnInstituto ?? string.Empty;
+                alumno.Observaciones = model.Observaciones ?? string.Empty;
                 _alumnoLogic.NuevoAlumno(alumno);
 
                 return RedirectToAction("NuevoAlumnoExitoso");
