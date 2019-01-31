@@ -1,6 +1,6 @@
 ﻿@model DES.Data.Clases.Alumno
 
-<table class="table table-bordered">
+<table class="table table-bordered p5">
     <tr>
         <td>Nombre de alumno:</td>
         <td>@Model.Nombre @Model.Apellido.</td>
@@ -16,5 +16,9 @@
     <tr>
         <td>Observaciones:</td>
         <td>@Model.Observaciones. </td>
+    </tr>
+    <tr>
+        <td>Email (donde se envia comprobante):</td>
+        <td>@Model.Email</td>
     </tr>
 </table>

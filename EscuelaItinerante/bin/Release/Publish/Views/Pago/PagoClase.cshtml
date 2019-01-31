@@ -90,7 +90,7 @@ else
 
                             </td>
                             <td>
-                                <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision" data-arancelalumno="@item.ArancelAlumno" data-toggle="modal" data-target="#myModal">Cargar Pago</button>
+                                <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision" data-arancelalumno="@item.ArancelAlumno" data-sumapagosparciales="@item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados" data-toggle="modal" data-target="#myModal">Cargar Pago</button>
                             </td>
                         </tr>
                     }
@@ -146,7 +146,7 @@ else
                         success: function (inscripcionExitosa) {
                             document.body.scrollTop = 0;
                             alert(inscripcionExitosa);
-                            alert("El pago ha sido cargado correctamente");
+                            alert("El pago DE LA CLASE ha sido cargado correctamente");
                             window.location.reload();
                         }
                     });
@@ -155,7 +155,7 @@ else
 
             $('.cargarpago').click(function (e) {
                 $('#idcomision').val($(this).data("idcomision"));
-                $('#montoabonado').val($(this).data("arancelalumno"));
+                $('#montoabonado').val($(this).data("arancelalumno") - $(this).data("sumapagosparciales"));
                 $('#idclase').val($("select[data-idcomision='" + $(this).data("idcomision") + "']").val());
             });
         });
