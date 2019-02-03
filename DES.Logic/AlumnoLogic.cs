@@ -22,6 +22,11 @@ namespace DES.Logic
             return _alumnosData.GetAlumnoByNroDocumento(nroDocumento);
         }
 
+        public List<Alumno> GetAlumnosByFiltro(string cadenaABuscar)
+        {
+            return _alumnosData.GetAlumnosByFiltro(cadenaABuscar);
+        }
+
         public void NuevoAlumno(Alumno alumno)
         {
             _alumnosData.NuevoAlumno(alumno);

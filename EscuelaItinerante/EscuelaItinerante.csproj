@@ -204,8 +204,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Alumnos\FichaAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\CambiarEstadoCursadaViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\InscribirAlumnoViewModel.cs" />
+    <Compile Include="ViewModels\Alumnos\BuscarAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Alumnos\NuevoAlumnoViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoParcialViewModel.cs" />
     <Compile Include="ViewModels\Pagos\PagoClaseViewModel.cs" />
@@ -286,6 +288,8 @@
     <Content Include="Views\Reporte\AlumnosPorCurso.cshtml" />
     <Content Include="Views\Pago\PagoParcial.cshtml" />
     <Content Include="Views\Alumno\NuevoAlumnoExterno.cshtml" />
+    <Content Include="Views\Alumno\BuscarAlumno.cshtml" />
+    <Content Include="Views\Alumno\FichaAlumno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
