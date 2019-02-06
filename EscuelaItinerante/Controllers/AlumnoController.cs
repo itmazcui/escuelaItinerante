@@ -140,6 +140,30 @@ namespace EscuelaItinerante.Controllers
             return View(model);
         }
 
+        public ActionResult BuscarAlumno()
+        {
+            var vm = new BuscarAlumnoViewModel();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult BuscarAlumno(BuscarAlumnoViewModel model)
+        {
+            model.Alumnos = _alumnoLogic.GetAlumnosByFiltro(model.CadenaABuscar);
+            return View(model);
+        }
+
+        public ActionResult FichaAlumno(int idAlumno)
+        {
+            var vm = new FichaAlumnoViewModel();
+            vm.Alumno = _alumnoLogic.GetAlumnoByID(idAlumno);
+
+            if (vm.Alumno != null)
+                vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+
+            return View(vm);
+        }
+
 
         public ActionResult NuevoAlumnoExterno()
         {

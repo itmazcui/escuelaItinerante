@@ -43,6 +43,46 @@ namespace DES.Data
 
             return alumnos;
         }
+
+        public List<Alumno> GetAlumnosByFiltro(string cadenaABuscar)
+        {
+            var da = new DataAccess();
+            
+            var parametros = new Dictionary<string, object>
+            {
+                { "@cadenaABuscar", "%" + cadenaABuscar + "%" }
+            };
+
+            var result = da.ExecuteSP("sp_talumno_by_filtro", parametros);
+            var alumnos = new List<Alumno>();
+
+            foreach (DataRow item in result.Rows)
+            {
+                var alumno = new Alumno();
+                alumno.IdAlumno = int.Parse(item["id_alumno"].ToString());
+                alumno.Nombre = item["Nombre"].ToString();
+                alumno.Apellido = item["Apellido"].ToString();
+                alumno.Tipodoc = item["Tipodoc"].ToString();
+                alumno.NroDocumento = int.Parse(item["NroDocumento"].ToString());
+                alumno.Direccion = item["Direccion"].ToString();
+                alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
+                alumno.Localidad = item["Localidad"].ToString();
+                alumno.Telefono = int.Parse(item["Telefono"].ToString());
+                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Email = item["Email"].ToString();
+                alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
+                alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
+                alumno.Hijos = int.Parse(item["Hijos"].ToString());
+                alumno.EstudiosRealizados = item["EstudiosRealizados"].ToString();
+                alumno.ConocidoEnInstituto = item["ConocidoEnInstituto"].ToString();
+                alumno.Observaciones = item["Observaciones"].ToString();
+                alumno.FechaIngreso = Convert.ToDateTime(item["FechaIngreso"].ToString());
+                alumnos.Add(alumno);
+            }
+
+            return alumnos;
+        }
+
         public List<AlumnoComision> GetAlumnosByComision(int idComision)
         {
             var da = new DataAccess();

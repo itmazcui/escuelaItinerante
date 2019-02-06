@@ -35,7 +35,7 @@ namespace EscuelaItinerante.Models
 
         public List<SelectListItem> TipoDocumentos {get;set;}
 
-        [Range(10000000, 99999999, ErrorMessage = "El documento ingresado no es correcto")]
+        [Range(1000000, 99999999, ErrorMessage = "El documento ingresado no es correcto")]
         public int NroDocumento {get;set;}
 
         public string Direccion {get;set;}
