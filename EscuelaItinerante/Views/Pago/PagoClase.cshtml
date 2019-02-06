@@ -36,66 +36,7 @@ else
         <div class="col-md-3"></div>
         <hr class="col-md-12" />
         <div class="col-md-12">
-            <table class="table datatable vamiddle fontsize12">
-                <thead>
-                    <tr>
-                        <th>Comisión</th>
-                        <th>Curso</th>
-                        <th>Coordinador</th>
-                        <th>Arancel</th>
-                        <th class="text-center">Arancel <br />del alumno</th>
-                        <th>Pagos parciales realizados</th>
-                        <th class="text-center">Observación <br /> de la inscripción</th>
-                        <th class="text-center">Clase a pagar</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Comisiones.Where(x => x.EstadoCursada == DES.Data.Clases.EstadoCursada.Cursando))
-                    {
-                        var css = item.EstaAlDia ? "bg-info" : "bg-danger";
-                        <tr class="@css">
-                            <td>
-                                @item.IdComision
-                            </td>
-                            <td>
-                                @item.Curso.ToString().Replace("_", " ")
-                            </td>
-                            <td>
-                                @item.Coordinador.ToString().Replace("_", " ")
-                            </td>
-                            <td class="text-right">
-                                @item.Arancel.ToString("C2")
-                            </td>
-                            <td class="text-right">
-                                @item.ArancelAlumno.ToString("C2")
-                            </td>
-                            <td>
-                                @if (item.ClaseAPagarPagoParcial != null)
-                                {
-                                    @item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados.ToString("C2")
-                                }
-                            </td>
-                            <td>
-                                @item.ObservacionInscripcion
-                            </td>
-                            <td>
-                                @* Debo poner disable aquuellas que el alumno ya pagó *@
-                                @Html.DropDownList("Clases", new SelectList(item.Clases.Where(x => !x.EstaPagada).Select(x => new { Value = x.IdClase, Text = x.FechaClase.ToString("dd/MM/yyyy hh:mm tt") }),
-                                        "Value",
-                                        "Text"
-                                    ),
-                                    new { @class="form-control fontsize12", @data_idcomision = item.IdComision}
-                                )
-
-                            </td>
-                            <td>
-                                <button class="btn btn-info cargarpago" data-idcomision="@item.IdComision" data-arancelalumno="@item.ArancelAlumno" data-sumapagosparciales="@item.ClaseAPagarPagoParcial.SumaPagosParcialesRealizados" data-toggle="modal" data-target="#myModal">Cargar Pago</button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            @Html.Partial("~/Views/Alumno/Partial/AlumnoClaseTabla.cshtml", Model.Comisiones)
         </div>
     </div>
 

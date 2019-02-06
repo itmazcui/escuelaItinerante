@@ -158,6 +158,9 @@ namespace EscuelaItinerante.Controllers
             var vm = new FichaAlumnoViewModel();
             vm.Alumno = _alumnoLogic.GetAlumnoByID(idAlumno);
 
+            if (vm.Alumno != null)
+                vm.Comisiones = _comisionLogic.GetComisionesDelAlumno(vm.Alumno.IdAlumno);
+
             return View(vm);
         }
 

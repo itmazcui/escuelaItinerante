@@ -290,6 +290,7 @@
     <Content Include="Views\Alumno\NuevoAlumnoExterno.cshtml" />
     <Content Include="Views\Alumno\BuscarAlumno.cshtml" />
     <Content Include="Views\Alumno\FichaAlumno.cshtml" />
+    <Content Include="Views\Alumno\Partial\AlumnoClaseTabla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
