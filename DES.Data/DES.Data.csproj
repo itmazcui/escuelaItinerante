@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PagoData.cs" />
     <Compile Include="Clases\AlumnoComision.cs" />
     <Compile Include="Clases\AlumnoClase.cs" />
     <Compile Include="Clases\ComisionAlumno.cs" />
     <Compile Include="Clases\DTOs\PagoDTO.cs" />
     <Compile Include="Clases\DTOs\InscripcionAlumnoDTO.cs" />
+    <Compile Include="Clases\Pago.cs" />
     <Compile Include="ComisionData.cs" />
     <Compile Include="Clases\Comision.cs" />
     <Compile Include="UsuariosData.cs" />
