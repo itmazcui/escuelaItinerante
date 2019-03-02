@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EscuelaItinerante.Models;
 using DES.Logic;
+using DES.Data.Clases;
 
 namespace EscuelaItinerante.Controllers
 {
@@ -18,6 +19,7 @@ namespace EscuelaItinerante.Controllers
     {
         private AlumnoLogic _alumnoLogic = new AlumnoLogic();
         private ComisionLogic _comisionLogic = new ComisionLogic();
+        private PagoLogic _pagoLogic = new PagoLogic();
 
         public ReporteController()
         {
@@ -40,6 +42,19 @@ namespace EscuelaItinerante.Controllers
         {
             var vm = new AlumnosTodosViewModel();
             return View(vm);
+        }
+
+        public ActionResult Pagos()
+        {
+            var vm = new PagosViewModel();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Pagos(PagosViewModel model)
+        {
+            model.Pagos = _pagoLogic.GetPagos((Sede)model.IdSede, model.FechaDesde, model.FechaHasta);
+            return View(model);
         }
 
         public ActionResult AlumnosPorCurso()

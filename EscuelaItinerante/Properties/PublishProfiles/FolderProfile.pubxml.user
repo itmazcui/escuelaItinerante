@@ -22,22 +22,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/17/2018 11:06:29</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/20/2018 20:35:27</publishTime>
+      <publishTime>02/06/2019 21:01:17</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/20/2018 20:35:27</publishTime>
+      <publishTime>02/06/2019 21:01:17</publishTime>
     </File>
     <File Include="bin/DES.Data.dll">
-      <publishTime>12/20/2018 20:01:55</publishTime>
+      <publishTime>02/06/2019 21:00:55</publishTime>
     </File>
     <File Include="bin/DES.Data.pdb">
-      <publishTime>12/20/2018 20:01:55</publishTime>
+      <publishTime>02/06/2019 21:00:55</publishTime>
     </File>
     <File Include="bin/DES.Logic.dll">
-      <publishTime>12/20/2018 20:01:55</publishTime>
+      <publishTime>02/06/2019 21:00:56</publishTime>
     </File>
     <File Include="bin/DES.Logic.pdb">
-      <publishTime>12/20/2018 20:01:55</publishTime>
+      <publishTime>02/06/2019 21:00:56</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -82,10 +82,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2018 12:21:06</publishTime>
     </File>
     <File Include="bin/EscuelaItinerante.dll">
-      <publishTime>12/20/2018 20:35:09</publishTime>
+      <publishTime>02/06/2019 21:00:56</publishTime>
     </File>
     <File Include="bin/EscuelaItinerante.pdb">
-      <publishTime>12/20/2018 20:35:09</publishTime>
+      <publishTime>02/06/2019 21:00:56</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>06/27/2017 12:59:34</publishTime>
@@ -412,7 +412,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2018 20:07:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/20/2018 20:35:11</publishTime>
+      <publishTime>02/06/2019 21:01:04</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>07/17/2018 11:05:33</publishTime>
@@ -483,20 +483,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/Login.cshtml">
       <publishTime>08/01/2018 19:09:19</publishTime>
     </File>
+    <File Include="Views/Alumno/BuscarAlumno.cshtml">
+      <publishTime>02/03/2019 15:39:39</publishTime>
+    </File>
     <File Include="Views/Alumno/CambiarEstadoCursada.cshtml">
       <publishTime>12/03/2018 19:42:37</publishTime>
+    </File>
+    <File Include="Views/Alumno/FichaAlumno.cshtml">
+      <publishTime>02/06/2019 20:46:51</publishTime>
     </File>
     <File Include="Views/Alumno/InscribirAlumno.cshtml">
       <publishTime>11/18/2018 12:16:23</publishTime>
     </File>
     <File Include="Views/Alumno/NuevoAlumno.cshtml">
-      <publishTime>11/05/2018 21:31:45</publishTime>
+      <publishTime>01/31/2019 08:26:47</publishTime>
     </File>
     <File Include="Views/Alumno/NuevoAlumnoExitoso.cshtml">
       <publishTime>11/17/2018 19:12:19</publishTime>
     </File>
     <File Include="Views/Alumno/NuevoAlumnoExterno.cshtml">
       <publishTime>11/05/2018 20:57:33</publishTime>
+    </File>
+    <File Include="Views/Alumno/Partial/AlumnoClaseTabla.cshtml">
+      <publishTime>02/04/2019 17:45:45</publishTime>
     </File>
     <File Include="Views/Alumno/Partial/AlumnoTabla.cshtml">
       <publishTime>12/18/2018 21:52:18</publishTime>
@@ -508,13 +517,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/18/2018 12:01:25</publishTime>
     </File>
     <File Include="Views/Pago/PagoClase.cshtml">
-      <publishTime>12/20/2018 20:33:36</publishTime>
+      <publishTime>02/04/2019 17:38:00</publishTime>
     </File>
     <File Include="Views/Pago/PagoClaseExitoso.cshtml">
       <publishTime>10/08/2018 19:30:21</publishTime>
     </File>
     <File Include="Views/Pago/PagoParcial.cshtml">
-      <publishTime>12/20/2018 20:33:20</publishTime>
+      <publishTime>01/31/2019 18:00:01</publishTime>
     </File>
     <File Include="Views/Reporte/AlumnosPorCurso.cshtml">
       <publishTime>11/13/2018 12:00:43</publishTime>
@@ -538,7 +547,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2018 20:44:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/19/2018 19:11:50</publishTime>
+      <publishTime>02/03/2019 15:09:26</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/29/2018 15:23:07</publishTime>
@@ -550,7 +559,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/17/2018 11:01:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/20/2018 20:02:47</publishTime>
+      <publishTime>02/06/2019 21:00:59</publishTime>
     </File>
   </ItemGroup>
 </Project>
