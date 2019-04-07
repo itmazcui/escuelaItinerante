@@ -26,8 +26,8 @@ namespace DES.Data.Clases
         public string Direccion { get; set; }
         public int CodigoPostal { get; set; }
         public string Localidad { get; set; }
-        public int Telefono { get; set; }
-        public int Celular { get; set; }
+        public string Telefono { get; set; }
+        public string Celular { get; set; }
         public string Email { get; set; }
         public string ComoNosConocio { get; set; }
         public EstadoCivil EstadoCivil { get; set; }

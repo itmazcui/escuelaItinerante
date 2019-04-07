@@ -106,10 +106,7 @@ namespace EscuelaItinerante.Controllers
 
             if (model.CodigoPostal == 0)
                 ModelState["CodigoPostal"].Errors.Clear();
-
-            if (model.Celular == 0)
-                ModelState["Celular"].Errors.Clear();
-
+            
             if (model.Hijos == 0)
                 ModelState["Hijos"].Errors.Clear();
 

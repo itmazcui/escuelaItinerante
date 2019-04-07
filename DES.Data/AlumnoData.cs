@@ -28,8 +28,8 @@ namespace DES.Data
                 alumno.Direccion = item["Direccion"].ToString();
                 alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
                 alumno.Localidad = item["Localidad"].ToString();
-                alumno.Telefono = int.Parse(item["Telefono"].ToString());
-                alumno.Celular =  int.Parse(item["Celular"].ToString());
+                alumno.Telefono = item["Telefono"].ToString();
+                alumno.Celular =  item["Celular"].ToString();
                 alumno.Email = item["Email"].ToString();
                 alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
                 alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
@@ -67,8 +67,8 @@ namespace DES.Data
                 alumno.Direccion = item["Direccion"].ToString();
                 alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
                 alumno.Localidad = item["Localidad"].ToString();
-                alumno.Telefono = int.Parse(item["Telefono"].ToString());
-                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Telefono = item["Telefono"].ToString();
+                alumno.Celular = item["Celular"].ToString();
                 alumno.Email = item["Email"].ToString();
                 alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
                 alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
@@ -104,8 +104,8 @@ namespace DES.Data
                 alumno.Direccion = item["Direccion"].ToString();
                 alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
                 alumno.Localidad = item["Localidad"].ToString();
-                alumno.Telefono = int.Parse(item["Telefono"].ToString());
-                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Telefono = item["Telefono"].ToString();
+                alumno.Celular = item["Celular"].ToString();
                 alumno.Email = item["Email"].ToString();
                 alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
                 alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
@@ -205,8 +205,8 @@ namespace DES.Data
                 alumno.Direccion = item["Direccion"].ToString();
                 alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
                 alumno.Localidad = item["Localidad"].ToString();
-                alumno.Telefono = int.Parse(item["Telefono"].ToString());
-                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Telefono = item["Telefono"].ToString();
+                alumno.Celular = item["Celular"].ToString();
                 alumno.Email = item["Email"].ToString();
                 alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
                 alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());
@@ -243,8 +243,8 @@ namespace DES.Data
                 alumno.Direccion = item["Direccion"].ToString();
                 alumno.CodigoPostal = int.Parse(item["CodigoPostal"].ToString());
                 alumno.Localidad = item["Localidad"].ToString();
-                alumno.Telefono = int.Parse(item["Telefono"].ToString());
-                alumno.Celular = int.Parse(item["Celular"].ToString());
+                alumno.Telefono = item["Telefono"].ToString();
+                alumno.Celular = item["Celular"].ToString();
                 alumno.Email = item["Email"].ToString();
                 alumno.ComoNosConocio = item["ComoNosConocio"].ToString();
                 alumno.EstadoCivil = (EstadoCivil)int.Parse(item["EstadoCivil"].ToString());

@@ -51,11 +51,11 @@
         <div class="col-md-4">
             <div class="form-group col-md-12">
                 <label>Teléfono</label>
-                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", @Value = Model.Telefono == 0 ? "" : Model.Telefono.ToString(), @placeholder = "Ej.: 4829 1239", @type = "number" })
+                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", @placeholder = "Ej.: 4829 1239" })
             </div>
             <div class="form-group col-md-12">
                 <label>Celular</label>
-                @Html.TextBoxFor(x => x.Celular, new { @class = "form-control", @Value = Model.Celular == 0 ? "" : Model.Celular.ToString(), @placeholder = "Ej.: 15 4829 1239", @type = "number" })
+                @Html.TextBoxFor(x => x.Celular, new { @class = "form-control", @placeholder = "Ej.: 15 4829 1239" })
             </div>
             <div class="form-group col-md-12">
                 <label>Email</label>

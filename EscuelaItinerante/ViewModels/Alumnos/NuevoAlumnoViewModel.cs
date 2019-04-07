@@ -45,9 +45,9 @@ namespace EscuelaItinerante.Models
         //[Required]
         public string Localidad {get;set;}
 
-        public int Telefono {get;set;}
+        public string Telefono {get;set;}
 
-        public int Celular {get;set;}
+        public string Celular {get;set;}
 
         [Required]
         [EmailAddress]
