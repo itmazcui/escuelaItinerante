@@ -50,6 +50,12 @@ namespace DES.Data.Clases
         Raquel_Acedo = 18,
         Sabrina_Keller = 19,
         Sandra_Palacio = 20,
+        Belen_Martinez = 21,
+        Hernan_Barrios = 22,
+        Liliana_Viater = 23,
+        Natalia_Erroz = 24,
+        Soledad_Murua = 25
+
     }
 
     public enum Curso

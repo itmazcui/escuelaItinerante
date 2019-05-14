@@ -120,8 +120,8 @@ namespace EscuelaItinerante.Controllers
                 alumno.Direccion = model.Direccion ?? string.Empty;
                 alumno.CodigoPostal = model.CodigoPostal;
                 alumno.Localidad = model.Localidad ?? string.Empty;
-                alumno.Telefono = model.Telefono;
-                alumno.Celular = model.Celular;
+                alumno.Telefono = model.Telefono ?? string.Empty;
+                alumno.Celular = model.Celular ?? string.Empty;
                 alumno.Email = model.Email;
                 alumno.ComoNosConocio = model.ComoNosConocio ?? string.Empty;
                 alumno.EstadoCivil = model.EstadoCivil;

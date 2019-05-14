@@ -270,15 +270,15 @@ namespace DES.Data
             parametros.Add("@Direccion", alumno.Direccion);
             parametros.Add("@CodigoPostal", alumno.CodigoPostal);
             parametros.Add("@Localidad", alumno.Localidad);
-            parametros.Add("@Telefono", alumno.Telefono);
+            parametros.Add("@Telefono", alumno.Telefono );
             parametros.Add("@Celular", alumno.Celular);
             parametros.Add("@Email", alumno.Email);
             parametros.Add("@ComoNosConocio", alumno.ComoNosConocio);
             parametros.Add("@EstadoCivil", alumno.EstadoCivil);
             parametros.Add("@Hijos", alumno.Hijos);
             parametros.Add("@EstudiosRealizados", alumno.EstudiosRealizados);
-            parametros.Add("@ConocidoEnInstituto", alumno.ConocidoEnInstituto == null ? string.Empty : alumno.ConocidoEnInstituto);
-            parametros.Add("@Observaciones", alumno.Observaciones == null ? string.Empty : alumno.Observaciones);
+            parametros.Add("@ConocidoEnInstituto", alumno.ConocidoEnInstituto);
+            parametros.Add("@Observaciones", alumno.Observaciones);
             
             var da = new DataAccess();
             da.ExecuteSP("sp_i_talumnos", parametros);
