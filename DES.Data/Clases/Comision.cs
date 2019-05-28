@@ -65,7 +65,8 @@ namespace DES.Data.Clases
         Operador_Socio_Comunitario = 3,
         P_N_L = 4,
         Psicodrama = 5,
-        Psicologia_Social = 6
+        Psicologia_Social = 6,
+        Coaching = 7
     }
 
     public enum EstadoCursada
