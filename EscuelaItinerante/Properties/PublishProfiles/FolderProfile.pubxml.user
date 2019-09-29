@@ -22,22 +22,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/07/2019 16:37:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/11/2019 21:42:54</publishTime>
+      <publishTime>05/28/2019 11:54:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/11/2019 21:42:54</publishTime>
+      <publishTime>05/28/2019 11:54:40</publishTime>
     </File>
     <File Include="bin/DES.Data.dll">
-      <publishTime>05/11/2019 21:42:38</publishTime>
+      <publishTime>05/28/2019 11:52:39</publishTime>
     </File>
     <File Include="bin/DES.Data.pdb">
-      <publishTime>05/11/2019 21:42:38</publishTime>
+      <publishTime>05/28/2019 11:52:39</publishTime>
     </File>
     <File Include="bin/DES.Logic.dll">
-      <publishTime>05/11/2019 21:42:38</publishTime>
+      <publishTime>05/28/2019 11:52:39</publishTime>
     </File>
     <File Include="bin/DES.Logic.pdb">
-      <publishTime>05/11/2019 21:42:38</publishTime>
+      <publishTime>05/28/2019 11:52:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/07/2019 16:37:40</publishTime>
@@ -82,10 +82,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/07/2019 16:37:41</publishTime>
     </File>
     <File Include="bin/EscuelaItinerante.dll">
-      <publishTime>05/11/2019 21:42:39</publishTime>
+      <publishTime>05/28/2019 11:54:29</publishTime>
     </File>
     <File Include="bin/EscuelaItinerante.pdb">
-      <publishTime>05/11/2019 21:42:39</publishTime>
+      <publishTime>05/28/2019 11:54:29</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>04/07/2019 16:37:40</publishTime>
@@ -412,7 +412,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/07/2019 16:37:40</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/11/2019 21:42:42</publishTime>
+      <publishTime>05/28/2019 11:54:30</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>04/07/2019 16:37:40</publishTime>
@@ -487,13 +487,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/03/2019 15:39:39</publishTime>
     </File>
     <File Include="Views/Alumno/CambiarEstadoCursada.cshtml">
-      <publishTime>12/03/2018 19:42:37</publishTime>
+      <publishTime>05/11/2019 22:51:40</publishTime>
     </File>
     <File Include="Views/Alumno/FichaAlumno.cshtml">
       <publishTime>02/06/2019 20:46:51</publishTime>
     </File>
     <File Include="Views/Alumno/InscribirAlumno.cshtml">
-      <publishTime>11/18/2018 12:16:23</publishTime>
+      <publishTime>05/11/2019 22:52:45</publishTime>
     </File>
     <File Include="Views/Alumno/NuevoAlumno.cshtml">
       <publishTime>04/07/2019 16:51:54</publishTime>

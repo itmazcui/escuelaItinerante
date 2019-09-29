@@ -25,7 +25,8 @@ namespace DES.Data.Clases
         San_Miguel = 1,
         Mercedes = 2,
         Moreno = 3,
-        Campana = 4
+        Campana = 4,
+        Merlo = 5
     }
 
     public enum Coordinador

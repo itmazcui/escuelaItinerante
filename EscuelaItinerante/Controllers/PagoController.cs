@@ -120,7 +120,7 @@ namespace EscuelaItinerante.Controllers
         {
             try
             {
-                var client = new SmtpClient("smtp.gmail.com", 587)
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
                 {
                     Credentials = new System.Net.NetworkCredential("comprobantes.eips@gmail.com", "comprobantes123"),
                     EnableSsl = true
