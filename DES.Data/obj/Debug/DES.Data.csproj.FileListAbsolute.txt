@@ -1,5 +1,0 @@
-C:\git\EscuelaItinerante\DES.Data\bin\Debug\DES.Data.dll
-C:\git\EscuelaItinerante\DES.Data\bin\Debug\DES.Data.pdb
-C:\git\EscuelaItinerante\DES.Data\obj\Debug\DES.Data.dll
-C:\git\EscuelaItinerante\DES.Data\obj\Debug\DES.Data.pdb
-C:\git\EscuelaItinerante\DES.Data\obj\Debug\DES.Data.csprojAssemblyReference.cache
